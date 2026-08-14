@@ -1,0 +1,395 @@
+[
+  {
+    "title": "PIPBench: A Profile-Inclusive Framework for Personalized Image Generation Evaluation",
+    "abstract": "Recent text-to-image models such as DALLE-3 excel at following diverse prompts yet remain blind to individual aesthetic preferences. We study personalized image generation, where models must align outputs with a user's implicit visual preferences based on a few historically preferred images and a short prompt. To this end, we introduce PIPBench, the first profile-inclusive benchmark for evaluating personalized image generation. We further propose a novel data construction pipeline that leverages psychological and demographic profiling dimensions for both real-user data collection and scalable agent-based data generation. Using PIPBench, we conduct a thorough evaluation of representative line of methods. Our experiments reveal key limitations in existing methods, suggesting new challenges and opportunities for personalized text-to-image synthesis. Project page: https://wuyuhang05.github.io/PIPBench/",
+    "arxiv_id": "2607.06440v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Yuhang Wu",
+      "Shuxiang Zhang",
+      "Wee Hian Ching",
+      "Chi Zhang",
+      "Miao Liu"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06440v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Video Generation Models Are Inherent Lighting Estimators",
+    "abstract": "Recovering dynamic environment maps from a single in-the-wild video is crucial for photorealistic rendering, yet remains a challenge. Recent video generation models can produce photorealistic scenes with complex lighting, possessing an inherent understanding of lighting. In this paper, we introduce V-LITE (Video generation models are inherent lighting estimators), a framework that unlocks this internal knowledge by reframing lighting estimation as a guided video inpainting task. Inspired by VFX industry practices, we insert a synthetic chrome ball into the scene to compel the model to generate physically plausible reflections from the surrounding spatio-temporal context. To bridge the gap from LDR-native models to the HDR domain, we design an HDR-aware VAE and employ an efficient LoRA-based fine-tuning strategy. We then construct a mixed dataset comprising high-fidelity HDR images to provide realistic HDR priors, and in-the-wild HDR videos to provide dynamic spatio-temporal context. Extensive experiments demonstrate that V-LITE produces temporally coherent HDR environment maps, revealing that modern video diffusion models are not merely synthesizers but also powerful, inherently capable estimators of physical scene lighting.",
+    "arxiv_id": "2607.04674v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Ziqi Cai",
+      "Shuchen Weng",
+      "Kaiqi Liu",
+      "Zifeng Wang",
+      "Zhiquan Zhang"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.04674v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Stage-Aware Adaptation and Distribution Calibration for Subject-Driven Personalized Text-to-Image Generation",
+    "abstract": "Subject-driven personalized text-to-image generation requires a pretrained diffusion model to acquire a specific subject from a few reference images while preserving subject identity, following novel text prompts, and maintaining sample diversity. Existing optimization-based methods instantiate subject adaptation through full fine-tuning, textual embedding optimization, or low-rank parameter updates; PaRa further constrains personalization from the perspective of parameter rank reduction. However, a uniform low-rank constraint or a uniform adapter strength cannot explicitly distinguish the capacity requirements of different denoising stages. Moreover, inference-time candidate selection driven mainly by identity similarity may compress the selected samples in the visual representation space. We decompose the problem into two complementary components: SPaRa denotes training-side stage-aware low-rank adaptation, DCAL denotes inference-side distribution-calibrated candidate selection, and SPaRa-DCAL denotes the combined framework. Theoretical analysis shows that timestep-dependent scaling controls the effective perturbation magnitude of a low-rank adapter, while identity-biased candidate selection restricts the radius of selected features around the reference center under explicit conditions. Auditable experiments under the SDXL and DreamBooth 30-subject protocol show that DCAL improves 1-LPIPS, CLIP-I, DINO-I, and CLIP-T on a fixed LoRA candidate pool, while revealing a clear trade-off with CLIP/DINO pairwise diversity and pairwise LPIPS. These results indicate that personalized generation should be evaluated through identity consistency, text alignment, and representation diversity rather than identity metrics alone.",
+    "arxiv_id": "2607.07173v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Wenyan Xu",
+      "Alizer Wong"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.07173v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "An Hybrid Quantum-Classical Diffusion Model for Image Generation",
+    "abstract": "Quantum diffusion models provide a physics-consistent route to generative learning by formulating noising and denoising directly on quantum states. However, applying such models to classical high-dimensional data is constrained by the qubit cost of state encoding and the computational burden of simulating large density operators. We propose a scalable hybrid generative pipeline that combines a classical autoencoder for dimensionality reduction with a mixed-state quantum denoising diffusion probabilistic model (MSQuDDPM) operating in the learned latent space. The autoencoder compresses data into compact latent codes that can be embedded into a small-qubit Hilbert space, after which the quantum diffusion model learns a generative distribution over latent density operators and decodes samples back to the original domain. Algorithmically, we simplify the reverse dynamics by predicting an estimate of the clean state $ρ_0$ at timestep $t$ and computing the one-step reverse update via an analytic backward propagation rule, rather than learning an explicit predictor for $ρ_{t-1}$. We demonstrate the proposed approach on MNIST image generation and discuss how mixed-state quantum diffusion can serve as a practical backbone for hybrid quantum--classical generative modeling under realistic qubit budgets.",
+    "arxiv_id": "2607.07072v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Qipeng Qian",
+      "Keli Deng",
+      "Yuntao Qian"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.07072v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "IB-Flow: Information Bottleneck-Guided CFG Distillation for Few-Step Text-to-Image Generation",
+    "abstract": "While large-scale text-to-image generative models have achieved unprecedented visual performance, their inherent reliance on multi-step iterative solvers incurs severe inference latency. Few-step distillation targeting the Classifier-Free Guidance (CFG) trajectory has emerged as the prevalent dual-dimensional compression paradigm. However, existing frameworks remain subjugated by a coarse-grained blind injection paradigm that perpetually enforces a globally static guidance strength while indiscriminately sampling the supervisor timestep. This state-agnostic design completely disregards the intrinsic nature of image generation as a dynamic evolutionary process characterized by progressive entropy reduction, which not only restricts the performance boundary of few-step compression but also precipitates severe CFG over-conditioning artifacts. To transcend these limitations, we re-examine the distillation procedure through the theoretical lens of Information Theory, formally modeling it as a dynamic mutual information game constrained by the Information Bottleneck (IB) principle. Specifically, we dismantle traditional blind assumptions via a dual-track adaptive framework. To determine the injection target, we propose an instance-aware selection mechanism that transmutes the intractable KL divergence constraint into a zero-overhead closed-form solution predicated on the local vector field norm. To regulate the injection strength, we introduce an entropy-aware schedule that dynamically decays alongside the SNR, applying maximal thrust for initial structural anchoring before smoothly reverting to the natural manifold to refine micro-details. Extensive empirical evaluations corroborate that our framework fundamentally eradicates over-conditioning artifacts, shattering the performance ceiling to achieve SOTA generative fidelity under extremely stringent 2-step configurations.",
+    "arxiv_id": "2607.09133v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Yiting Wang",
+      "Jingyi Zhang",
+      "Wenhu Zhang",
+      "Ke Chao",
+      "Yves Liang"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09133v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Non-asymptotic Convergence of Stochastic Gradient Descent in Score-based Generative Models",
+    "abstract": "Score-based Generative Models (SGMs) have achieved impressive performance in data generation across a wide range of applications. While the statistical properties of their sampling procedures are increasingly well understood, the optimization dynamics underlying their training remain less explored. SGMs are typically trained by minimizing a weighted denoising scorematching objective, yet optimization guarantees with stochastic gradients remain limited. In this work, we study Stochastic Gradient Descent (SGD) for SGMs, contributing results in two complementary regimes. First, for general score parameterizations, we establish a non-convex convergence rate for SGD on the weighted denoising score-matching objective, with explicit dependence on the schedule-dependent weighting factors. Second, for overparameterized two-layer ReLU networks, we develop a Neural Tangent Kernel analysis tailored to diffusion training with stochastic gradients, yielding score-approximation error bounds along the SGD trajectory. Finally, our analysis quantifies the role of the reweighting factor in the score approximation error, providing theoretical guidance for weighting choices used in practice.",
+    "arxiv_id": "2607.04775v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Stanislas Strasman",
+      "Sobihan Surendran",
+      "Sylvain Le Corff"
+    ],
+    "categories": [
+      "stat.ML",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04775v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Constrained Flow Matching via Lagrangian Dual Flows",
+    "abstract": "Flow matching is a powerful tool for generative modeling, but emerging applications in robotics, planning, and physics require inference-time constraints on generated outputs. Such constraints are often complex and highly nonlinear. As a result, methods designed for linear constraints like image inpainting are rarely sufficient, and projection or optimization-based alternatives can be prohibitively expensive. In this paper, we introduce Lagrangian Dual Flows, a new family of constrained generation techniques based on Lagrangian dual dynamics. By simply flowing a dual co-state alongside generated samples, we can guarantee nonlinear constraint satisfaction without expensive optimization subproblems, pseudoinverses, or projection steps during the denoising process. The resulting constrained generation algorithms are simple, effective, and open new theoretical connections between flow matching and primal-dual methods in numerical optimization.",
+    "arxiv_id": "2607.04513v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Vince Kurtz",
+      "Alexander Davydov"
+    ],
+    "categories": [
+      "math.OC",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04513v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "SAGA: Stable Acceleration Guidance for Autoregressive Video Generation",
+    "abstract": "Autoregressive video diffusion enables efficient streaming and long-horizon video generation, but repeatedly reusing generated latents as causal context can amplify temporal errors, resulting in flickering, motion jitter, and structural drift. In this paper, we investigate this failure mode from a spectral kinematic perspective and identify discrete latent acceleration as an effective signal for revealing unstable high-frequency temporal perturbations. To this end, we propose SAGA, a training-free \\textbf{\\textit{s}}table \\textbf{\\textit{a}}cceleration \\textbf{\\textit{g}}uidance approach for \\textbf{\\textit{a}}utoregressive video generation. SAGA integrates an acceleration domain spectral guidance objective based on finite-window Slepian projections with a structured autoregressive noise initialization strategy that suppresses short-range temporal correlations while preserving long-range motion structure. Without retraining or modifying the backbone, SAGA can be directly applied to existing chunk-wise autoregressive diffusion models, which is the prevalent setting for high-quality generation. Extensive experiments show that SAGA consistently improves temporal quality across multiple autoregressive diffusion models. On Self-Forcing, SAGA improves Temporal Quality from 97.30 to 97.91 and Image Quality from 69.60 to 70.51. Moreover, spectral analysis and human preference studies demonstrate that SAGA reduces temporal instability while maintaining visual fidelity.",
+    "arxiv_id": "2607.08020v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Thanh-Nhan Vo",
+      "Trong-Thuan Nguyen",
+      "Trung-Hoang Le",
+      "Tam V. Nguyen",
+      "Minh-Triet Tran"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.08020v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Video Generation Models are General-Purpose Vision Learners",
+    "abstract": "Driven by next-token prediction, NLP shifted from task-specific models into powerful generalist foundation models. What, then, is the equivalent catalyst needed to achieve a general-purpose model in computer vision? In this paper, we contend that large-scale text-to-video generation serves as a strong pre-training paradigm for computer vision, providing the necessary spatiotemporal priors, vision-language alignment, and scalability required for general visual intelligence. We introduce GenCeption, which leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, capable of performing various vision tasks steered by text instructions. Empirical results demonstrate that GenCeption achieves state-of-the-art performance across a diverse suite of tasks, including depth, surface normal, and camera pose estimation, expression-referring segmentation, and 3D keypoint prediction, often matching or surpassing specialized models (e.g. DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2). Furthermore, the video generative pretrained backbone outperforms alternative pretraining paradigms (e.g., V-JEPA, and Video MAE) under comparable settings. Importantly, GenCeption exhibits preliminary data and model scaling properties along with exceptional data efficiency, where it achieves comparable performance with leading models like D4RT and VGGT-Omega with 7 to 500 less training data. Finally, GenCeption also exhibits intriguing emergent behaviors: a model trained exclusively on synthetic human videos generalizes to real-world footage and out-of-distribution object categories (e.g., animals and robots). These findings suggest that video generation is not merely a synthesis tool, but a foundational path toward generalist vision intelligence for the physical world. Project page: https://genception.github.io",
+    "arxiv_id": "2607.09024v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Letian Wang",
+      "Chuhan Zhang",
+      "Rishabh Kabra",
+      "Jasper Uijlings",
+      "Steven Waslander"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09024v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Straight-Path Flow Matching for Incomplete Multi-View Clustering",
+    "abstract": "Incomplete Multi-View Clustering addresses the problem of clustering multi-modal data when certain views are missing. Recent end-to-end generative approaches leverage diffusion models to recover missing views via stochastic noise-to-data trajectories. While expressive, such mechanisms are not explicitly designed for clustering, as they initialize from cluster-agnostic noise and rely on stochastic denoising dynamics. In this work, we revisit probability path design in end-to-end generative IMVC. We introduce a flow-matching framework with a linear interpolation path between paired view representations, that replaces diffusion with probability flows between observed and missing views. We provide a formal analysis showing that deterministic ODE flows are inherently better aligned with clustering objectives than diffusion-based stochastic trajectories, especially in terms of transport mechanisms that respect class-conditional data distributions and maintain cluster consistency in finite-step regimes. Building upon this insight, we develop an end-to-end IMVC architecture that integrates straight-path flow-matching view completion with cluster-level and entropy-based alignment to enforce cross-view clustering consistency. Extensive experiments on standard IMVC benchmarks demonstrate that the proposed framework establishes new state-of-the-art performance.",
+    "arxiv_id": "2607.06281v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Yiteng Yuan",
+      "Junyan Wang",
+      "Zheyuan Liu",
+      "Hong Jia",
+      "Lei Fan"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06281v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Asymptotic-Preserving A Posteriori Analysis of Diffusion and Flow-Matching Samplers",
+    "abstract": "Diffusion and flow-matching samplers integrate a learned probability-flow ODE from a large noise scale down to a small terminal floor $σ_{\\min}$, at which the score is stiff and the flow develops a boundary layer. We treat $σ_{\\min}$ as a singular-perturbation parameter and determine which fixed-step samplers are asymptotic-preserving (AP), that is, stable and uniformly accurate as $σ_{\\min}\\to0$, casting the criteria as an a posteriori audit: residual functionals with $σ_{\\min}$-uniform coefficients, computable on a pretrained checkpoint without ground-truth scores or exact trajectories. On the terminal layer, Euler in the $σ$-clock, the deterministic DDIM update, is the unique layer-exact discretization up to affine reparameterization, with rectified flow its flow-matching counterpart; the $λ$-clock is stable only for steps $h\\le h_\\star=1+W(1/e)$, and the uniform-$σ^2$ heat clock stalls a $σ_{\\min}$-independent distance from the data. On two solvable models (rank-deficient Gaussian, symmetric two-point mixture), deterministic samplers remain first-order uniformly accurate with no $\\log(1/σ_{\\min})$ factor, even across a symmetric posterior-switching interface whose distributional budget is a universal constant; the logarithm is charged entirely to the Itô term of stochastic samplers, whose path-KL scales as $Λ^2/N$ against the ODE's $O(Λ^2/N^2)$ budget, with $Λ=\\log(σ_{\\max}/σ_{\\min})$. On the EDM CIFAR-10 checkpoint, spectra measured once predict held-out residual budgets across step count, schedule, and noise level against pre-specified gates with no per-configuration refitting, and calibrate the Itô coefficient at $M_1=1.00\\pm0.01$. The clock decides stability; the noise, not the geometry, charges the logarithm.",
+    "arxiv_id": "2607.04113v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Shiheng Zhang"
+    ],
+    "categories": [
+      "cs.LG",
+      "math.NA"
+    ],
+    "link": "http://arxiv.org/abs/2607.04113v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "CCFM: Collision-Constrained Flow Matching for Safety-Critical Scenario Generation",
+    "abstract": "Evaluation of autonomous vehicle (AV) planners in safety-critical closed-loop simulation is essential for real-world deployment. However, generating controllable safety-critical scenarios remains challenging. Existing approaches use soft guidance that provides only probabilistic preferences and cannot guarantee the satisfaction of geometric and severity constraints associated with specific collision types. We introduce Collision-Constrained Flow Matching (CCFM), a novel framework that guarantees precise collision control through hard physical constraints. CCFM consists of three key components: (i) a heuristic collision selector that optimally identifies an adversarial agent and collision type via composite scoring; (ii) structured hard constraints that explicitly define four collision types (rear-end, side, cut-in, head-on) through contact point, heading, and severity requirements; and (iii) a collision-constrained flow matching sampler that enforces the constraints via Gauss-Newton manifold projection. CCFM achieves collision rate up to 46.4% on nuScenes and 83.1% on nuPlan, significantly outperforming baselines while preserving realistic driving behavior. By enabling controllable collision characteristics in safety-critical scenario generation, CCFM provides a reliable foundation for AV safety evaluation and sim-to-real crash data generation. The code and implementation details are available at https://github.com/KELISBU/CCFM.",
+    "arxiv_id": "2607.04451v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Ke Li",
+      "Kaidi Liang",
+      "Yuxin Ding",
+      "Debojyoti Biswas",
+      "Xianbiao Hu"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.04451v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Tensor Train Diffusion: Leveraging Low-Rank Structures for High-Dimensional Score-Based Sampling",
+    "abstract": "Diffusion models offer a powerful framework for sampling from complex probability densities by learning to reverse a noising process. A common approach involves solving for the time-reversed stochastic differential equation (SDE), which requires the score function of the evolving sample distribution. The logarithm of this distribution's density is governed by a Hamilton-Jacobi-Bellman (HJB) type partial differential equation (PDE). However, current methods for solving this PDE, such as PINNs or trajectory-based techniques, often suffer from long training times and significant sensitivity to hyperparameter tuning. In this work, we introduce a novel and efficient solver for the underlying HJB equation based on the functional tensor train (FTT) format. The FTT representation leverages latent low-rank structures to efficiently approximate high-dimensional functions, enabling both model compression and rapid computation. By integrating this efficient representation with a backward-in-time iterative scheme derived from backward stochastic differential equations (BSDEs), we develop a fast, robust and accurate sampling method. Our approach overcomes primary bottlenecks of existing techniques, enabling high-fidelity sampling from challenging target distributions with improved efficiency.",
+    "arxiv_id": "2607.06841v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Robert Gruhlke",
+      "Julius Berner",
+      "David Sommer",
+      "Lorenz Richter"
+    ],
+    "categories": [
+      "stat.ML",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.06841v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "OpenCoF: Learning to Reason Through Video Generation",
+    "abstract": "Reasoning has become a core capability for large models, especially when reliable decisions require understanding logical consequences. Recent video generation models offer a reasoning path distinct from previous Chain-of-Thought (CoT): reasoning can unfold through temporally connected frames, known as Chain-of-Frame (CoF) reasoning. However, existing video generators are primarily trained on general video corpora, still lacking diverse supervision and dedicated designs for CoF reasoning. To address this gap, we introduce OpenCoF, a framework comprising the OpenCoF-17K dataset, a reasoning video dataset spanning 11 task families, and Wan-CoF, a fine-tuned video model for studying whether diverse temporal supervision improves CoF behavior. Across four video reasoning benchmarks, Wan-CoF achieves considerable gains over the Wan2.2-I2V-A14B baseline. Building on this, we empirically explore more advanced designs for CoF capabilities, i.e., equipping the model with visual and textual reasoning tokens. This mechanism respectively captures low-level visual cues and high-level semantic priors for spatial and temporal reasoning. Through performance comparisons and attention analysis, we examine how these tokens contribute across model depth, denoising steps, space, and time. Our results suggest that stronger video reasoning requires both broad temporal supervision and explicit mechanisms for organizing intermediate reasoning state. We open-source the dataset, model, and code to facilitate future research on reasoning-oriented video generation.",
+    "arxiv_id": "2607.08763v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Xinyan Chen",
+      "Ziyu Guo",
+      "Renrui Zhang",
+      "Dongzhi Jiang",
+      "Hongsheng Li"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08763v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Joint Discrete-Continuous Flow Matching for Open-Vocabulary Inverse Design of Multilayer Optical Coatings",
+    "abstract": "Amortized neural inverse design typically remains closed-world: component choices are fixed vocabulary tokens, coordinate grids are frozen at training time, and continuous variables are discretized into sequence tokens. Multilayer optical coatings are an industrially important instance, coupling material sequence, layer thickness and wavelength-dependent response. We present IrisFlow, a query-based, open-vocabulary flow-matching framework instantiated in coatings: the target reflectance/transmittance spectrum, wavelength grid, candidate-material optical constants and layer count are supplied at query time. Candidate materials enter as wavelength-aware optical tokens rather than learned identities; material sequences are sampled by discrete flow matching over the query's candidate bank, thicknesses by continuous flow matching without discretization. A single 136M-parameter model designs 2-100-layer stacks. Across a 224-task benchmark it reconstructs in-distribution targets faithfully and retains same-order accuracy on a 15-material held-out bank without retraining; it reconstructs bands up to 1100 nm beyond its training envelope, designs against analytic application specifications and outperforms an autoregressive baseline on that baseline's material library. With optical constants calibrated to our deposition process, IrisFlow designs four color-displaying coolers, fabricated by ion-assisted evaporation: the three chromatic devices reach a CIEDE2000 color error of 3.1-5.2 while retaining 93-95% solar near-infrared reflectance, demonstrating open-vocabulary design carried through to fabricated coatings.",
+    "arxiv_id": "2607.08392v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Zhiyi Li",
+      "Yuheng Jin",
+      "Yidan Huang",
+      "Nan Chen",
+      "Hongyan Fu"
+    ],
+    "categories": [
+      "physics.optics",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08392v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models",
+    "abstract": "Large-scale text-to-image models are attractive backbones for dense prediction because RGB generation pretraining learns rich semantic, structural, and geometric priors. Existing generative and editing approaches reuse these priors by casting dense prediction as target generation: annotations such as depth, normals, alpha mattes, masks, and heatmaps are encoded into an RGB-trained VAE latent space and decoded back as image-like targets. We argue this inherits more of the generative output interface than dense prediction requires: unlike RGB synthesis, dense prediction asks for pixel-correct, task-native fields on the same image plane, not new RGB content to be rendered. Our key observation is that a pretrained DiT already organizes RGB inputs through a patch-to-token-to-patch lattice on the image plane, so each token indexes a fixed output patch whose channels can carry task-native quantities instead of RGB appearance. We instantiate this as ReChannel: we keep the VAE encoder for the DiT's input distribution but drop the target-side decoder, adapt the frozen DiT with task LoRA, and map each token to its p x p x K_t pixel-space patch through a shared token-local linear head--about 33K parameters, no spatial mixing. Using FLUX-Klein, we evaluate on six dense prediction tasks and over a dozen benchmarks. This minimal interface sets new state-of-the-art on trimap-free matting, KITTI depth, and referring segmentation, and stays competitive on normals, saliency, and pose. In a matched 4B setting it is more accurate and 2.48x faster than an edit-plus-latent-decode counterpart--dense perception can benefit from generative pretraining without inheriting its output interface.",
+    "arxiv_id": "2607.06553v2",
+    "published": "2026-07-07",
+    "authors": [
+      "Zanyi Wang",
+      "Xin Lin",
+      "Haodong Li",
+      "Dengyang Jiang",
+      "Yijiang Li"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06553v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models",
+    "abstract": "Representation alignment (REPA) has been investigated to accelerate diffusion training, but we observe that regularizing intermediate representations in diffusion Transformers (DiT) may implicitly entangle latents and limit generative capacity. To address this issue, we propose ReGen, a hierarchical multi-prompt representation generation framework that jointly estimates multiple vector fields for both representations and data within a single diffusion model. We further introduce generalized flow matching (GFM) to improve the generalization of conditional flow matching (CFM). We validate ReGen on single-stage waveform diffusion models including neural audio codec and Wave-VAE. ReGen significantly improves waveform generation quality from highly compressed latent representations at 12.5 Hz. We also present ReGenVoice, a latent diffusion model (LDM)-based text-to-speech model that achieves strong speech intelligibility (WER) and speaker similarity (SIM) with a small dataset. Moreover, operating the LDM at 6.25 Hz with rich semantic and acoustic latent representation enables efficient training and sampling, requiring only 1 day of training on 4 GPUs and fast inference with an RTF of 0.08. Audio samples are available at https://regenvoice.github.io/demo/.",
+    "arxiv_id": "2607.09134v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Sang-Hoon Lee",
+      "Ha-Yeong Choi"
+    ],
+    "categories": [
+      "cs.SD",
+      "cs.AI",
+      "eess.AS",
+      "eess.SP"
+    ],
+    "link": "http://arxiv.org/abs/2607.09134v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "FUSE: FK-Steered Multi-Modal Flow Matching for Efficient Simulation-Based Posterior Estimation",
+    "abstract": "Simulation-Based Inference (SBI) is critical for scientific discovery, with generative models offering a promising path toward efficient inference. However, existing methods struggle with effective multimodal modeling. They often rely on brute-force fusion strategies that ignore the structural disparities between parameters and observations, thus limiting estimation fidelity. In this work, we introduce FUSE (Feynman-Kac steered mUlti-modal flow matching for efficient Simulation-based posterior Estimation). Unlike prior work, FUSE employs a dual-track architecture that preserves the distinct features of multimodal inputs while facilitating dynamic interaction. Additionally, we propose an FK-steered sampling strategy that leverages intermediate observation likelihoods to guide the generative trajectories, effectively improving the sample quality during inference. Our approach outperforms state-of-the-art baselines on standard SBI benchmarks, producing posteriors that closely match ground-truth MCMC. Furthermore, in a real-world exoplanet orbital estimation task, FUSE successfully resolves complex parameter degeneracies that challenge existing methods, highlighting its potential to accelerate complex scientific discoveries in astrophysics and beyond.",
+    "arxiv_id": "2607.05252v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Weichen Qin",
+      "Yufan Xie",
+      "Peihao Wang",
+      "Chia-Jui Chou",
+      "Minghui Du"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.05252v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "MobileWan: Closing the Quality Gap for Mobile Video Diffusion",
+    "abstract": "Recent advances in video diffusion have been driven by scaling transformer-based architectures to billions of parameters, substantially improving visual fidelity and motion coherence. In contrast, existing mobile video diffusion models remain limited to relatively small parameter budgets, typically 0.4-1.8B, restricting generation quality. In this work, we show that high-quality mobile video generation does not require small models. Instead, we demonstrate that a server-scale 5B-parameter video diffusion transformer can be deployed efficiently on memory-constrained mobile hardware through recurrent reformulation and structured compression. Starting from Wan2.2-5B, we rely on a recurrence distillation framework that converts video generation into a chunk-wise autoregressive process with constant-memory attention computation. Combined with causal linear attention, the model operates as an RNN at inference time while preserving temporal coherence across chunks. We further propose a learnable attention head pruning method based on binary per-head gates optimized end-to-end using a noise-biased sparsity objective and distillation-based finetuning. Together with sampling-step distillation and memory-optimized VAE decoding, MobileWan becomes the first 5B-scale video diffusion model deployable on a commercial mobile device. Our system generates 5-second 480x832 videos at 16 FPS in 20 seconds end-to-end latency, achieving a VBench score of 83.79 and establishing a new state of the art in mobile video generation. Project page: https://qualcomm-ai-research.github.io/mobilewan",
+    "arxiv_id": "2607.06173v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Mohsen Ghafoorian",
+      "Denis Korzhenkov",
+      "Adil Karjauv",
+      "Ioannis Lelekas",
+      "Noor Fathima"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06173v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "ColorFM: An Optimization-to-Learning Framework for Color Transfer via Flow Matching",
+    "abstract": "Color transfer aims to align the color distribution of a source image with that of a reference image while preserving structural and semantic consistency. However, existing methods often suffer from inaccurate global mapping, semantic misalignment, and visual artifacts. To address these issues, we propose ColorFM, an optimization-to-learning framework. ColorFM connects online optimization to offline inference by reformulating color transfer as the transport of pixel distributions along velocity fields via Flow Matching. Specifically, we introduce ColorFM-O, an instance-specific optimization scheme that fits the velocity field through hierarchical color coupling guided by semantic priors. By numerically integrating the induced flow trajectories, ColorFM-O produces precise and semantically consistent color transfer results, while generating high-quality paired data as pseudo-supervision. Building upon this, we design ColorFM-L, an efficient feed-forward model trained on the generated pairs. Through implicit state modeling, ColorFM-L extracts deep semantic features to predict flow parameters for bidirectional linearized transport, ensuring accurate color transfer. Extensive experiments demonstrate that ColorFM-L outperforms state-of-the-art methods in visual quality, structural fidelity, and semantic consistency, successfully combining the accuracy of optimization with the speed of feed-forward inference.",
+    "arxiv_id": "2607.07119v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Yuhang He",
+      "Kai Zhang",
+      "Xiaoming Li",
+      "Du Chen",
+      "Jian Yang"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.07119v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

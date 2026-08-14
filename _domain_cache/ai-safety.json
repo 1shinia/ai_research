@@ -1,0 +1,388 @@
+[
+  {
+    "title": "Mechanistic Interpretability for Neural Networks: Circuits, Sparse Features and Symbolic Reasoning",
+    "abstract": "This article offers a comprehensive overview of mechanistic interpretability, an emerging field that seeks to reverse-engineer the internal algorithms of modern neural networks. While traditional explainable AI methods often stop at surface-level input-output correlations, this approach directly addresses the opaque \"black box\" nature of machine learning models, which is essential for ensuring safety and auditability in high-stakes deployments. The paper provides a detailed examination of Transformer circuit analysis, exploring how internal components like the residual stream, attention mechanisms, and induction heads drive complex tasks and in-context learning. It subsequently tackles the core challenge of superposition and polysemanticity, demonstrating how tools like Sparse Autoencoders (SAEs) and transcoders can decompose tangled network activations into distinct, human-interpretable features. Furthermore, the paper explores methods for actively controlling and modifying model behavior through steering vectors and causal interventions. Finally, it connects these mechanistic insights with neurosymbolic AI frameworks designed to translate neural representations into explicit, executable logical rules.",
+    "arxiv_id": "2607.07316v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Pranav Sawant",
+      "Jakub Krejčí"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.07316v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Certified Interventional Fidelity: Anytime-Valid, Adaptive Evaluation of Causal Claims in Mechanistic Interpretability",
+    "abstract": "Mechanistic interpretability often evaluates explanations by intervening on a model: swapping hidden states, patching activations, ablating components, or comparing a compressed model to the original one. These experiments are usually summarized by a point estimate, even though the evaluation may be monitored while it runs or adapted toward suspected failures. This makes it hard to tell whether a reported fidelity or patching effect is a stable causal claim or a consequence of finite sampling and evaluation choices. We introduce Certified Interventional Fidelity (CIF), a statistical layer for interventional interpretability evaluations. CIF first writes the quantity being reported as a causal estimand: an expectation of a bounded score over a stated input distribution and a stated intervention distribution. It then provides confidence intervals and anytime-valid confidence sequences for this estimand, including under adaptive intervention sampling via bounded mixture importance weighting. We instantiate CIF with Hoeffding-style sequences and variance-adaptive betting sequences, the latter reducing certification cost by 10-30x in our experiments. On MNIST abstractions and GPT-2 Small IOI circuits, CIF certifies high-fidelity claims, shows when apparent method differences are not statistically supported, and makes sensitivity to the intervention distribution explicit.",
+    "arxiv_id": "2607.08349v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Amir Asiaee"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08349v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Mechanistic Interpretability of LLM Jailbreaks via Internal Attribution Graphs",
+    "abstract": "Large language models (LLMs) exhibit remarkable capabilities but remain highly vulnerable to adversarial prompts and jailbreak attacks. Existing approaches primarily analyze these failures through input-output behaviors or attribution methods, offering limited insight into how adversarial perturbations alter the model's internal reasoning. Consequently, the mechanisms underlying unsafe or incorrect behaviors remain poorly understood. We introduce a mechanistic framework for diagnosing LLM vulnerabilities using paired internal computation graphs, which represent prompt-specific inference as structured causal interactions among latent features. By constructing and aligning computation graphs for clean and attacked prompts, we reveal that adversarial attacks induce systematic transformations of internal reasoning, including suppression of safety-relevant components, emergence of attack-specific features, and rerouting of computation paths. Building on this representation, we propose a unified framework that (i) decomposes computation into invariant, suppressed, and emergent structures, (ii) identifies recurring vulnerability motifs associated with failure modes, and (iii) performs causal interventions on nodes, paths, and subgraphs to directly evaluate their contributions to attack success. This enables a transition from descriptive attribution to causal diagnosis of model failures. Experiments across multiple open-source LLMs and diverse adversarial and jailbreak benchmarks demonstrate that structural deviations in internal computation graphs strongly correlate with unsafe behaviors. Furthermore, targeted interventions on identified vulnerability motifs improve model robustness, establishing internal computation graphs as a principled foundation for understanding, diagnosing, and mitigating LLM vulnerabilities.",
+    "arxiv_id": "2607.07903v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Anupam Wagle",
+      "Ifrat Ikhtear Uddin",
+      "Chaowei Zhang",
+      "Longwei Wang"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07903v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Towards Agentic AI Governance: A Preliminary Assessment",
+    "abstract": "Artificial intelligence is rapidly evolving from generative systems to agentic AI capable of autonomously planning and executing tasks. Widely characterized as the Year of Agentic AI, 2025 marked accelerated development and deployment, introducing new ethical and governance challenges. This paper presents a systematic review of the emerging literature on agentic AI governance. Our analysis identifies features that distinguish agentic AI from traditional systems and why it warrants targeted governance attention. We synthesize prevailing governance priorities, proposed mechanisms, and stakeholder roles shaping this evolving domain. As an initial scholarly effort, this review lays the preliminary groundwork for developing a structured roadmap to guide responsible and adaptive agentic AI governance.",
+    "arxiv_id": "2607.07612v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Mubarak Raji",
+      "Masooda Bashir"
+    ],
+    "categories": [
+      "cs.CY",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07612v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "When Structured Sparse Autoencoders Learn Consistent Concepts Across Modalities",
+    "abstract": "Sparse autoencoders (SAEs) have emerged as a promising technique for mechanistic interpretability by learning a set of sparse latent features in large models, each of which encodes a distinct concept. However, in vision-language models (VLMs), vanilla SAEs struggle to learn modality-consistent concepts, with concepts often exhibiting fragmented coverage (i.e., disjoint regions) in the visual modality. To address this challenge, we propose a Structured Sparse AutoEncoder ($S^2AE$) that enforces concept consistency from both semantic and spatial perspectives in the visual modality. Specifically, we group image patches based on Transformer attention similarity and spatial proximity, and introduce a structured sparsity regularization when training the vanilla SAE. The regularization consists of exclusive sparsity for inter-group concept disentanglement and group sparsity for intra-group concept consistency, which drives the latent neurons by SAEs to specialize in distinct, semantically grounded concepts. Evaluated on the \\texttt{Qwen2.5-VL-7B-Instruct} model, the method achieves 6.06% average improvement in semantic alignment (mIoU) and 60.81 in representational efficiency (lower l0 norm) while maintaining near-perfect reconstruction fidelity with an Explained Variance above 99%. Cross-modal analysis further demonstrates that $S^2AE$ enhances neuronal monosemanticity by this visual structural prior, achieving a 3.08% average gain in semantic consistency and a 2.37% average gain in monosemanticity scores for both modalities of multimodal features, thereby fostering more coherent and disentangled representations.",
+    "arxiv_id": "2607.08605v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Weiduo Liao",
+      "Yunqiao Yang",
+      "Ying Wei"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08605v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Cross-seed explainability using Procrustes-conditioned Joint End-to-end Top-K Sparse Autoencoders",
+    "abstract": "We present a Procrustes-conditioned Joint End-to-end Top-K Sparse Autoencoder (SAE) for extracting cross-seed universal features from independently trained BERT models. Cross-seed feature universality is a fundamental challenge in mechanistic interpretability: because dictionary learning is non-convex, independently trained networks learn misaligned feature spaces, so apparently identical features may differ by random initialization. We address this by computing an orthogonal Procrustes rotation between seeds' activation spaces before joint SAE training, combining Top-K sparsity, end-to-end downstream optimization, and an auxiliary dead-feature revival loss based on previous SAE literature. Evaluating on five independent seed pairs (ten BERT models) across three benchmark datasets (SST-2, Stanford Politeness, TweetEval Emotion), our full pipeline produces more universal features (Pearson r $\\geq$ 0.70 across seeds) than post-hoc alignment baselines on all three datasets. A minimal qualitative analysis confirms that high-universality features encode interpretable sociolinguistic patterns.",
+    "arxiv_id": "2607.08499v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Bendegúz Váradi",
+      "Zoltán Kmetty"
+    ],
+    "categories": [
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.08499v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Optimizing Against Safety Representations: Activation-Guided Adversarial Suffixes and the Geometry of Refusal",
+    "abstract": "Behavioral alignment in large language models often masks fragile internal safety representations. Recent work suggests that refusal behavior is mediated by low-dimensional directions in activation space. This raises questions about how such representations are structured, localized, and accessed by optimization. We study adversarial suffix attacks as a probe of representational alignment. We introduce Activation-Guided GCG, which replaces output-based objectives with losses that directly target a model's internal refusal direction. Across several objective variants, we find that suppressing refusal globally across all layers and positions is more effective than targeting a single layer-position pair. This suggests that safety representations are distributed across the forward pass rather than causally localized to a single site. We further introduce Soft-GCG, a continuous relaxation of discrete suffix optimization using Gumbel-Softmax. Soft-GCG achieves a 33 $\\times$ speedup over standard GCG while improving attack success rates. Evaluating across model scales, we find that smaller models remain vulnerable while larger models resist both activation- and suffix-based attacks at our compute-constrained settings, consistent with larger and better safety trained models being harder to jailbreak. Together, our results clarify how safety mechanisms are encoded and can be broken in contemporary models. These insights provide concrete guidance for designing more robust and representation-aware alignment strategies.",
+    "arxiv_id": "2607.08883v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Ege Çakar",
+      "Hannah Guan",
+      "Kayden Kehe"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08883v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "RaMark: Radioactive Watermarking for Generated Tabular Data",
+    "abstract": "Recent advances in generative modeling have made generated tabular data a practical solution for privacy-sensitive data sharing, where watermarking enables ownership verification. However, existing watermarking methods fundamentally fail under retraining attacks, in which an adversary retrains a generative model on a watermarked dataset and regenerates high-utility data that no longer carries the watermark. We address this challenge by introducing radioactivity, the property that a watermark remains detectable after generative model retraining, and propose RaMark, a radioactive watermarking method that embeds a sinusoidal dependency as an intrinsic component of the data distribution. By coupling the watermark with the underlying distribution, RaMark ensures that any generative model preserving data utility also has to preserve the watermark. We theoretically show that with high probability removing watermark degrades utility and alters data distribution. Extensive experiments on two real-world tabular datasets, under a large-scale ownership verification setting with $10^5$ independent data owners, demonstrate that RaMark achieves substantially stronger radioactivity than seven state-of-the-art methods and consistently outperforms them against both retraining and data modification attacks.",
+    "arxiv_id": "2607.09000v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Xin Che",
+      "Lingyang Chu",
+      "Qiqi Zhang",
+      "Xinyu Ma",
+      "Xuan Luo"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.09000v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Institutional Red-Teaming: Deployment Rules, Not Just Models, Causally Shape Multi-Agent AI Safety",
+    "abstract": "We introduce institutional red-teaming, an evaluation methodology for testing deployment rules in multi-agent AI: hold the agents, objectives, and task state fixed, vary only one rule, and attribute the resulting change in collective behavior to that rule. We instantiate the methodology in IABench-CA, a consequence-allocation benchmark spanning 228 contexts, five canonical rules, and seven model populations (33,924 games), with a normative cooperative reference and auto-labelled reasoning traces. Three findings emerge. (1) Deployment rules causally alter collective safety: changing only the consequence rule moves mean fatality by 22 to 58 percentage points within every population. (2) There is no safe default, but the targeting hazard is universal: the safest rule, the least-safe rule, and even the direction of the incidence effect vary across populations, yet regressive identity-targeting is never decisively safest in any context for any population, eliminates the least-resourced agent in 30-87% of games everywhere, and is selection-unsafe relative to the cooperative reference for all seven populations. (3) Identity salience is the mechanism: a one-shot anonymization ablation on the most exploitation-prone population (gpt-5.1) shows that merely naming the loss bearer in the rule text drives targeted elimination from 22% to 81% at identical payoffs; under repeated play, anonymization only delays the targeting, as agents re-infer the hidden rule from observed eliminations. We package the methodology as a safety-case workflow that certifies a provisional rule region $Φ(c,P)$ per deployment context and population, with explicit residual risks and monitoring obligations.",
+    "arxiv_id": "2607.07695v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Yujiao Chen"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.GT",
+      "cs.MA"
+    ],
+    "link": "http://arxiv.org/abs/2607.07695v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Government AI Use as a Monitoring Primitive: A Public Document Pilot Study",
+    "abstract": "Governments are important actors in frontier AI governance, but many facts about their adoption and use of AI systems are difficult to observe directly. Procurement disclosures and official statements are useful, but can also be delayed, selective, and better suited to measuring formal adoption than actual day-to-day use. We propose a complementary monitoring primitive: measuring traces of language-model assistance in public government documents. The approach is lightweight, externally reproducible, and based on revealed behavior rather than stated intent. In a pilot study of ten public document streams from U.S. and PRC government-related sources, we find that, while 2021 baselines are consistently near zero, by 2026, four of our ten sources show statistically significant signs of AI-assisted writing. In our sample, the U.S. signal concentrates in publications downstream of policy work; the PRC signal concentrates closer to it. We close by discussing how this signal could complement existing instruments for monitoring government AI adoption, and where it falls short.",
+    "arxiv_id": "2607.04543v1",
+    "published": "2026-07-05",
+    "authors": [
+      "David I. Atkinson",
+      "Joan Eleanor O'Bryan"
+    ],
+    "categories": [
+      "cs.CY"
+    ],
+    "link": "http://arxiv.org/abs/2607.04543v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Selective Disclosure Watermarking for Large Language Models",
+    "abstract": "Watermarking methods embed imperceptible and verifiable signals into text generated by large language models (LLMs). Existing approaches include zero-bit schemes for distinguishing synthetic text from human writing and multi-bit schemes for embedding metadata. However, current multi-bit watermarking methods do not allow selective disclosure: verifying any part of the watermark requires revealing the entire embedded message. This lack of control leads to unnecessary information exposure and raises privacy concerns. We propose Hierarchical Vocabulary Routing (HeRo), a watermarking framework that enables selective disclosure of embedded metadata. The method recursively partitions the vocabulary and distributes watermark information across hierarchical layers, so that different verifiers can decode only the portions of the payload corresponding to their access level. We show that the proposed scheme preserves the unbiasedness of the underlying sampling process and thus maintains text quality. Experiments demonstrate that our framework supports fine-grained access control while achieving high detection accuracy and low latency. Code is available at https://github.com/xuyangc03/hero-watermark.",
+    "arxiv_id": "2607.05353v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Xuyang Chen",
+      "Xiang Li",
+      "Yangxinyu Xie",
+      "Qi Long"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.05353v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "HIVE: Understanding Post-Hallucination Reasoning in Vision Language Models",
+    "abstract": "Hallucinations in vision language models (VLMs) are commonly treated as semantic errors, yet they often arise from partial or ambiguous visual evidence. Prior work mainly focuses on detecting or suppressing hallucinations at generation time, leaving the subsequent reasoning stage largely unexplored. In this work, we study Post Hallucination Reasoning (PHR), the stage in which hallucinated semantics enter the model's inference context and influence downstream predictions. To systematically investigate PHR, we introduce HIVE, Hallucination Inference and Verification Engine, an evaluation infrastructure that enables controlled comparisons between faithful and hallucinated captions. Across nine tasks and nine models, we observe structured modality dependent patterns: hallucinated captions often improve accuracy on vision language tasks, while text only tasks exhibit limited or unstable effects. Further analyses show that hallucinated cues broaden semantic coverage and reshape reasoning dynamics while preserving stable inference. These findings highlight that hallucinated semantics may influence downstream reasoning once they enter the model's inference context. Understanding this post hallucination stage is important for improving the reliability and interpretability of multimodal reasoning systems. Code is publicly available at https://github.com/hefengcs/HIVE.",
+    "arxiv_id": "2607.07507v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Feng He",
+      "Zhenting Wang",
+      "Qifan Wang",
+      "Qiang Guan",
+      "Dongfang Liu"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07507v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "FlowMark: Mask-Guided Video Watermarking",
+    "abstract": "We present FlowMark, a video watermarking framework guided by automatically predicted object masks. In contrast to prior region-based approaches that require user-supplied mask guidance, FlowMark learns to identify optimal regions for watermark embedding through a dedicated Mask Predictor network. Our end-to-end trainable architecture combines region-aware encoding with noise-augmented training to ensure robustness against compression, geometric transformations, and content variation, while preserving high perceptual quality. Our content-adaptive masking keeps watermark signals coherent with natural video dynamics, effectively eliminating perceptual flicker. Beyond compression robustness, FlowMark maintains reliable watermark recovery under video-native temporal edits (e.g., frame swap, insertion, deletion, resampling, and interpolation) and real-world social media distribution pipelines (e.g., YouTube and Facebook re-encoding). Experimental results on both image and video datasets show that FlowMark reliably embeds $128$-bit messages with up to $50.08$ dB PSNR, offering strong performance for content provenance, temporal authenticity verification, and video integrity protection.",
+    "arxiv_id": "2607.05261v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Vishal Asnani",
+      "Shruti Agarwal",
+      "John Collomosse"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.05261v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Multi-Channel Spread-Spectrum Code Watermarking",
+    "abstract": "Attributing code to the large language model that produced it is essential for provenance, licensing, and misuse accountability, yet no deployed watermark meets this need. Generation-time schemes require access to the producing model and cannot be applied to third-party code, while post-hoc schemes work on any code but carry at most 4 bits of payload, far too few to distinguish the many deployed model configurations. We present multi-channel spread-spectrum watermarking, the first post-hoc, training-free code watermark with a 24-bit payload and formal robustness guarantees. The scheme encodes bits in variable naming conventions and in eight pairs of semantically equivalent code patterns, and a keyed pseudo-random permutation maps every site to a codeword bit so that each bit receives multiple independent votes. Majority voting absorbs distributed corruption, while an outer Reed-Solomon code recovers the identifier when concentrated channel attacks defeat the vote, yielding provable robustness bounds for formatting, syntactic, and structural attacks. Across 1,750 Python files from CodeNet and from GPT-4.1 and Llama-4 generations, the watermark achieves 100% clean-detection accuracy with zero false positives. Under 17 attack types, it recovers the identifier at 97.6% accuracy under 8 variable renames and 94.1% under 10% random per-site corruption, while the strongest post-hoc baseline collapses to 0% under any single-transform attack. Embedding and detection together take under 200 ms on CPU without training data or GPU.",
+    "arxiv_id": "2607.06009v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Soohyeon Choi",
+      "Debin Gao",
+      "Yue Duan"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.LG",
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.06009v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Beyond Heuristic Tuning: Power-Calibrated LLM Watermarking",
+    "abstract": "Logit-based watermarking is a widely used mechanism for identifying LLM generated content, yet its effectiveness is governed by a fundamental trade-off between detectability and semantic distortion. Existing analyses provide limited guidance for principled hyperparameter selection, leaving practical deployments reliant on heuristic tuning. In this work, we develop a power-calibrated statistical framework that establishes explicit quantitative relationships between watermark hyperparameters, detection power, and distortion. This characterization transforms watermark design into a guided optimization problem. Building on these results, we derive practical parameter selection procedures that achieve optimal tradeoffs under constraints. Extensive experiments across multiple language models and datasets validate the theory and demonstrate that the proposed framework consistently identifies Pareto-optimal points.",
+    "arxiv_id": "2607.05694v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Xiaopu Wang",
+      "Zelin He",
+      "Chengyuan Liu",
+      "Runze Li"
+    ],
+    "categories": [
+      "stat.ML",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.05694v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "TRACE: A Two-Channel Robust Attribution Watermark via Complementary Embeddings for LLM-Agent Trajectories",
+    "abstract": "LLM agents reach users through resellers, who may rebrand a developer's agent or substitute a cheaper model. When provenance is disputed, attribution rests on the trajectory log (the record of tool calls, observations, and executed actions, not the model's reasoning), which the reseller stores and processes to meter usage. A watermark must therefore survive an adversary with full read/write access to the very evidence it is detected from; existing agent watermarks do not, as their attribution is read straight off that log. We present TRACE, to our knowledge the first agent watermark that is distortion-free in its action choices, self-synchronizing under deletion, and unconditionally invariant under rewriting. Deletion desynchronizes a position-derived key and rewriting alters content, so a deletion-robust key must come from content and a rewrite-robust key from position, and no single key serves both. A trajectory, however, has room for two watermarks. TRACE superposes a selection channel that sets which action is chosen, keyed on local content with a distortion-free sampler, so the agent's distribution is provably unchanged and detection resynchronizes after deletions, and a tally channel that sets how many records each decision group holds, keyed on the log's skeleton alone, which no rewriting can touch. We prove this behavioral watermark's signal is bought with decision entropy, each decision paying at least half its entropy and deterministic decisions nothing, and that erasing both channels forces the reseller to corrupt the trajectories it resells. On ToolBench and ALFWorld, TRACE matches the unwatermarked agent's success rate while its selection channel reaches detection scores near z = 100 on long-horizon trajectories, stays detectable under 70% step deletion, and keeps a tally channel exactly unchanged under LLM rewriting of any strength.",
+    "arxiv_id": "2607.08400v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Zheng Gao",
+      "Xiaoyu Li",
+      "Xiaoyan Feng",
+      "Jiaojiao Jiang",
+      "Yang Song"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08400v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Reasoning Consistency Scanning: A Framework for Auditing Chain-of-Thought Validity in AI Safety Evaluations",
+    "abstract": "Prior work has shown that chain-of-thought (CoT) reasoning is often unfaithful: a model's stated reasoning does not reliably reflect the process that produced its output. Detecting unfaithfulness, though, requires controlled experimental interventions, which cannot be applied to evaluation transcripts after the fact. We turn instead to a more tractable question that has received less attention: whether the stated reasoning is logically consistent with the answer it accompanies. Unlike faithfulness, consistency can be assessed from a transcript alone, with no intervention. We introduce reasoning consistency scanning, a reusable method for detecting this property in AI safety evaluation transcripts. Our contributions are fourfold. First, we formalize reasoning consistency as distinct from faithfulness and define a six-subtype taxonomy of inconsistency. Second, we build a validated benchmark of 60 transcripts, manually adapted from InstrumentalEval outputs. Third, we implement a working scanner for InspectScout, the first to target this property in safety evaluation transcripts. Fourth, we report results across four generator models and three evaluations from inspect_evals, showing that reasoning inconsistency is present, detectable, and varies systematically across both models and task types.",
+    "arxiv_id": "2607.07229v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Silvia Santano"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07229v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Analysis-by-Proxy: Localization Signals in VLMs Operating as Condition Encoders",
+    "abstract": "Vision-Language Models (VLMs) are increasingly utilized as the conditioning backbone for diffusion-based image editing due to their remarkable multimodal reasoning capabilities. While standalone VLMs demonstrate strong localization capabilities, editing pipelines frequently struggle to maintain this accuracy, particularly in complex, multi-entity scenes. In this work, we investigate this performance gap, hypothesizing that it stems from treating the VLM as a condition encoder. In this role, the model is restricted to a single forward pass, preventing the autoregressive generation process for which it was optimized, thereby failing to fully expose its capabilities. To investigate whether this spatial understanding persists when the VLM is used as a condition encoder, we introduce Analysis-by-Proxy. In this framework, we train a lightweight, interpretable proxy model on the VLM's intermediate representations using an auxiliary localization task. By analyzing the VLM through this proxy, we uncover the specific VLM representations that encode localization information. Our findings expose a fundamental mismatch between how spatial knowledge is represented within a VLM condition encoder and how it is extracted by current editing pipelines. We reveal that under single-pass constraints, the localization signal does not reliably propagate to the predefined layer configurations commonly used for conditioning. Instead, this crucial signal remains hidden within intermediate representations, at locations that vary depending on the input prompt. Using our introduced Analysis-by-Proxy framework, we reveal the fundamental failures of existing condition extraction strategies in editing pipelines, opening the door to more principled design of conditioning architectures.",
+    "arxiv_id": "2607.06445v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Yoav Baron",
+      "Sara Dorfman",
+      "Roni Paiss",
+      "Daniel Cohen-Or",
+      "Or Patashnik"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06445v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Hallucination Self-Play: Bootstrapping Reinforced Detector via Evolved Generator",
+    "abstract": "Identifying faithfulness hallucinations in LLM-generated outputs remains challenging due to the scarcity of high-quality annotated data. Recent work relies on advanced LLMs to synthesize training data, including rationales, labels, and hallucinated claims. However, these methods treat the generator as a static component, limiting iterative improvement of the detector. To address this limitation, we introduce Hallucination Self-Play (HSP), a novel framework that enables the detector to bootstrap with an evolved generator. HSP involves two roles initialized from the same base model, a detector that assesses the faithfulness of model outputs, and a generator that produces increasingly hard-to-detect hallucinated responses. Specifically, the detector is first fine-tuned on human-labeled data and then employed as a reward model to train the generator via reinforcement learning from AI feedback (RLAIF). In turn, the evolved generator synthesizes hallucination data to further optimize the detector through rule-based reinforcement learning. Experiments on RAGTruth benchmark and two model families demonstrate that the proposed framework can progressively enhance a small LLM to match or even outperform advanced LLMs without external supervision. Our code is available at https://anonymous.4open.science/r/Hallucination-Self-Play-50B5 .",
+    "arxiv_id": "2607.07993v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Shiping Yang",
+      "Shining Liang",
+      "Weihao Liu",
+      "Wenbiao Ding",
+      "Linjun Shou"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.07993v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Efficient Safety Alignment of Language Models via Latent Personality Traits",
+    "abstract": "Current safety methods for large language models are known to be vulnerable to adversarial attacks, motivating research into robust alternatives. Latent Adversarial Training (LAT) is among the most effective defenses, but can degrade utility and requires training on large datasets of harmful prompts. We introduce Latent Personality Alignment (LPA), which replaces explicit harm refusal with adversarial training on just 66 harm-agnostic statements drawn from psychometric personality literature. We hypothesize that personality-anchored representations share latent structure with harm avoidance, so adversarially stabilizing them implicitly constrains the subspace exploited by jailbreak attacks. LPA achieves near-zero attack success rates on HarmBench across direct requests and five jailbreak methods, despite never seeing harmful content during training and no loss of performance on standard benchmarks. Moreover, the training process is lightweight; the entire procedure completes in minutes on a single GPU and uses 75x fewer examples than standard LAT. Extensive ablations demonstrate the robustness, efficiency, and generalization of our method.",
+    "arxiv_id": "2607.07918v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Mohamed Amine Merzouk",
+      "Nolan Smyth",
+      "Damiano Fornasiere",
+      "Linh Le",
+      "David Williams-King"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "cs.CR"
+    ],
+    "link": "http://arxiv.org/abs/2607.07918v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

@@ -1,0 +1,395 @@
+[
+  {
+    "title": "A Practical Investigation of Training-free Relaxed Speculative Decoding",
+    "abstract": "Speculative decoding accelerates sampling from an autoregressive LLM by using a faster auxiliary model to draft tokens which are then verified in parallel by the LLM. Standard speculative decoding is lossless: its rejection and resampling steps exactly preserve the LLM's sampling distribution. Recent work argues that relaxing this strict guarantee can yield further speed-ups, controlled capability-speed trade-offs, or even capability gains. We practically investigate training-free relaxed speculative decoding techniques, unify existing approaches within a shared framework, benchmark them on contemporary settings, and distil takeaways and empirical findings for practitioners. Important takeaways include: relaxation can require considerable capability evaluation unlike lossless speculative decoding, and many relaxed approaches rely on a drafter that is a good language model, making them unsuited for lightweight dedicated multi-token-prediction drafters.",
+    "arxiv_id": "2607.08690v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Guoxuan Xia",
+      "Luka Ribar",
+      "Paul Balanca"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08690v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "KV-PRM: Efficient Process Reward Modeling via KV-Cache Transfer for Multi-Agent Test-Time Scaling",
+    "abstract": "Process Reward Models (PRMs) have been proven to be highly effective in guiding test-time scaling (TTS) methods, which significantly boost the capabilities of LLM-based multi-agent systems. However, existing PRMs are text-based: they re-encode the entire trajectory text from scratch. In long multi-agent rollouts, the scoring cost, growing quadratically with respect to sequence length L, creates a severe computational bottleneck, severely limiting PRMs' application in long-context scenarios. To resolve this, we introduce KV-PRM, a highly efficient process reward model that eliminates the heavy text re-encoding by directly reading the KV cache produced naturally during the LLM's generation phase. By processing a single \"verify token\" against the pre-existing KV cache, KV-PRM reduces the scoring cost from O(L^2) to O(L). We formally prove that the KV cache contains strictly greater information capacity than text, and is more efficient for downstream reward modeling. Empirically, across the MATH, GSM8K, and AIME benchmarks, KV-PRM matches or strictly outperforms text-PRMs under various TTS methods such as Beam Search, MCTS, and Weighted Voting, with up to a 5,000x reduction in scoring FLOPs, a 37x reduction in latency, and a 34x reduction in per-sequence memory footprint compared to text-based PRMs.",
+    "arxiv_id": "2607.09153v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Peng Kuang",
+      "Haibo Jin",
+      "Xiaoyu Han",
+      "Yanli Wang",
+      "Xiaopeng Yuan"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09153v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Towards Efficient Large Language Model Serving: A Survey on System-Aware KV Cache Optimization",
+    "abstract": "Despite the rapid advancements of large language models (LLMs), LLM serving systems remain memory-intensive and costly. The key-value (KV) cache, which stores KV tensors during autoregressive decoding, is crucial for enabling low-latency, high-throughput LLM inference serving. In this survey, we focus on system-aware KV infrastructure for serving LLMs (abbreviated as sKis). We revisit recent work from a system behavior perspective, organizing existing efforts into three dimensions: execution and scheduling (temporal), placement and migration (spatial), and representation and retention (structural). Furthermore, we analyze cross-behavior co-design affinity and behavior-objective links, highlighting future opportunities. Our work systematizes a rapidly evolving area, providing a foundation for understanding and innovating KV cache designs in modern LLM serving infrastructure.",
+    "arxiv_id": "2607.08057v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Jiantong Jiang",
+      "Peiyu Yang",
+      "Rui Zhang",
+      "Feng Liu"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.08057v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Fractal KV-Cache Archives: Lossless Symbolic Storage with In-Place Retrieval for Long-Context LLM Inference",
+    "abstract": "The key-value (KV) cache dominates the memory cost of long-context autoregressive inference, and a growing body of work compresses it through quantization, eviction, or offloading. We study a complementary question: once a position's KV state has been quantized to codebook indices, how should the resulting symbol stream be stored, and can the storage layer do more than store? A family of contractive iterated-map codes that serialize a symbol sequence into a sequence of low-dimensional real vectors is revisited, and it is shown that they form a natural archive format for a quantized KV cache with the following features. The method provides exactly the access pattern a growing cache requires. It is lossless, it runs in linear time, and supports O(1) random access and O(1) amortized append. A controlled study of the quantizer feeding this archive is conducted on GPT-2 with 1024-token contexts. Keeping a small exact window (4 attention sinks + 32 recent tokens) and archiving the rest, per-head residual vector quantization reduces the archived cache by 36-54x relative to an fp16 cache at a perplexity cost of 11-15%, and we quantify a sharp key/value asymmetry -- quantizing keys is roughly 4x more damaging than quantizing values, consistent with prior low-bit KV work -- and use it to allocate bits in a hybrid scheme. Finally, we show the archive is simultaneously a search index: approximate substring queries execute directly on the stored vectors, and matched context is decoded from the matched vector without ever materializing the surrounding text. We release all code; every number reproduces from a single command on a laptop CPU.",
+    "arxiv_id": "2607.07144v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Vladimir Gusev"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.07144v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+    "abstract": "Speculative decoding accelerates Large Language Model (LLM) inference by decoupling draft generation from target verification. While recent parallel drafters efficiently propose long token sequences in a single forward pass, they suffer from rapid acceptance decay due to a lack of inter-token dependencies. Furthermore, indiscriminately verifying these extended blocks wastes critical batch capacity on tokens with high rejection risks, severely degrading throughput in high-concurrency serving systems. We introduce DSpark, a speculative decoding framework that unifies high-throughput parallel generation with adaptive, load-aware verification. To maintain draft quality, DSpark utilizes a semi-autoregressive architecture, coupling a parallel backbone with a lightweight sequential module, to introduce intra-block dependency modeling and mitigate suffix decay. To optimize system efficiency, DSpark employs confidence-scheduled verification, dynamically tailoring the verification length for each request based on estimated prefix survival probabilities and engine-specific throughput profiles. On offline benchmarks across diverse domains, DSpark substantially improves the accepted length over state-of-the-art autoregressive and parallel drafters. When deployed within the DeepSeek-V4 serving system under live user traffic, DSpark successfully mitigates verification waste. Compared to the established production baseline (MTP-1), DSpark accelerates per-user generation speeds by 60 to 85 percent at matched throughput levels. More importantly, by preventing severe throughput degradation under strict interactivity constraints, it enables performance tiers that were previously unattainable, shifting the Pareto frontier of our serving system.",
+    "arxiv_id": "2607.05147v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Xin Cheng",
+      "Xingkai Yu",
+      "Chenze Shao",
+      "Jiashi Li",
+      "Yunfan Xiong"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.05147v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "BlockServe: Block-Grained Continuous Batching for High-Throughput Diffusion LLM Serving",
+    "abstract": "Efficient serving of diffusion large language models (dLLMs) is hindered by convergence heterogeneity: when batching multiple requests, different sequences converge at different rates, causing faster requests to stall behind slower stragglers and introducing compute bubbles and tail latency. We present BlockServe, a continuous batching framework that integrates block-grained scheduling -- immediately evicting completed requests at block boundaries -- with mixed-state execution that extends dual cache and parallel decoding to heterogeneous batches via gather-scatter indexing. Furthermore, a compute-aware admission controller expands effective batch capacity through token-budgeted refill. On Dream and LLaDA across five benchmarks, BlockServe achieves 1.9--10.6$\\times$ throughput over Fast-dLLM with comparable generation quality, establishing block-grained scheduling as a foundation for high-throughput offline dLLM inference.",
+    "arxiv_id": "2607.08930v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Yuanjie Zhu",
+      "Liangwei Yang",
+      "Ke Xu",
+      "Weizhi Zhang",
+      "Shanghao Li"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08930v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Equivariant Quantum Clustering with Differential Privacy: Parameter-Efficient Privacy-Preserving Analysis Across Heterogeneous Sensitive Datasets",
+    "abstract": "Privacy-preserving clustering is critical for analyzing sensitive data in healthcare, cybersecurity, and enterprise applications, where maintaining data confidentiality must be balanced with analytical performance. This paper presents Equivariant Quantum Clustering (EQC), a parameter-efficient framework that integrates symmetry-aware quantum circuits with differential privacy to improve the privacy-utility tradeoff. EQC employs p4m equivariant parameter sharing to reduce circuit complexity while preserving informative feature representations. The framework is evaluated on three privacy-sensitive datasets: NSL-KDD, CERT Insider Threat v6.2, and a synthetic MIMIC-III clinical dataset. On the NSL-KDD benchmark, EQC achieves 79.3% clustering accuracy while reducing membership inference attack success to 38.3% under a privacy budget of ε = 1.0 and δ = 10^-5, outperforming representative classical and quantum baselines. Ablation studies indicate that the performance gains primarily arise from parameter-efficient circuit design combined with differential privacy. The results demonstrate that EQC provides a practical quantum-ready framework for secure and privacy-preserving clustering across heterogeneous sensitive datasets.",
+    "arxiv_id": "2607.08092v1",
+    "published": "2026-07-09",
+    "authors": [
+      "B. M. Taslimul Haq",
+      "Md Arifur Rahman",
+      "Tawfiq Al Islam Foysal",
+      "Abdullah Al Noman",
+      "Abir Ahmed"
+    ],
+    "categories": [
+      "quant-ph",
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.08092v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "SQuaD-SQL: Efficient Text-to-SQL with Small Language Models via LLM-Guided Knowledge Distillation",
+    "abstract": "Text-to-SQL is a fundamental task in natural language processing that enables users to interact with structured databases using natural language. While large language models (LLMs) have demonstrated remarkable performance on this task, their substantial computational requirements hinder deployment in resource-constrained settings. In this paper, we introduce SQuaD-SQL (Small-Qualified and Distilled for SQL), a novel approach that empowers small language models (SLMs) to approach the performance of LLMs on the Text-to-SQL task while significantly improving efficiency through knowledge distillation and synthetic data generation. Our method comprises three key components: (1) LLM-based synthetic data generation, where structured knowledge is extracted from LLMs via carefully designed prompting strategies; (2) parameter-efficient fine-tuning, enabling full model training on a single consumer-grade GPU; and (3) domain-adaptive fine-tuning, where domain-specific synthetic data further enhances performance in targeted domains. Experiments on the WikiSQL dataset demonstrate that SQuaD-SQL achieves an execution accuracy of 86.9% on the test set, approaching the performance of LLMs while offering faster inference and lower memory usage. These results suggest that, with proper training strategies, SLMs can serve as practical and efficient alternatives for Text-to-SQL applications in resource-limited environments.",
+    "arxiv_id": "2607.08161v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Wangyu Wu",
+      "Xiaojian Lin",
+      "Rong Fu",
+      "Zaiyang Yu",
+      "Xuhang Chen"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.08161v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "TriRoute: Unified Learned Routing for Joint Adaptive Attention, Experts, and KV-Cache Allocation",
+    "abstract": "Conditional computation can decouple language model quality from per-token inference cost, yet leading techniques act on a single axis in isolation: Mixture-of-Experts (MoE) sparsifies the FFN, Mixture-of-Depths (MoD) skips whole transformer blocks, and KV-cache quantization compresses attention memory. We argue these three decisions (attention resolution, expert selection, and cache bit-width) are strongly coupled and should be made jointly: a token rare enough to warrant full attention may also need high-precision caching regardless of which expert processes it. We introduce TriRoute, a single lightweight controller shared across all three axes that, for every token at every layer, emits a coordinated policy: (i) an attention mode (skip/local/full), (ii) a sparse set of FFN experts (with a null expert recovering MoD), and (iii) a KV-cache bit-width. The controller trains end-to-end via a heterogeneous relaxation (Gumbel-Softmax with straight-through estimation for categorical decisions and load-balanced top-k gating for experts) under a Lagrangian budget constraint that turns the average compute and memory cost into a controllable knob. We identify a cross-axis routing-collapse cascade in naive joint training, where collapse on one axis propagates to the others, and address it with per-axis normalization and a coupling-aware balancing loss. On decoder-only models from 160M to 1.3B parameters at compute-optimal token counts, TriRoute Pareto-dominates the best independent MoD+MoE+KV-quantization combination at matched inference FLOPs and memory, while better preserving tail-case robustness on rare entities, code, and arithmetic that pure perplexity optimization erodes. Post-hoc analysis reveals interpretable structure: the controller allocates full attention and high-precision cache to sentence-initial positions, rare subwords, and named entities, while cheaply routing function words.",
+    "arxiv_id": "2607.06601v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Andrii Balashov",
+      "Olena Ponomarova"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06601v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "DominoTree: Conditional Tree-Structured Drafting with Domino for Speculative Decoding",
+    "abstract": "Speculative decoding accelerates LLM inference by drafting several tokens and verifying them in parallel. Block-diffusion drafters such as DFlash produce a draft block in one pass but model only per-position marginals, and best-first tree methods such as DDTree expand candidate trees from those marginals. The released Domino drafter adds a GRU-based causal correction that makes each draft token distribution path-dependent, a structure DDTree's factorized formulation cannot represent. We introduce DominoTree, a training-free best-first draft tree scored by Domino's conditional, non-factorized correction along each root-to-node path, made practical by restricting the per-node correction to a candidate top-M set. On Qwen3-4B across eight benchmarks, DominoTree reaches up to 6.6x speedup over autoregressive decoding and the highest mean accepted length of any evaluated method, up to 10.7 tokens per round, at every tested temperature. DominoTree constructs its tree with a GPU-native CUDA-graph builder that is bit-identical to a reference Python implementation, so acceptance is unchanged, while keeping per-round tree construction cheap. With this builder as default, DominoTree improves throughput over the released Domino decoder, the drafter it builds on, at every tested temperature: 9% to 10% overall on Qwen3-4B and up to 22% on Alpaca. It also outperforms DDTree and CaDDTree at every tested temperature, not only under greedy decoding. On Qwen3-8B, DominoTree keeps the highest accepted length at every temperature and gives a 24% throughput gain over DDTree at T=0; at higher temperature its edge over DDTree and CaDDTree narrows to a tie and a small loss, while its aggregate gains over DFlash and Domino persist.",
+    "arxiv_id": "2607.08642v2",
+    "published": "2026-07-09",
+    "authors": [
+      "Saw S. Lin",
+      "Jyh-Shing Roger Jang"
+    ],
+    "categories": [
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.08642v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "FreqDepthKV: Frequency-Guided Depth Sharing for Robust KV Cache Compression in Long-Context LLM Inference",
+    "abstract": "Long-context LLM inference is increasingly limited by the memory and bandwidth cost of KV caches, yet aggressive compression can remove the layer-specific evidence needed for retrieval and multi-step reasoning. We introduce FreqDepthKV, an inference-time cache compression method that factorizes adjacent-layer KV states into shared low-frequency depth components and sparse high-frequency residuals. A lightweight online probe assigns attention heads to shared-depth, residual-depth, or exact cache modes according to their contribution to reconstruction-sensitive attention logits, allowing the compression policy to adapt to prompt structure without retraining. Across long-context question answering, needle retrieval, summarization, and code generation benchmarks, FreqDepthKV preserves task accuracy under substantially smaller cache budgets. With a 32k-token prefill window, FreqDepthKV reaches 58.3 Exact Match, 63.0 F1, 32.5 ROUGE-L, and 48.1 pass@1, closely matching full KV while outperforming prior compressed-cache methods. It also improves decoding throughput to 70.4 tokens/s, reduces TTFT to 2.06 seconds, and lowers peak KV memory to 6.2 GB, achieving a 3.9x effective compression ratio.",
+    "arxiv_id": "2607.06519v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Anna Córdoba",
+      "Adam Puente Tercero",
+      "Nerea Angulo Hijo",
+      "Mar Linares Tercero",
+      "Julia Barrientos"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06519v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "SAD-LoRA: Spectral Alignment for Low-Rank Knowledge Distillation",
+    "abstract": "Distilling a fine-tuned teacher into a LoRA-adapted student is a standard recipe for parameter-efficient compression, but output-level KD does not explicitly control which rank-$r$ weight subspace the adapter occupies. We propose \\textbf{SAD-LoRA} (\\textbf{S}pectral \\textbf{A}lignment \\textbf{D}istillation), which selects this subspace from the data-weighted student-space reference update $\\DWT\\Sigx^{1/2}$ and maintains it during training via a differentiable principal-angle loss on $\\colspan(B)$. We show that the data-weighted distillation error decomposes exactly into subspace misalignment, within-subspace coefficient mismatch, and irreducible rank residual; standard KD can affect the first term only indirectly through output gradients. On controlled synthetic problems with a flat teacher spectrum, SAD-LoRA reduces the subspace-misalignment term from $51\\%$ to nearly zero and lifts final subspace alignment from $0.49$ to $1.00$. On RoBERTa-large to RoBERTa-base distillation across six GLUE tasks, SAD-LoRA improves rank efficiency: at $r{=}4$, it matches or beats the strongest included spectral baseline on five of six tasks, and at $r{=}8$ it gives the best result on SST-2 and CoLA. Ablations identify subspace alignment as the load-bearing component, while coefficient matching is auxiliary.",
+    "arxiv_id": "2607.04306v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Omer Tariq",
+      "Syed Muhammad Raza",
+      "Jeongbae Son"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.04306v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Quantize the Target, Quantize the Drafter: Efficient Inference with Qwen3.5-4B",
+    "abstract": "This report describes our approach to the Efficient Qwen Competition, where the goal is to enable low-latency serving of Qwen3.5-4B on a resource-constrained NVIDIA A10G GPU. Our system combines a quantized target model with speculative decoding. To recover accuracy, we apply quantization-aware distillation to the target model while retaining the original quantization grid. To speed up decoding, a block-diffusion drafter specialized for the quantized target model is trained using a two-stage procedure: first learning from the high-precision target and then adapting to the low-precision target. Because the drafter is invoked at every speculative decoding step, we further reduce its overhead with quantization and sliding-window attention, preserving draft-token acceptance while improving long-context decoding latency. As a result, our submission achieves a 6.978$\\times$ average speedup over the baseline while satisfying the required quality thresholds, ranking 3rd overall. We hope these results provide useful insights for practical LLM inference. The code and resources are available at https://github.com/nota-github/adaptfm-quant-dflash",
+    "arxiv_id": "2607.04244v2",
+    "published": "2026-07-05",
+    "authors": [
+      "Jaeyeon Kim",
+      "Jewon Lee",
+      "Bo-Kyeong Kim"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04244v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Attention to Detail: Evaluating Energy, Performance, and Accuracy Trade-offs Across vLLM Configurations",
+    "abstract": "Large Language Models are reshaping how software is developed and maintained. They are typically deployed in production using inference engines such as vLLM, which can efficiently serve pre-trained, highly configurable models. While prior work has focused on model architectures and hardware acceleration, the impact of inference engine configuration on energy consumption, performance, and output quality remains poorly understood.   In this paper, we present a large-scale controlled study of three selected vLLM configuration options: attention kernel type, prefix caching, and chunked prefill. We evaluate all combinations of these configurations across 5 open-weight LLMs and 5 diverse inference tasks, totaling $9,000$ runs and $93,600$ measures. We analyze energy consumption, latency, and accuracy, and examine both main effects and interaction effects between configuration options and tasks.   Our results show that the studied configuration options significantly impact energy and performance, mainly driven by attention type and prefix caching, while chunked prefill has a limited effect under the default vLLM serving configuration and evaluated workloads. These effects are highly model- and workload-dependent, and no configuration is universally optimal. We further show that model choice dominates global trade-offs, while configuration tuning provides local improvements along the Pareto frontier. Unexpectedly, inference options can also affect model accuracy.",
+    "arxiv_id": "2607.09172v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Nada Zine",
+      "Tristan Coignion",
+      "Vincenzo Stoico",
+      "Clément Quinton",
+      "Romain Rouvoy"
+    ],
+    "categories": [
+      "cs.SE",
+      "cs.AI",
+      "cs.PF"
+    ],
+    "link": "http://arxiv.org/abs/2607.09172v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "General Non-Clairvoyant KV-Cache Scheduling via Regime-Aware Routing",
+    "abstract": "We study non-clairvoyant scheduling for batched Large Language Model (LLM) inference under a hard Key-Value (KV) cache memory budget. Each request has a known prompt length but an unknown response length, and its memory footprint comprises a fixed prompt component together with a response component that grows with each decoded token. At each decoding round, the scheduler chooses a feasible batch of active requests; evicting a request discards its accumulated cache states, wasting prior computation. The goal is to minimize total completion time against the optimal clairvoyant schedule that knows all response lengths.   We present the first constant-competitive algorithm for arbitrary prompt lengths and arbitrary response lengths with no additional assumptions. Rather than relying on a single universal scheduling policy, our algorithm is built on a novel regime-aware routing framework. Specialized sub-schedulers handle different memory-growth geometries, while a meta-scheduler time-shares the memory budget across them and dynamically routes each job as its execution progressively reveals its behavior. This framework also yields constant-competitive guarantees for makespan and for total completion time under online arrivals.",
+    "arxiv_id": "2607.09248v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Yiding Feng",
+      "Siyu Liu",
+      "Zonghan Yang",
+      "Yuhao Zhang"
+    ],
+    "categories": [
+      "cs.DS"
+    ],
+    "link": "http://arxiv.org/abs/2607.09248v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Communication-Aware Placement and Pruning for Efficient Mixture-of-Experts Inference",
+    "abstract": "As MoE models scale to hundreds of experts, placement and pruning decisions increasingly dictate communication volume, affecting the performance of distributed inference across GPUs and nodes. We propose CAP (Communication-Aware Assignment and Pruning), a framework that considers computation, communication and accuracy together for efficient MoE inference through expert placement and pruning. It consists of three components: (1) Co-activation driven expert placement, which groups frequently co-activated experts to reduce inter-device and inter-node communication; (2) Communicationcomputation trade-off adjustment, which generates placements with different computational load and communication volume; and (3) Communication-aware expert pruning, which selectively removes routing destinations to reduce communication with limited accuracy degradation. By combining these components, CAP selects an efficient operating strategy for different hardware configurations. Across our single-node and multi-node experiments, it achieves 1.23x - 1.86 x throughput improvement over DeepSeek EPLB and sequential placement in vLLM, and preserves better model accuracy at the same target speedup under lossy acceleration.",
+    "arxiv_id": "2607.05116v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Xiao Shi",
+      "Yingying Sun",
+      "Jiangsu Du",
+      "Zhiguang Chen",
+      "Yutong Lu"
+    ],
+    "categories": [
+      "cs.DC"
+    ],
+    "link": "http://arxiv.org/abs/2607.05116v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Nemotron-Labs-Diffusion: A Tri-Mode Language Model Unifying Autoregressive, Diffusion, and Self-Speculation Decoding",
+    "abstract": "We introduce Nemotron-Labs-Diffusion, a tri-mode language model (LM) that unifies AR, diffusion, and self-speculation decoding within a single architecture. Trained with a joint AR-diffusion objective, Nemotron-Labs-Diffusion can switch modes to sustain high throughput across deployment settings and concurrency levels. Our study shows that (1) AR and diffusion objectives are complementary: diffusion improves lookahead planning, while AR provides left-to-right linguistic priors. (2) In self-speculation mode, diffusion drafts while AR verifies, outperforming multi-token prediction (MTP) methods in both acceptance rate and real-device efficiency. (3) A speed-of-light analysis further demonstrates diffusion's long-term potential, with up to 76.5% more tokens per forward pass than self-speculation under an optimal sampler. Scaling to 3B, 8B, and 14B parameters, our Nemotron-Labs-Diffusion family, including base, instruct, and vision-language models, consistently outperforms state-of-the-art open-source AR and diffusion LMs in both accuracy and speed. For example, Nemotron-Labs-Diffusion-8B decodes 6x more tokens per forward than Qwen3-8B with comparable accuracy, translating to 4x higher throughput on SPEED-Bench with SGLang on a GB200 GPU.",
+    "arxiv_id": "2607.05722v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Yonggan Fu",
+      "Lexington Whalen",
+      "Abhinav Garg",
+      "Chengyue Wu",
+      "Maksim Khadkevich"
+    ],
+    "categories": [
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.05722v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Enhancing deep learning models for time series classification via knowledge distillation",
+    "abstract": "Deep learning has achieved remarkable success in various domains including time series analysis, computer vision and natural language processing. However, high computational and memory demands of state-of-the-art architectures pose challenges for deployment in resource-limited environments. Knowledge Distillation (KD) addresses this by transferring knowledge from a large teacher model to a smaller, more efficient student model while maintaining competitive performance. In this work, we investigate the effectiveness of KD for Time Series Classification (TSC) across three architectures: the classical Fully Convolutional Network (FCN), the convolutional Inception model and the transformer-based ConvTran model. We evaluate our approach on UCR Archive, the largest benchmark repository of time series datasets, by modifying architectural components such as convolutional filters, Inception modules and attention heads across the three architectures. Our results consistently show that KD most effectively benefits student models of intermediate complexity across all three architectures, with the distilled FCN student reducing parameters by a factor of 38, the distilled Inception student achieving nearly the same performance as the teacher with 42% fewer parameters and the distilled ConvTran student with 2 attention heads showing the most significant improvement through distillation. To encourage further research and reproducibility, we provide our implementation at https://github.com/MSD-IRIMAS/KD-4-TSC.",
+    "arxiv_id": "2607.06796v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Javidan Abdullayev",
+      "Maxime Devanne",
+      "Jonathan Weber",
+      "Germain Forestier"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06796v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Super-Tuning: From Activation-Aware Pruning to Sparse Fine-Tuning",
+    "abstract": "Large language models (LLMs) remain expensive to fine-tune because full-parameter updates require substantial memory, compute, and per-task storage. We study whether saliency signals originally developed for pruning can be reused to choose where a model should adapt. We propose Super, a sparse parameter-efficient fine-tuning (PEFT) method that fixes a small trainable support using a Wanda-style activation-weighted magnitude score [Sun et al., 2023] computed from a calibration pass. We then introduce Supra, a hybrid adapter that combines this sparse update with LoRA while preserving a matched trainable-parameter budget through a simple budget-splitting rule. In single-seed Math17K arithmetic experiments on Llama-3.2-1B and Meta-Llama-3-8B, the best Super/Supra variants achieve the highest average accuracy among the tested schedule-selected adapter configurations. We also include a PaFi-style magnitude-only support as a closest training-free sparse baseline and find that low-score supports under both magnitude and Wanda-style orderings can be effective. These results suggest that simple pruning-inspired orderings can provide useful fixed sparse supports for PEFT, especially when combined with low-rank adapters.",
+    "arxiv_id": "2607.09287v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Ivan Ilin",
+      "Philip Zmushko",
+      "Peter Richtárik"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.09287v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Hierarchical Multi-to-Single-Modal Knowledge Distillation for Disruption Prediction in EAST",
+    "abstract": "Plasma disruption is a critical threat to tokamak safety. Existing data-driven predictors mainly rely on time-series diagnostic signals, while visible images provide complementary spatial cues including plasma deformation, local brightening, and radiation-structure evolution. Although the image modality improves the model's discriminative capability, it also substantially increases the computational cost during inference. To address this issue, we propose a hierarchical multi-to-single-modal knowledge distillation framework for disruption prediction on a synchronized EAST multimodal dataset. During training, visible images and time-series signals are used to train a multimodal teacher, which learns disruption precursor representations through Transformer-based encoders and a prototype-guided spatiotemporal hypergraph module. During inference, only the time-series student is retained, with multimodal knowledge transferred through graph-structure-level, representation-level, and decision-level distillation. On the 640-discharge EAST dataset, the results demonstrate that the proposed framework can preserve the discriminative advantages of multimodal learning while substantially reducing inference cost, and providing an effective route for efficient disruption prediction in EAST. The source code of this paper will be released on https://github.com/Event-AHU/OpenFusion.",
+    "arxiv_id": "2607.04241v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Qiang Chen",
+      "Xiao Wang",
+      "Hao Si",
+      "Qingquan Yang",
+      "Meiwen Chen"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04241v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

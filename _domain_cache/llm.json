@@ -1,0 +1,385 @@
+[
+  {
+    "title": "Beyond the Leaderboard: A Synthesis of Tool-Use, Planning, and Reasoning Failures in Large Language Model Agents",
+    "abstract": "Large language model (LLM) agents are increasingly evaluated on their ability to use tools, plan multi-step tasks, coordinate with other agents, and operate over extended horizons. Reported benchmark gains often obscure recurring failure modes documented across otherwise unrelated evaluation efforts. This paper synthesizes 27 benchmark, taxonomy, and audit papers (2023-2026), spanning 19 distinct benchmarks, into a cross-cutting taxonomy of agent limitations. To our knowledge, this is the first synthesis that integrates evidence across tool use, planning, long-horizon reasoning, multi-agent coordination, safety, and measurement validity into a single, unified taxonomy of LLM agent limitations. We identify six failure clusters: (1) tool invocation and parameter-level errors, (2) planning and constraint-satisfaction failures, (3) long-horizon degradation from context accumulation, (4) multi-agent coordination failures, (5) safety and security failures under adversarial or underspecified conditions, and (6) measurement validity problems. The taxonomy was derived iteratively by grouping independently reported error categories into themes corresponding to distinct stages of the agent reasoning-to-action pipeline. Across the literature, we find that failures compound nonlinearly with task length, that strong performance on individual sub-tasks does not reliably translate into end-to-end success, and that additional scaffolding does not consistently improve reliability. At the same time, substantial progress has been demonstrated in single-turn tool use, short-horizon web navigation, and narrowly scoped coding tasks.",
+    "arxiv_id": "2607.05775v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Wael Albayaydh",
+      "Rui Zhao",
+      "Ivan Flechais"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05775v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "From Prompts to Contracts: Harness Engineering for Auditable Enterprise LLM Agents",
+    "abstract": "Enterprise large language model (LLM) applications often begin as prototypes whose behavior is carried by prompts and retrieval context. Productization adds requirements for source boundaries, entity routing, answer contracts, and reproducible traces. We present a harness-engineering approach that reconstructs this pattern into a traceable, auditable LLM-agent architecture: deterministic behavior moves into code, manifests, schemas, and validation artifacts around a replaceable composition boundary, while source-backed claims remain the authority for runtime answers. We instantiate it on a public-data slice of five Korean corporate groups (25 listed companies) and evaluate three research questions. (1) The harness preserves its source-grounding, entity-routing, trace, output-hygiene, and recommendation-language contracts across the fixed validation scenarios; a fault-injection control confirms the validators flag deliberately broken contracts. (2) The checks the harness enforces held under model substitution: across three hosted models, they passed on all 270 composition-boundary runs; failures were confined to the model-composed side and were caught and recorded. (3) The code-owned guarantees are load-bearing, not reproducible by prompting alone: holding the model fixed and varying only the enforcement layer, prompt instructions alone let recommendation-language and internal-trace-leakage violations reach the reader, which the harness blocks entirely. A bolt-on external guardrail prevents such violations too but over-refuses, dropping utility to 88/120 where the harness preserves full utility (120/120); in this ablation, only code-owned enforcement preserves both safety and utility. The result is a reusable engineering pattern for turning exploratory prototypes into auditable applications with versioned source, control, and validation artifacts.",
+    "arxiv_id": "2607.08028v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Joongho Ahn",
+      "Moonsoo Kim"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.08028v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Your Agent's Memories Are Not Its Own: Forged Reasoning Attacks on LLM Agent Memory and Defenses",
+    "abstract": "Persistent memory has enabled large language model (LLM) agents to store factual knowledge, prior decisions, reasoning histories, tool usage information, and context. While this has improved the agent's functionality and continuity across tasks, it has also introduced a new attack surface: the agent's own reasoning history. In this paper, we introduce the Forged Amplifying Rationale Memory Attack (FARMA), which poisons an agent's remembered reasoning rather than its factual knowledge. It inserts forged reasoning traces using evasive language that bypasses keyword-based defenses, then amplifies them through self-referential reinforcement that defeats consensus-based defenses. To address FARMA, we introduce SENTINEL, a layered defense pipeline to detect forged reasoning entries. Its central component is the Reasoning Guard that structurally analyzes candidate entries for forgery using five weighted signals.   We evaluate FARMA and SENTINEL across multiple agents and different LLM models with 50 trials and show that FARMA achieves an attack success rate of up to 100% under baseline conditions and is capable of defeating defense mechanisms like keyword filter and A-MemGuard. Our evaluation also shows that SENTINEL reduces FARMA's attack success rate to as low as 0% with no false positives observed across 326 benign agent traces. Our work demonstrates the need to protect not only an agent's retrieved content but also the integrity of its reasoning history.",
+    "arxiv_id": "2607.05029v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Neeraj Karamchandani",
+      "Piyush Nagasubramaniam",
+      "Sencun Zhu",
+      "Dinghao Wu"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05029v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Tree-of-Thoughts Reasoning for Text-to-Image In-Context Learning",
+    "abstract": "In text-to-image in-context learning (T2I-ICL), a model has to infer a latent compositional pattern from fewshot demonstrations for generating a query image. Recent studies show that state-of-the-art multimodal large language models struggle with this setting, particularly due to limited compositional reasoning and sensitivity to prompt construction. In this work, we propose a Tree-of-Thoughts (ToT) reasoning framework for T2I-ICL that introduces a multi-stage reasoning and selection layer that generates, evaluates, and selects among multiple candidate hypotheses before constructing the final prompt for image synthesis. By exploring alternative reasoning branches and selecting a coherent interpretation, the proposed approach mitigates prompt ambiguity and compositional errors. We implement the proposed approach in a complete ToT-T2IICL inference pipeline and evaluate it on the CoBSAT benchmark. Both qualitative and quantitative results show that structured multi-branch reasoning leads to more consistent and semantically aligned image generation compared to baseline and Chain-of-Thought prompting strategies, without any additional training or fine-tuning.",
+    "arxiv_id": "2607.07117v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Stepanida Alekseeva",
+      "Jenifer Kalafatovich",
+      "Seong-Whan Lee"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07117v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Toward Trustworthy Large Language Model Agents in Healthcare",
+    "abstract": "Healthcare appointment scheduling remains a persistent operational bottleneck, driven by manual coordination, fragmented legacy systems, and high administrative overhead. These inefficiencies constrain provider availability and degrade patient access to care. This paper presents CareConnect, a safety-first conversational agent for healthcare logistics automation that leverages large language model (LLM) function calling, retrieval-augmented generation (RAG), and layered deterministic safety guardrails. The system orchestrates eight domain-specific tools to support appointment booking, modification, cancellation, and facility information retrieval, while enforcing strict scope constraints that prohibit medical advice or diagnosis. Safety-critical situations are handled through deterministic short-circuit mechanisms for emergency detection and medical intent refusal. We evaluate CareConnect on a comprehensive benchmark of 680 task-oriented scenarios spanning end-to-end workflows, multi-turn interactions, and edge cases. Experimental results demonstrate a 91.8% task completion rate with a median per-request latency of 2.2 seconds, 96.0% safety compliance on the dedicated safety-critical evaluation subset, and an average operational cost of $0.0324 per appointment, yielding a significant cost reduction compared to manual human scheduling. These findings show that carefully scoped and rigorously safeguarded LLM-based agents can reliably automate complex healthcare operational workflows while maintaining safety guarantees and achieving substantial cost efficiency. The source code and system implementation are publicly available at https://github.com/Hadi-Hsn/CareConnect.",
+    "arxiv_id": "2607.05055v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Hadi Hasan",
+      "Safaa Salman",
+      "Adam Tai Abou Dargham",
+      "Ammar Mohanna",
+      "Ali Chehab"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05055v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Detecting Answer-Driven Reasoning in LLM-Based Educational Tutors via Truncated Chain-of-Thought Auditing",
+    "abstract": "Large language model (LLM) tutors often produce fluent step-by-step explanations, but a correct and pedagogically formatted response does not guarantee that the answer was derived from the student-facing problem. In realistic tutoring systems, the model may also have access to teacher notes, answer keys, rubrics, or retrieved solution artifacts. We study whether such private answer information can make tutor explanations answer-driven: the final answer is behaviorally available before the written explanation has justified it. Using Truncated Reasoning AUC Evaluation (TRACE), which probes how early a chain-of-thought prefix can pass a verifier, we evaluate 1000 GSM8K test problems under three paired tutoring contexts: question-only, correct answer-key, and wrong answer-key. At fixed fractions of each generated explanation, we force the model to answer immediately and verify the response against the gold numeric answer. With Qwen2.5-3B-Instruct, answer-key access raises median TRACE AUC from 0.375 to 0.900 and makes the gold answer available at the first 10% prefix in 997 of 1000 cases. The effect remains strong on the 746 examples where both question-only and answer-key explanations end with the correct answer. These results support truncated CoT auditing as a lightweight process-level diagnostic for answer-driven reasoning in math tutoring explanations.",
+    "arxiv_id": "2607.04572v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Bonan Shen",
+      "Dingyan Shang",
+      "Youting Wang",
+      "Tao Ning"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04572v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Agora: Enhancing LLM Agent Reasoning Via Auction-Based Task Allocation",
+    "abstract": "Enhancing the reasoning capabilities of large language model (LLM) agents requires effective orchestration of diverse expert models and tools. However, existing frameworks typically call APIs based on coarse-grained matching between tasks and the functions of expert models or tools, while overlooking critical factors such as performance variability and cost efficiency among functionally similar alternatives. To address this, we propose Agora, a framework that introduces an incentive-compatible auction mechanism for dynamically allocating tasks to expert models and tools. By treating reasoning steps as tradeable items, Agora enables agents to bid based on their rectified competence-ensuring that critical logic is routed to the most capable solver rather than the most overconfident one. Evaluations across five benchmarks show that Agora improves over matched single-model, routing, and cascade baselines under comparable candidate pools, while exposing a controllable cost-quality trade-off through a single auction parameter.",
+    "arxiv_id": "2607.09600v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Kaiji Zhou",
+      "Ales Leonardis",
+      "Yue Feng"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.09600v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "ProofCouncil: An LLM Agent for Solving Open Mathematical Problems",
+    "abstract": "Large language models (LLMs) have shown increasing promise in solving open problems in mathematics. However, their performance can be further improved through agentic workflows tailored to real-world mathematical practice. To this end, we introduce ProofCouncil, a mathematical agent that is designed to tackle open problems using an author-critic architecture. ProofCouncil served as a submission to the second batch of FirstProof, a challenge consisting of 10 real-world mathematical problems that agents must solve autonomously. Its submissions for 6 of the 10 problems were judged by the referees to be correct up to at most minor revisions, showing the best performance among participating teams. We also evaluate ProofCouncil on 30 open problems collected from mathematical researchers. Among the 21 solutions that received human feedback, 5 were judged completely correct, 2 more were judged promising pending final verification, and a further 8 contained useful partial progress. In this short paper, we describe the development of ProofCouncil and the agent-building library used to create it, which we release as open source to the community.",
+    "arxiv_id": "2607.09474v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Johannes Schmitt",
+      "Tim Gehrunger",
+      "Jasper Dekoninck",
+      "Gergely Bérczi",
+      "Uri Kreitner"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09474v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Spinning Straw into Gold: Relabeling LLM Agent Trajectories in Hindsight for Successful Demonstrations",
+    "abstract": "Large language model agents operate in partially observable, long-horizon settings where obtaining supervision remains a major bottleneck. We address this by utilizing a source of supervision overlooked in existing post-training methods: unintended yet successful goals embedded within agent rollouts. Specifically, we introduce Hindsight Supervised Learning (HSL), where an auxiliary LLM reviews each completed trajectory and relabels it with all of the natural-language goals the agent actually achieved. HSL then pairs the trajectory with its relabeled goals and uses these pairs for additional fine-tuning. To mitigate suboptimality in the relabeled data, we propose two learning techniques for HSL, irrelevant-action masking and sample reweighting. Our experiments show that HSL is flexible and compatible with existing post-training pipelines. It improves both SFT and DPO, with larger gains on long-horizon tasks with more diverse goal spaces. Moreover, HSL is sample-efficient: on ALFWorld, it surpasses baselines trained on the full dataset while using only one quarter of the ground-truth demonstrations.",
+    "arxiv_id": "2607.04235v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Zichao Li",
+      "Gang Wu",
+      "Zichao Wang",
+      "Ruiyi Zhang",
+      "Wanrong Zhu"
+    ],
+    "categories": [
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.04235v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "STAPO: Selective Trajectory-Aware Policy Optimization for LLM Agent Training",
+    "abstract": "Reinforcement Learning (RL) is the dominant paradigm for training Large Language Model (LLM) agents on long-horizon tasks. However, sparse and delayed rewards often lead to trajectory neglect, in which agents lose focus on the task goal and interaction history at intermediate steps. Prior work has explored step-level supervision using Shannon-entropy-based uncertainty signals, which conflate inherent state complexity with agent confidence and therefore provide unreliable estimates of decision reliability. To address this issue, we propose normalized entropy, which measures confidence deviations relative to an agent's average behavior under a given state, thereby strengthening the association between low-quality actions and trajectory neglect. Building on this insight, we introduce Selective Trajectory-Aware Policy Optimization (STAPO), a hierarchical group-based RL framework. STAPO leverages normalized entropy to locate outlier steps associated with trajectory neglect and optimizes them via a joint mechanism of trajectory-aware reward and trajectory-independent penalty, enhancing trajectory awareness while preserving training stability. Extensive experiments on ALFWorld, WebShop, and Search-Augmented QA demonstrate that STAPO achieves state-of-the-art performance while substantially alleviating trajectory neglect, validating its effectiveness and robustness for agentic tasks.",
+    "arxiv_id": "2607.04963v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Qiuyi Qi",
+      "Tian Liang",
+      "Mutian Bao",
+      "Jinjian Zhang",
+      "Dongnan Liu"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.04963v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Toward Auditable AI Scientists: A Hypothesis Evolution Protocol for LLM Agents",
+    "abstract": "Large language model (LLM) agents are increasingly expected to play a central role in AI-driven scientific discovery. Equipped with broad knowledge, flexible reasoning, and tool use, they have the potential to autonomously explore and solve scientific problems by repeatedly proposing hypotheses, testing them, and revising their beliefs in the light of the evidence. In current agents, however, these hypotheses, tests, and belief updates are buried in unstructured logs, and no mechanism lets the agent or the human researcher audit that process. Here we propose the Hypothesis Evolution Protocol (HEP), an agent harness that provides hypothesis generation, evaluation, and evolution as explicit, auditable operations. On materials-science research tasks, a HEP-equipped agent operates the hypothesis--test--evidence--belief cycle that planning-style agents lack, generalizes across research questions, and exploits the protocol more fully as the base LLM becomes more capable. These results mark a step toward auditable AI scientists, whose scientific reasoning can be inspected, verified, and built upon.",
+    "arxiv_id": "2607.09195v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Izumi Takahara",
+      "Teruyasu Mizoguchi"
+    ],
+    "categories": [
+      "cs.AI",
+      "cond-mat.mtrl-sci"
+    ],
+    "link": "http://arxiv.org/abs/2607.09195v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "From Voting to Agent Collaboration: Answer-Type-Aware LLM Pipelines for BioASQ 14b",
+    "abstract": "Biomedical question answering requires not only accurate extraction of information from scientific literature but also reliable integration of evidence across multiple documents. This study presents a question-type-specific large language model (LLM) framework for BioASQ 14b Task B, designed to improve answer robustness and evidence grounding in biomedical question answering. Rather than applying a single prompting strategy to all questions, the framework selects different inference procedures for yes/no, factoid, and list questions according to their distinct reasoning and evaluation requirements. For yes/no questions, snippet shuffling and self-reflection are used to reduce sensitivity to evidence ordering and improve decision stability. For factoid questions, full-snippet input is combined with chain-of-thought-based in-context learning to support accurate biomedical entity identification. For list questions, a multi-agent architecture is employed, in which evidence extraction, candidate generation, answer verification, and final aggregation are handled collaboratively. Preliminary experiments on BioASQ 13b were used to identify effective inference strategies for each question type, and the resulting framework was subsequently evaluated in the official BioASQ 14b Task B challenge. In the official evaluation, our framework showed competitive performance across multiple batches and achieved first place in the factoid subtask of Batch 4. These results demonstrate the effectiveness of combining question-type-specific inference, ensemble prediction, and agent-based verification for reliable biomedical question answering.",
+    "arxiv_id": "2607.06452v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Taeyun Roh",
+      "Eunha Lee",
+      "Wonjune Jang",
+      "Sohyun Chung",
+      "Junha Jung"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06452v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
+    "abstract": "Scaling pre-training, post-training, and test-time compute have become the central paradigms for improving the capabilities of LLMs. In this work, we identify verification, the ability to determine the correctness of a solution, as a new scaling axis. To unlock this and demonstrate its effectiveness, we introduce LLM-as-a-Verifier, a general-purpose verification framework that provides fine-grained feedback for agentic tasks without requiring additional training. Unlike standard LM judges that prompt LLMs to produce discrete scores for candidate solutions, LLM-as-a-Verifier computes the expectation over the distribution of scoring token logits to generate continuous scores. This probabilistic formulation enables verification to scale along multiple dimensions: (1) score granularity, (2) repeated evaluation, and (3) criteria decomposition. In particular, we show that scaling the scoring granularity leads to better separation between positive and negative solutions, resulting in more calibrated comparisons. Moreover, scaling repeated evaluation and criteria decomposition consistently lead to additional gains in verification accuracy through variance and complexity reduction. We further introduce a cost-efficient ranking algorithm for selecting the best solution among candidates using the verifier's continuous scores. LLM-as-a-Verifier achieves state-of-the-art performance on Terminal-Bench V2 (86.5%), SWE-Bench Verified (78.2%), RoboRewardBench (87.4%), and MedAgentBench (73.3%). Beyond verification, the fine-grained signals from LLM-as-a-Verifier can also serve as a proxy for estimating task progress. We build an extension for Claude Code, enabling developers to monitor and improve their own agentic systems. Finally, we show that LLM-as-a-Verifier can provide dense feedback for RL, improving the sample efficiency of SAC and GRPO on robotics and mathematical reasoning benchmarks.",
+    "arxiv_id": "2607.05391v2",
+    "published": "2026-07-06",
+    "authors": [
+      "Jacky Kwok",
+      "Shulu Li",
+      "Pranav Atreya",
+      "Yuejiang Liu",
+      "Yixing Jiang"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.LG",
+      "cs.MA",
+      "cs.RO"
+    ],
+    "link": "http://arxiv.org/abs/2607.05391v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "MORES: Mobile Reasoning-as-a-Service via Distributed LLM Inference-Time Scaling",
+    "abstract": "Inference-time scaling has emerged as an effective approach for enhancing the capabilities of Large Language Models (LLMs), addressing the growing demand for stronger reasoning without increasing model size. This novel form of LLM scaling comprises two representative approaches: explicit reasoning, which generates intermediate chain-of-thought tokens during an explicit thinking phase, and implicit reasoning, which iteratively updates hidden states in the latent space without producing explicit outputs. Despite their effectiveness, both paradigms incur substantial computational and memory overhead, raising challenges for deployment on resource-constrained edge devices. To address these issues, we propose a Mobile Reasoning-as-aService (MORES) framework that treats reasoning as a computational service accessible to edge devices over wireless networks. Focusing on implicit reasoning, we leverage its recursive structure to partition hiddenstate updates between edge devices and servers, enabling cooperative inference that allows devices to access additional cloud computation on demand. To optimize long-term performance, we formulate a joint computation and communication scheduling problem and solve it using a semantic Mixture-of-Experts (MoE)-based Deep Reinforcement Learning (DRL) algorithm to address heterogeneity in wireless conditions and task demands. The agent adaptively allocates resources by adjusting the number of recurrent steps and the transmission pruning rate, while a semantic router enables high-speed gating for real-time expert selection. Experimental results show that the proposed method achieves an approximately 18% improvement in system throughput over the baseline Soft Actor-Critic (SAC) algorithm. Our code is available at https://github.com/NICE-HKU/MORES.",
+    "arxiv_id": "2607.08116v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Guanchen Liu",
+      "Hongyang Du",
+      "Kaibin Huang"
+    ],
+    "categories": [
+      "cs.NI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08116v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Decision Protocols in Multi-Agent Large Language Model Conversations",
+    "abstract": "Improving the task performance of Large Language Models (LLMs) is essential, yet scaling these models faces significant challenges such as diminishing returns and high costs. Multi-Agent Systems (MAS) offer a promising solution by distributing tasks among specialized agents to improve the overall task performance. This can reduce training costs at the expense of increased test time due to the discussion and decision-making process. The decision protocol is a critical component of MAS because it specifies how multiple agents collaborate to create a final solution. This thesis introduces the Multi-Agent LLM (MALLM) framework, which implements and evaluates various decision protocols, namely voting, consensus, and judge decision mechanisms, to simulate multi-agent discussions for conversational task solving. Unlike previous work that used a single decision protocol or tested them on limited datasets, this study systematically examines their impact on a diverse set of tasks, ranging from knowledge-based datasets (MMLU, MMLU-Pro, GPQA) and logic-based datasets (StrategyQA, MuSR, Math-lvl-5, SQuAD 2.0). The results indicate that consensus protocols excel in knowledge-intensive domains while voting and judge protocols are more effective for logic-based tasks. Increasing response diversity through independent solution generation improves decision quality, while changes in information access during the decision process have minimal impact.",
+    "arxiv_id": "2607.05477v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Lars Benedikt Kaesberg"
+    ],
+    "categories": [
+      "cs.MA",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.05477v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "LLMs for Agentic Home Energy Management",
+    "abstract": "Home Energy Management Systems (HEMS) can reduce residential electricity costs and support demand response, but adoption is limited by the difficulty of translating household preferences into technical scheduling constraints. This paper evaluates whether large language model (LLM) agents can provide a practical natural-language interface for multi-appliance home energy scheduling. We present a tool-calling ReAct agent that uses live half-hourly Octopus Agile prices, weather forecasts, photovoltaic generation estimates, household usage data, and a retrieval-augmented knowledge base to schedule flexible loads against a mixed-integer linear programming (MILP) ground truth. Three commercial models, GPT-4o-mini, Gemini 2.5 Flash, and Claude Sonnet 4.6, are benchmarked across tariff days, constraint-conflict scenarios, weather-aware solar co-optimization, and week-long deployment. With native function calling, all models achieve 100% scheduling success and near-MILP optimality, while text-parsed action interfaces sharply reduce reliability. Constraint testing shows that cost-optimal and safety-optimal models differ: Claude is strongest under infeasibility and power-cap conflicts, while GPT-4o-mini is most efficient. Over a simulated week, agents capture 96.7-98.0% of oracle savings, projecting approximately GBP 1,270 annual savings over an off-peak timer baseline. Code and a live demonstration are available at https://github.com/sokistar24/ecohome-energy-agent and https://www.ecohomeagent.com/.",
+    "arxiv_id": "2607.04569v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Sokipriala Jonah"
+    ],
+    "categories": [
+      "eess.SY"
+    ],
+    "link": "http://arxiv.org/abs/2607.04569v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "When Agents Remember Too Much: Memory Poisoning Attacks on Large Language Model Agents",
+    "abstract": "Personal AI agents powered by large language models can reason and act using available tools to access emails, manage calendars, and push code to remote repositories, all with minimal oversight. When augmented with long-term memory, an agent can recall specific details relevant to the current task, reducing the need for large context windows. Currently, long-term memory agents tend to fall into two distinct domains: conversational and action-planning agents. Personal assistant agents sit at the convergence of these two domains and handle sensitive information while interacting with untrusted information sources, creating previously unaccounted security vulnerabilities. In this work, we introduce the novel attack vector, GhostWriter, which exploits current memory subsystems in tool-using personal agents to poison their memory store. GhostWriter operates in two phases: injection, where an adversary sends a hidden attack payload to the target agent; and activation, in which the poisoned memory is retrieved. We show that GhostWriter achieves near-universal injection rates of approximately 98% and a high average activation rate of approximately 60% against state-of-the-art agents. This attack is possible due to the lack of security-focused memory governance. In response, we propose Agentic Memory Sentry (AM-Sentry), which leverages two mitigation techniques: a memory-saving policy and a memory-retrieval screen. Our experiments show that AM-Sentry dramatically reduces GhostWriter's success rate while preserving agent utility.",
+    "arxiv_id": "2607.06595v1",
+    "published": "2026-07-06",
+    "authors": [
+      "George Torres",
+      "Sharad Shrestha",
+      "Satyajayant Misra"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06595v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "PolyWorkBench: Benchmarking Multilingual Long-Horizon LLM Agents",
+    "abstract": "Large language model (LLM) agents have shown strong performance in long-horizon tasks that require planning, tool use, and interaction with external environments. However, most existing benchmarks implicitly assume a monolingual setting, where the entire execution process, including reasoning, tool invocation, and output generation, is conducted within a single language. In contrast, real-world applications often involve multilingual inputs and outputs within a unified workflow, yet the interaction between multilinguality and agentic execution remains underexplored. In this work, we introduce PolyWorkBench, a benchmark for evaluating LLM agents on multilingual long-horizon workplace workflows. PolyWorkBench consists of 67 tasks across five domains, including commerce, knowledge work, legal analysis, localization, and manufacturing, where agents must process heterogeneous multilingual inputs, perform iterative reasoning, invoke external tools, and produce structured outputs. To enable comprehensive evaluation, we propose a hybrid framework that combines structural grading, executable verification, and LLM-based semantic assessment. This design allows us to capture both functional correctness and linguistic consistency across complex workflows. Empirical results show that state-of-the-art LLM agents suffer significant performance degradation in multilingual workflow settings compared to monolingual counterparts. Our analysis suggests that multilinguality introduces compounding effects across reasoning and execution steps, highlighting the importance of jointly modeling language variation and procedural decision-making in agent evaluation.",
+    "arxiv_id": "2607.06008v2",
+    "published": "2026-07-07",
+    "authors": [
+      "Hongliang Li",
+      "Yijin Liu",
+      "Zhiwei Zhang",
+      "Zihe Liu",
+      "Xinyue Lou"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.06008v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "LLM Assisted Verification Assertion Generation: Challenges and Future Directions",
+    "abstract": "Assertion-based Verification (ABV) plays a critical role in the Design Verification (DV) process. However, ABV requires substantial manual effort in generating assertion from specification by verification engineers, making it a time-consuming stage in the chip design flow. With the recent development of Large Language Models (LLMs), researchers have started exploring their use as an assistance in the ABV process, particularly for generating SystemVerilog Assertions (SVAs) from design specification. In this paper, we provide an overview of recent works, highlighting the different methods used to generate SVAs. In particular, we investigate LLM-based SVA generation and ask a central question: How can LLM-based assertion generation be made systematic and quality-aware? While addressing this key question, we provide Key Takeaways at the end of each challenge, summarizing the important methodological insights, and also provide guidelines and directions in solving those challenges that can help generate a high-quality set of assertions using LLMs.",
+    "arxiv_id": "2607.07444v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Bhabesh Mali",
+      "Chandan Karfa"
+    ],
+    "categories": [
+      "cs.ET"
+    ],
+    "link": "http://arxiv.org/abs/2607.07444v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Reasoning Consistency Scanning: A Framework for Auditing Chain-of-Thought Validity in AI Safety Evaluations",
+    "abstract": "Prior work has shown that chain-of-thought (CoT) reasoning is often unfaithful: a model's stated reasoning does not reliably reflect the process that produced its output. Detecting unfaithfulness, though, requires controlled experimental interventions, which cannot be applied to evaluation transcripts after the fact. We turn instead to a more tractable question that has received less attention: whether the stated reasoning is logically consistent with the answer it accompanies. Unlike faithfulness, consistency can be assessed from a transcript alone, with no intervention. We introduce reasoning consistency scanning, a reusable method for detecting this property in AI safety evaluation transcripts. Our contributions are fourfold. First, we formalize reasoning consistency as distinct from faithfulness and define a six-subtype taxonomy of inconsistency. Second, we build a validated benchmark of 60 transcripts, manually adapted from InstrumentalEval outputs. Third, we implement a working scanner for InspectScout, the first to target this property in safety evaluation transcripts. Fourth, we report results across four generator models and three evaluations from inspect_evals, showing that reasoning inconsistency is present, detectable, and varies systematically across both models and task types.",
+    "arxiv_id": "2607.07229v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Silvia Santano"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.07229v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

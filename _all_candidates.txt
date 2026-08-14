@@ -1,0 +1,3 @@
+  File "<string>", line 1
+    import json with open('.cache/weekly_candidates.json','r',encoding='utf-8') as f:     data = json.load(f) cand = data['candidates'] for domain in cand:     print(f'==={domain}===')     for p in cand[domain]:         print(f'TITLE: {p["title"]}')         print(f'LINK: {p["link"]}')         print(f'AUTHORS: {json.dumps(p["authors"], ensure_ascii=False)}')         print(f'PUBLISHED: {p["published"]}')         print(f'ABSTRACT: {p["abstract"]}')         print() 
+IndentationError: unexpected indent

@@ -1,0 +1,398 @@
+[
+  {
+    "title": "Beyond the Leaderboard: A Synthesis of Tool-Use, Planning, and Reasoning Failures in Large Language Model Agents",
+    "abstract": "Large language model (LLM) agents are increasingly evaluated on their ability to use tools, plan multi-step tasks, coordinate with other agents, and operate over extended horizons. Reported benchmark gains often obscure recurring failure modes documented across otherwise unrelated evaluation efforts. This paper synthesizes 27 benchmark, taxonomy, and audit papers (2023-2026), spanning 19 distinct benchmarks, into a cross-cutting taxonomy of agent limitations. To our knowledge, this is the first synthesis that integrates evidence across tool use, planning, long-horizon reasoning, multi-agent coordination, safety, and measurement validity into a single, unified taxonomy of LLM agent limitations. We identify six failure clusters: (1) tool invocation and parameter-level errors, (2) planning and constraint-satisfaction failures, (3) long-horizon degradation from context accumulation, (4) multi-agent coordination failures, (5) safety and security failures under adversarial or underspecified conditions, and (6) measurement validity problems. The taxonomy was derived iteratively by grouping independently reported error categories into themes corresponding to distinct stages of the agent reasoning-to-action pipeline. Across the literature, we find that failures compound nonlinearly with task length, that strong performance on individual sub-tasks does not reliably translate into end-to-end success, and that additional scaffolding does not consistently improve reliability. At the same time, substantial progress has been demonstrated in single-turn tool use, short-horizon web navigation, and narrowly scoped coding tasks.",
+    "arxiv_id": "2607.05775v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Wael Albayaydh",
+      "Rui Zhao",
+      "Ivan Flechais"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05775v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Multi-Agent Robotic Control with Onboard Vision-Language Models",
+    "abstract": "Vision Language Models (VLMs) and Vision Language Action (VLA) models have shown promise in robotic control. Yet, they face significant challenges regarding explainability, generalization, and compute requirements. This paper presents a Multi-Agent System (MAS) architecture that addresses these limitations by deploying specialized agents on onboard hardware - eliminating dependence on external compute. The system controls a multi-purpose autonomous mobile manipulator in a simulated industrial warehouse, fulfilling five task categories: safety inspection, warehouse maintenance, warehouse search, package quality verification, and responding to human requests. Compact VLMs (3-20B parameters) are used throughout, with fine-tuning applied to improve package inspection accuracy. A novel \"Megamind\" orchestration agent mitigates context retention issues inherent to long-horizon planning with smaller models. The system was validated in a hardware-in-the-loop simulation using an AMD Ryzen(TM) AI mini PC. Results demonstrate that a fully onboard MAS architecture is a viable, cost-efficient alternative to cloud-dependent deployments, with strong potential for real-world transfer. The simulation environment has been released as open source under the Apache 2.0 licence.",
+    "arxiv_id": "2607.07403v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Kajetan Rachwał",
+      "Maciej Majek",
+      "Bartłomiej Boczek",
+      "Jakub Matejczyk",
+      "Dominik Matejkowski"
+    ],
+    "categories": [
+      "cs.MA",
+      "cs.RO"
+    ],
+    "link": "http://arxiv.org/abs/2607.07403v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "LLM Agents for Deliberative Collaboration: A Study on Joint Decision Making Under Partial Observability",
+    "abstract": "Deliberation plays a crucial role in collaboration; when humans work together, they naturally engage in communication to align information and reach an agreement. In this paper, we investigate deliberative large language model (LLM) agents under partially observable joint decision-making tasks. We formalize deliberative collaboration as a cooperative joint decision problem with partial and asymmetric observations, and introduce a scalable benchmark that instantiates this problem across multiple task settings and domains in which agents must exchange information through deliberation to reach a joint decision with a shared reward. We then instantiate a reference scaffold and evaluation protocol for deliberative agents and conduct a systematic evaluation of a range of representative LLMs. The results reveal that complex deliberative collaboration tasks continue to challenge state-of-the-art language models. Even with the aid of external mathematical tools, language models may fail in either the deliberation process for aligning information or the complex reasoning process for making the decision. On the other hand, diagnostic analysis reveals that the deliberation process may also provide opportunities for reflection and error correction, sometimes improving performance over centralized baselines. Altogether, our work establishes a foundation for evaluating and improving LLM agents in deliberative collaboration and provides insights into the strengths, limitations, and properties of current LLM-based multi-agent systems.",
+    "arxiv_id": "2607.06157v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Chenxu Wang",
+      "Yongkun Yang",
+      "Boyuan Du",
+      "Shiwei Lin",
+      "Huaping Liu"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06157v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Aleena: Alignment Agent for Research Software Engineering Collaborations",
+    "abstract": "Research software collaborations span meetings, informal chats, pull requests, and GitHub issues. A decision surfaced in a Slack thread, refined in a meeting, and implemented in a pull request can lose its original rationale across these artifacts, leaving domain researchers and research software engineers with divergent mental models of project intent, ownership, and scientific assumptions. We argue that alignment in research software engineering is a continuous lifecycle problem, and that agentic AI can support stakeholder alignment and project-state tracking without replacing human decision-making. We present Aleena, an open-source lifecycle alignment agent that uses GitHub as a shared collaboration surface, transforming multi-modal stakeholder interactions into structured project records that surface risks, track open questions, and preserve decision continuity. Grounded in university-based research software engineering center experiences, this paper presents the motivating problem, system design, prototype, and illustrative lifecycle scenarios for Aleena.",
+    "arxiv_id": "2607.08043v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Kshitij Dani",
+      "Cordero Core",
+      "Landung Setiawan",
+      "Carlos Garcia Jurado Suarez",
+      "Anshul Tambay"
+    ],
+    "categories": [
+      "cs.SE",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08043v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Mosaic: Runtime-Efficient Multi-Agent Embodied Planning",
+    "abstract": "LLM-based multi-agent embodied planning remains impractical due to prohibitively high execution latency. We identify failed actions as the dominant bottleneck, stemming from two core challenges: inaccurate state tracking under partial observability and inefficient coordination that produces redundant or conflicting actions. We introduce Mosaic, a runtime-efficient multi-agent planning framework that addresses both challenges. Mosaic maintains accurate yet lightweight state tracking through agent-centric semantic memory that stores objects in relative coordinates, enabling geometric transformations and coordination. It ensures efficient coordination through Integer Linear Programming that allocates actions at every planning step, enforcing physical feasibility and inter-agent coordination constraints. Across AI2-THOR and search-and-rescue benchmarks, Mosaic achieves 27-32% faster execution, 30-33% fewer LLM calls, 25-31% fewer steps, and 4-10% points higher success rates. These results demonstrate that efficient memory and constraint-guided coordination are critical for scalable, low-latency multi-agent planning.",
+    "arxiv_id": "2607.09603v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Kunjal Panchal",
+      "Saayan Mitra",
+      "Sunav Choudhary",
+      "Victor Bursztyn",
+      "Somdeb Sarkhel"
+    ],
+    "categories": [
+      "cs.MA"
+    ],
+    "link": "http://arxiv.org/abs/2607.09603v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "ToolFailBench: Diagnosing Tool-Use Failures in LLM Agents",
+    "abstract": "Tool calling is central to modern language model agents, but aggregate benchmark scores often hide where tool use fails. A model that never calls a needed tool and a model that calls the tool but ignores the result can look similar under final task accuracy. We introduce ToolFailBench, a diagnostic benchmark for measuring tool-use failures across 1,000 tasks in finance, medicine, law, cybersecurity, and real estate. Tool-required tasks return values the model wouldn't guess, forcing it to trust the tool while control tasks attach the same tools but should be answered directly. We label each trace with Tool-Skip, Result-Ignore, Output-Fabrication, and Unnecessary-Tool-Use, using a rule classifier and two LLM judges aggregated by majority vote. Across 19 headline models, the best reaches 86.33% Clean Tool-Use Rate, showing that faithful tool use is not saturated. More importantly, models with similar aggregate scores fail in different ways: most stay disciplined on no-tool controls, while Llama-3.1 models show an Always-Call pattern, and at the same parameter scale Llama-3.1-70B and Qwen2.5-72B differ by 89 percentage points on control-task accuracy. Tool-use evaluation should measure not only whether agents call tools, but whether they use tool outputs correctly and avoid tools when none is needed.",
+    "arxiv_id": "2607.04686v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Harsh Soni"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.04686v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Using Process Mining to Generate AI Agents from Software Engineering Process Records",
+    "abstract": "Integrating AI agents into Software Engineering (SE) raises an important challenge: how can we specify and realize AI agents that work effectively alongside humans in hybrid SE teams? Determining the right granularity and separation of concerns for such agents is non-trivial. Coarse-grained agents may introduce unmanageable complexity, whereas micro-agents may create severe coordination overhead. Moreover, existing multi-agent SE frameworks typically rely on predefined role structures and do not account for project-specific characteristics or process adaptations. We address this by combining object-centric, imperative, and declarative process mining. Using event logs extracted from software repositories, our approach discovers project-specific agent roles using a predefined SE role vocabulary grounded in repository behavior and generates matching agent specifications and implementations. As proof-of-concept, we applied our approach to a well-established open-source project. We performed functional tests and an exploratory user study to determine how well the generated AI agent specifications are aligned with human expectations.",
+    "arxiv_id": "2607.04948v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Saimir Bala",
+      "Fabiana Fournier",
+      "Lior Limonad",
+      "Andreas Metzger"
+    ],
+    "categories": [
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.04948v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Agent Data Injection Attacks are Realistic Threats to AI Agents",
+    "abstract": "AI agents act on behalf of user prompts, consuming external data and taking actions based on the agent context. Prior research on AI agent security has primarily focused on indirect prompt injection (IPI). Its most well-studied category is instruction injection, where attacker-controlled untrusted data is interpreted as an instruction. In response, many mitigations have been proposed to prevent instruction injection attacks. In this paper, we introduce a new category of IPI, agent data injection attacks (ADI). ADI injects malicious data disguised as trusted data, such as security-critical metadata (e.g., resource identifiers or data origins) or agent context data (e.g., tool call and response formats). As a result, agents unknowingly execute unintended actions based on attacker-controlled data. ADI has similar attack impacts as instruction injection attacks, because it causes agents to misbehave and execute unintended actions. Despite the similar impact, ADI remains underexplored and easily bypasses existing IPI defenses. We found several critical vulnerabilities in real-world agents that allow an attacker to launch various attacks: arbitrary click attacks on web agents (Claude in Chrome, Antigravity, and Nanobrowser), and remote code execution and supply-chain attacks on coding agents (Claude Code, Codex, and Gemini CLI). We evaluate ADI vulnerabilities across off-the-shelf models and AI agents, and find that ADI is effective in both standalone LLMs and AI agent settings. ADI exposes a critical gap in agent security, signifying that current AI agents do not employ a fundamental security principle: current agents do not isolate trusted data from untrusted data.",
+    "arxiv_id": "2607.05120v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Woohyuk Choi",
+      "Juhee Kim",
+      "Taehyun Kang",
+      "Jihyeon Jeong",
+      "Luyi Xing"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05120v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Collaborative Multi-Agent Testing for Emergent Failure Discovery in Autonomous Driving Systems",
+    "abstract": "Autonomous Driving Systems (ADS) can fail because of faults within individual modules as well as from interactions across perception, planning, and control. Yet existing ADS testing research often treats key testing functions, such as perturbation generation, behavioural assessment, and test case selection and exploration, as loosely coupled steps rather than coordinated roles for discovering such failures. We present CREAD, a collaborative multi-agent testing framework for testing ADS that organises perturbation generation, behavioural validation, and search coordination through a shared blackboard and an orchestrator. In the current work-in-progress instantiation, the framework focuses on perception-oriented perturbation generation, while remaining extensible to other ADS modules, including planning and control. It currently comprises a Perception Fuzzer Agent, a Metamorphic Validator Agent, and an Orchestrator Agent. Respectively, they generate perturbations, assess behavioural consistency across related scenario pairs, and coordinate further exploration. Experiments in HighwayEnv simulator show that the collaborative configuration improves failure discovery in the highway environment and remains competitive in the roundabout setting. Across the two environments, it yields about 2.1x as many failures per 100 scenarios as the single-agent baseline on average, while gains over a non-collaborative two-agent baseline vary across environments. These results suggest that collaborative multi-agent testing is a promising research direction for emergent ADS behaviour discovery.",
+    "arxiv_id": "2607.06078v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Ruizhen Gu",
+      "Konstantinos Koufos",
+      "Donghwan Shin",
+      "Vahid Garousi",
+      "Mehrdad Dianati"
+    ],
+    "categories": [
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.06078v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "NKI-Agent: Domain-Specific Fine-Tuning and Agentic Tool Use for Neuron Kernel Generation",
+    "abstract": "Recent agentic approaches to LLM-based kernel generation have achieved impressive results on CUDA. For emerging AI accelerators such as AWS Trainium and Inferentia, automated kernel generation and optimization remain largely unaddressed. Writing kernels for these chips via the Neuron Kernel Interface (NKI) is particularly challenging: developers must navigate a multi-engine architecture, tile-based programming, and explicit data movement across multi-level memory hierarchy. Moreover, no publicly-available training data, benchmarks, or tool-augmented agents exist for this domain. We introduce NKI-Agent, the first system combining domain-specific supervised fine-tuning (SFT) with a compile-verify-fix agent loop for NKI kernel generation. We adapt the existing CUDA-Agent framework to Neuron hardware, curate 6,000 NKI kernel generation tasks for training, and construct NKIBench, a 250-task benchmark across three difficulty levels. Evaluated on real Trn1 hardware, NKI-Agent with Claude Opus 4.8 and a rank-aware system prompt achieves a 77.3% pass rate on the 150-task NKIBench. We show that tool use is critical: Opus 4.8 scores 6% in single-shot mode without agent tools. On a 60-task subset, we show that an SFT-trained Qwen3-Coder-30B-A3B achieves 25.0% pass rate at 1/100th the cost, outperforming Claude Sonnet 4 (15.0%). We also report that Group Relative Policy Optimization (GRPO) with binary compilation reward fails to improve over SFT, providing guidance on reward design for RL-based kernel generation.",
+    "arxiv_id": "2607.04395v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Junjie Tang",
+      "Jun Huan",
+      "Hao Zhou",
+      "Yuhao Zhang",
+      "Lin Wang"
+    ],
+    "categories": [
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.04395v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "MCP-Enabled Agentic AI for Autonomous IPoDWDM Network Lifecycle Automation",
+    "abstract": "This demo presents an MCP-enabled agentic AI architecture for autonomous control of vendor-agnostic IPoDWDM networks. We demonstrate live end-to-end lifecycle multi-layer automation and closed-loop control using GNPy and telemetry, validated on a real testbed.",
+    "arxiv_id": "2607.05975v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Chunmin Xia",
+      "Jakub Harbaczewski",
+      "Nikhil Dsilva",
+      "Julie Raulin",
+      "Dominic Schneider"
+    ],
+    "categories": [
+      "cs.NI",
+      "cs.AI",
+      "cs.MA",
+      "eess.SY"
+    ],
+    "link": "http://arxiv.org/abs/2607.05975v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Agentic IoT: Architectures, Applications, and Challenges Toward the Internet of Agents",
+    "abstract": "The integration of AI into Internet of Things (AIoT) systems has gradually transformed them from passive data collection infrastructures into intelligent systems capable of anomaly detection, predictive maintenance, classification, forecasting, and optimization. However, most existing solutions still rely on task-specific models that infer from sensor data; thus, system-wide capabilities such as real-time reasoning, adaptive planning, autonomous coordination, learning, tool use, and contextual decision-making remain limited. This paper examines Agentic IoT as a next-generation cognitive IoT paradigm that integrates the perception, reasoning, planning, learning, and action capabilities of autonomous AI agents with cyber-physical systems. Agentic IoT aims to transform IoT from data-centric sensing and inference infrastructures into distributed cognitive agent ecosystems operating across the device/edge-fog-cloud continuum. The paper first grounds this transition as a paradigm shift and positions Agentic IoT in relation to AIoT, edge intelligence, multi-agent systems, and the Internet of Agents. It then systematically reviews current studies, presents a holistic architectural framework, discusses domain-specific application potential, and identifies key technical, operational, and research challenges together with future research directions.",
+    "arxiv_id": "2607.04219v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Rümeysa Hilal Sevinç",
+      "Bahaeddin Türkoğlu",
+      "İbrahim Kök"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.MA",
+      "cs.NI"
+    ],
+    "link": "http://arxiv.org/abs/2607.04219v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "A Closed-Loop Multi-Agent Framework for Robust Multi-Robot Manipulation",
+    "abstract": "Multi-robot systems provide the parallelism and redundancy necessary for long-horizon tasks, while Large Language Models (LLMs) offer the reasoning capabilities to decompose these objectives into actionable plans. However, effectively grounding this high-level reasoning in physical multi-robot execution remains an open challenge. Existing LLM-based approaches fall mainly into two categories: Single-robot methods achieve robust contact-rich manipulation but lack the coordination mechanisms required for tasks spanning multiple workspaces. Current multi-robot frameworks focus on high-level planning, often treating manipulation as an idealized primitive that fails to account for real-world execution uncertainties. To address this, we propose a hierarchical closed-loop agentic LLM-based framework to ensure robust multi-robot manipulation. Our system consists of three specialized agents: the Planning Agent decomposes instructions into allocated sub-tasks, the Manipulation Agent for each robot executes actions via adaptive tool use, and the Verification Agent closes the loop by monitoring physical outcomes and feeding back semantic corrections. Extensive real-world experiments demonstrate that our framework achieves superior success rates, ensures robust adaptability ranging from single to cross workspace manipulation, and offers a generalizable approach for diverse manipulation tasks.",
+    "arxiv_id": "2607.06990v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Yi-Xiang He",
+      "Lan Wei",
+      "Haoming Cen",
+      "Jian-Jian Jiang",
+      "Zhuohao Li"
+    ],
+    "categories": [
+      "cs.RO"
+    ],
+    "link": "http://arxiv.org/abs/2607.06990v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "VEXAIoT: Autonomous IoT Vulnerability EXploitation using AI Agents",
+    "abstract": "Internet of Things (IoT) systems are inherently vulnerable due to constrained hardware, outdated firmware, and insecure default configurations, creating a need for scalable and adaptive security testing approaches. While recent adoptions of Large Language Model (LLM) agents have demonstrated promise in penetration testing and Capture-the-Flag (CTF) environments, their application to IoT specific vulnerabilities remains unexplored. This paper presents an autonomous multi-agent framework, referred to as Vulnerability EXploitation using AI Agents (VEXAIoT), for vulnerability discovery and exploitation in IoT environments using LLM-based reasoning and offensive security tools. The framework combines a vulnerability detection agent and an attack execution agent to perform reconnaissance, plan attack sequences, and execute exploits against vulnerable IoT services. The system is evaluated in IoTGoat and Metasploitable environments across ten attack scenarios mapped to OWASP IoT vulnerabilities. Experimental results show attack success rate of up to 100% with low token overhead and average execution times under two minutes for most attacks. Across 260 attack executions, VEXAIoT achieves a 95.0% overall success rate, including 94.5% success in IoTGoat and 96.7% success in Metasploitable2. These results demonstrate the potential for LLM-driven agents to automate IoT vulnerability assessment and offensive security workflows in controlled environments",
+    "arxiv_id": "2607.09653v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Katherine Swinea",
+      "Kshitiz Aryal",
+      "Lopamudra Praharaj",
+      "Maanak Gupta"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09653v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "WebSwarm: Recursive Multi-Agent Orchestration for Deep-and-Wide Web Search",
+    "abstract": "Large language model (LLM)-based web search agents are transforming information seeking from simple factoid question answering into complex, deep-and-wide search and research-oriented tasks. A single ReAct-style agent is constrained by one long trajectory and limited context, making it difficult to handle depth and coverage simultaneously. Existing multi-agent systems improve search coverage through parallel execution and aggregation, but still exhibit clear limitations in recursive depth, collaboration adaptability, and evidence-grounded expansion. We propose WebSwarm, a progressive recursive delegation framework that jointly constructs task decomposition, recursive expansion, and agent collaboration during inference. WebSwarm dynamically instantiates agentic search nodes, each coupling a local objective with a search mode that specifies how the node should organize search and collaboration. Each node can either solve its objective itself or further delegate child nodes; after solving, it returns evidence and results upward, enabling parent nodes to further expand, revise, or aggregate the search process. To guide this process, WebSwarm first probes how task-relevant information is organized on the web to ground subsequent node expansion, and reuses process-level experience across homogeneous sibling nodes. Experiments on BrowseComp-Plus, WideSearch, DeepWideSearch, and GISA show that WebSwarm consistently outperforms single-agent and multi-agent baselines on deep, wide, and interleaved deep-and-wide tasks. Further analyses of ablation, task difficulty, web tool efficiency, and model generalization explain WebSwarm's effectiveness and provide insights for multi-agent search systems.",
+    "arxiv_id": "2607.08662v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Xiaoshuai Song",
+      "Liancheng Zhang",
+      "Kangzhi Zhao",
+      "Yutao Zhu",
+      "Zhongyuan Wang"
+    ],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.MA"
+    ],
+    "link": "http://arxiv.org/abs/2607.08662v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "GATS: Graph-Augmented Tree Search with Layered World Models for Efficient Agent Planning",
+    "abstract": "Large Language Model (LLM) agents have shown promise in multi-step planning tasks, but existing approaches like LATS (Language Agent Tree Search) and ReAct rely heavily on LLM inference during planning, leading to high computational costs and stochastic behavior. We present \\textbf{GATS} (Graph-Augmented Tree Search), a planning framework that combines systematic UCB1-based tree search with a layered world model to eliminate LLM calls during inference while achieving superior planning performance. Our three-layer world model integrates: (L1) exact symbolic action matching, (L2) statistics learned from execution logs, and (L3) LLM-based prediction for unknown actions. On synthetic planning tasks with branching paths and dead-ends, GATS achieves \\textbf{100\\% success rate} compared to 92 % for LATS and 64\\% for ReAct. On a comprehensive stress test spanning 12 challenging scenarios -- including coding workflows, web navigation, and long-horizon tasks -- GATS maintains \\textbf{100\\% success} while LATS drops to 88.9 % and ReAct to 23.9%. GATS requires \\textbf{zero LLM calls per task} during planning (vs. 37 per task for LATS) and produces deterministic plans with zero variance across runs. Our results demonstrate that systematic search with learned world models can substantially outperform LLM-guided exploration for agent planning.",
+    "arxiv_id": "2607.08894v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Maureese Williams",
+      "Dymitr Nowicki"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.08894v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "CILC: Cryptographically-secure Inter-agent Loop Closure Candidate Detection for Multi-Agent Collaborative SLAM",
+    "abstract": "Multi-agent Simultaneous Localization and Mapping (SLAM) and collaborative SLAM (CSLAM) require robots to continuously exchange global descriptors (GDs) to detect inter-agent loop closures (ILCs). While encrypted radios protect this traffic from external eavesdroppers, they offer no protection against a compromised swarm member. We show this threat is concrete by demonstrating how a corrupted agent can reconstruct approximations of an honest agent's imagery and trajectory from its public GD broadcasts. To address this, we propose CILC (Cryptographically-secure Inter-agent Loop Closure candidate detection), a first-of-its-kind system leveraging Secure Multi-Party Computation (SMPC) to detect ILC candidates without exchanging GDs in the clear. Rather than securing the entire CSLAM pipeline, we apply SMPC only to ILC candidate detection (i.e., GD similarity comparison), a privacy-sensitive yet computationally lightweight step, yielding an advantageous privacy-to-overhead trade-off. We validate in both simulation and hardware experiments that CILC remains real-time and communication-feasible across multimodal GDs (visual and LiDAR), while mitigating information leakage to a compromised swarm agent.",
+    "arxiv_id": "2607.06700v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Andrew Fishberg",
+      "Yixuan Jia",
+      "Jonathan P. How"
+    ],
+    "categories": [
+      "cs.RO"
+    ],
+    "link": "http://arxiv.org/abs/2607.06700v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Fictional Worldbuilding: Multi-Agent LLM Collaboration with Hierarchical Context Compression and Iterative Review",
+    "abstract": "Worldbuilding, the construction of coherent fictional worlds, is a foundational task in game design and literary creation. Large Language Models (LLMs) offer new possibilities for automated content generation, but their application to worldbuilding faces three challenges: context explosion that grows linearly with the building process, the tension between creative diversity and content consistency, and the absence of automated quality assurance. This paper presents AutoWorldBuilder, a multi-agent collaborative system that addresses these challenges through five integrated components: a structured concept network with conflict detection; a DAG-based hybrid batch scheduler that groups tasks by semantic locality; a four-layer context compression mechanism achieving approximately 90% token reduction; an iterative review system with specialized Auditor agents that improves proposal pass rates from 42% to over 85%; and a skill-driven agent architecture supporting zero-code extension with differentiated temperature configuration. Two experiments across 20 diverse worldbuilding tasks, using GPT-OSS 120B and DeepSeek v3.2 as LLM backends, demonstrate a 95.0% success rate. The system generated 56-103 self-consistent concepts per world in 18-31 minutes with zero-conflict delivery. The architectural patterns validated here, including layer-as-budget compression, semantic-locality scheduling, and separation of generation and review, transfer to the broader class of knowledge-intensive, multi-agent LLM applications.",
+    "arxiv_id": "2607.09403v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Jingbo Chen",
+      "He Wang",
+      "Wei Yuan",
+      "Yuqiao Lai",
+      "Zhenyan Lu"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.09403v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Agents with Feelings? Personality and Emotion in Multi-Agent Software Teams",
+    "abstract": "Multi-agent LLM systems for Software Engineering (SE) typically differentiate agents through roles and workflows, but little is known about how agents' behavioral profiles affect team performance. We investigate the impact of personality and emotion profiles on LLM agent teams using a psychology-informed framework that combines Big Five personality traits, basic emotions, SE-relevant work styles, and task roles. We evaluate 78 team-profile configurations across code generation and code review using four LLMs and 659 task instances. Results show that profile choice substantially affects both performance and team behavior. For code generation, the gap between the best and worst shared-profile configurations reaches 7.1-11.3 percentage points in pass@1 across models, while the best mixed-profile configuration outperforms the best shared-profile configuration in six of eight model-task settings. Profiles also influence collaboration dynamics and cost: fear and high-conscientiousness profiles increase revision activity, over-revision, and token usage without consistent performance gains. These findings identify agent profiles as an important design dimension in multi-agent SE systems, affecting not only task outcomes but also the efficiency of collaboration.",
+    "arxiv_id": "2607.05659v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Yunyan Ding",
+      "Thomas Zimmermann",
+      "Iftekhar Ahmed"
+    ],
+    "categories": [
+      "cs.SE"
+    ],
+    "link": "http://arxiv.org/abs/2607.05659v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "From Legacy Documentation to OSCAL: An MCP-Based Agent Pipeline for Threat-Informed Continuous Compliance in Critical Infrastructure",
+    "abstract": "In critical infrastructure, operational technology environments often cannot be actively scanned, and yet active system feedback is needed for risk assessment and compliance. This paper presents a non-invasive, MCP-grounded multi-agent pipeline that converts natural-language system descriptions into source-verified knowledge graph and audit-ready artifacts in the NIST OSCAL format for continuous automated compliance management. The architecture decouples LLM-based reasoning from deterministic knowledge retrieval against authoritative threat-intelligence sources, reducing the risk of fabricated vulnerabilities and hallucinated attack paths.   In an evidence-based synthetic scenario of a water utility, the pipeline achieves 0.90 CVE recall and perfect D3FEND recall. It generates a schema-valid OSCAL System Security Plan and an OSCAL Security Assessment Report. Nevertheless, the core insight is not that grounding via MCP eliminates errors (e.g., hallucinations) entirely from the pipeline, but that it shifts errors into the first phase of asset extraction from the natural language description. Here, a single incorrectly extracted entity can lead to genuine but irrelevant CVEs in subsequent stages of the pipeline, which consumes time and resources. However, it makes the remaining risk visible, verifiable, and suitable for a time-efficient manual review, since the infrastructure (e.g., version numbers, OS, etc.) is typically known.",
+    "arxiv_id": "2607.08288v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Lea Roxanne Muth",
+      "Marian Margraf"
+    ],
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08288v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

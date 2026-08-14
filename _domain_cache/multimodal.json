@@ -1,0 +1,405 @@
+[
+  {
+    "title": "MonoIR-RS: Infrared Remote Sensing Vision-Language Learning with CLIP and VLM Adaptation",
+    "abstract": "Infrared remote-sensing imagery captures intensity structure, object-background contrast, and illumination-invariant cues often invisible in RGB imagery. Yet, most remote-sensing vision-language resources and models focus on visible-band semantics, leaving infrared vision-language understanding underexplored. We introduce MonoIR-RS, a large-scale infrared remote-sensing vision-language dataset and benchmark that couples IR-aware data construction with CLIP-style contrastive adaptation and VLM instruction tuning. Built from the same source pool and split as FusionRS, MonoIR-RS retains the infrared image as the model-facing modality, yielding 600,000 synthesized infrared images and 59,032 retained IR-aware caption records. The model experiments use this retained language-supervision subset, whose captions rewrite supervision around grayscale structure and infrared-style contrast instead of RGB appearance. We show that the synthesized infrared imagery is markedly closer to real thermal imagery than a grayscale conversion on the AVIID benchmark. We fine-tune five CLIP backbones and six VLM backbones, and calibrate them against zero-shot behavior: IR-aware adaptation lifts CLIP mean recall by up to 12.8 points and drives VLM captioning IR-cue coverage to 100% while reducing residual RGB-color leakage to near zero. By isolating the infrared modality from RGB-IR dual-modal learning, MonoIR-RS offers a controlled, reproducible testbed for aligning infrared remote-sensing evidence with language.",
+    "arxiv_id": "2607.06552v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Jiaju Han",
+      "Ma Yaqi",
+      "Yahui Chai",
+      "Xuemeng Sun",
+      "Xin Li"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06552v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Comparative Study of Domain-adapted VLMs for General Document Visual Question Answering",
+    "abstract": "Document Visual Question Answering (DocVQA) presents a complex multimodal challenge, requiring models to exploit visual, textual, and layout information from documents. Although Vision-Language Models (VLMs) have shown remarkable performance in text-vision tasks, their robustness and transferability to different document domains remains underexplored. In this study, we present a comprehensive evaluation of 8 open-source pretrained VLMs on DocVQA in three different document domains: industrial documents of varying type, infographics, and presentation slides. We systematically assess model performance under zero-shot evaluations, fully supervised finetuning with inter- and intra-dataset evaluations, and few-shot learning evaluations of knowledge transfer between domains. Our findings demonstrate that while large pretrained VLMs possess strong zero-shot baselines for structured layouts, their performance strongly decreases on visually complex layouts of infographics and slides. Although parameter scaling is a dominant factor on performance, supervised finetuning yields higher relative gains in smaller architectures. Furthermore, our cross-domain and few-shot experiments show that visual understanding is the main bottleneck for DocVQA, not a lack of knowledge from the VLMs. Using 50 target domain samples, the models finetuned in DocVQA with datasets of different domains rapidly adapt to the target domain documents, even surpassing their fully supervised counterparts in some cases.",
+    "arxiv_id": "2607.07179v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Miguel Lopez-Duran",
+      "Elena Marrero",
+      "Julian Fierrez",
+      "Marta Robledo-Moreno",
+      "Ruben Vera-Rodriguez"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "link": "http://arxiv.org/abs/2607.07179v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "AUTOPILOT VQA: Benchmarking Vision-Language Models for Incident-Centric Dashcam Understanding",
+    "abstract": "Recent advances in Vision-Language Models, Large Language Models, and Multimodal Large Language Models have improved autonomous driving tasks such as scene understanding, decision making, trajectory prediction, and visual question answering. However, evaluating whether these models can reliably reason about safety-critical incidents remains challenging. To address this gap, we present AUTOPILOT-VQA, an incident-centric visual question answering benchmark for dashcam video understanding. The dataset evaluates different systems through structured questions designed around real-world driving incidents and near-incidents. The benchmark covers diverse safety-relevant categories, including weather and lighting conditions, traffic environment, road layout, road surface state, signage, involved entities, accident occurrence, impact location, and avoidability-related reasoning. By requiring models to answer grounded questions about both contextual scene properties and event-level incident details, AUTOPILOT-VQA moves beyond object recognition toward temporally grounded, safety-aware reasoning. The dataset is released as part of the AUTOPILOT CVPR 2026 competition and provides a standardized benchmark for assessing the reliability of autonomous driving systems in different scenarios. Our benchmark support developments for more interpretable, robust, and safety-conscious vision-language systems for real-world autonomous driving.",
+    "arxiv_id": "2607.08745v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Siddharth Damodharan",
+      "Radhika Gupta",
+      "Ali Alshami",
+      "Ryan Rabinowitz",
+      "Jugal Kalita"
+    ],
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.08745v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Optimal Transport-based Semantic Alignment for LLM-based Audio-Visual Speech Recognition",
+    "abstract": "Large language model (LLM)-based audio-visual speech recognition (LLM-AVSR) has recently demonstrated strong robustness in adverse acoustic environments by leveraging complementary audio and visual information. Existing approaches typically employ independently pretrained acoustic and visual encoders, whose outputs are projected and fused as soft prompts to condition an LLM for speech recognition. However, most methods perform multimodal fusion without explicitly addressing the representational discrepancy between audio, visual and text modalities, potentially limiting the effectiveness of cross-modal integration. In this paper, we propose an optimal transport (OT)-based semantic alignment framework for LLM-AVSR. The proposed method explicitly bridges the modality gap by aligning the acoustic and visual representations with reference to the linguistic embedding space of the LLM before multimodal fusion. Specifically, OT is used to estimate probabilistic coupling matrices that characterize structured correspondences between modality-specific features and linguistic embeddings. The resulting OT couplings are further utilized as soft pseudo-labels to supervise contrastive learning, encouraging the extraction of semantically coherent and cross-modal consistent audio-visual representations. By anchoring multimodal features to the linguistic space of the LLM, the proposed framework facilitates more effective multimodal fusion and decoding. We implement the proposed framework using a Whisper-based acoustic encoder, an AV-HuBERT-based visual encoder, and a LLaMA3.2-3B decoder. Experiments conducted on the LRS3-TED benchmark demonstrate consistent improvements over strong baselines and achieve state-of-the-art performance under both clean and noisy evaluation conditions across a wide range of signal-to-noise ratios (SNRs).",
+    "arxiv_id": "2607.09001v1",
+    "published": "2026-07-10",
+    "authors": [
+      "Xugang Lu",
+      "Peng Shen",
+      "Yu Tsao",
+      "Hisashi Kawai"
+    ],
+    "categories": [
+      "cs.SD",
+      "eess.AS"
+    ],
+    "link": "http://arxiv.org/abs/2607.09001v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "IRIS: An Intelligent Vision-Language System for Ocular Surface Diseases via Topic Tree and Scene-Driven VQA Generation",
+    "abstract": "While Large Vision-Language Models (VLMs) demonstrate remarkable generic capabilities, their clinical reasoning in specialized domains like ocular surface diseases (OSDs) is severely hindered by a paucity of high-fidelity, multimodal instruction-tuning data. To dismantle this data bottleneck, we introduce IRIS, an Intelligent Recognition and Interaction System tailored for fine-grained OSD understanding via external eye photography. First, we curate IRIS-120K, the largest and most comprehensive OSD visual question-answering (VQA) dataset to date. Crucially, to overcome the semantic shallowness of conventional image-caption pairs, we propose a synergistic data generation paradigm to explicitly inject clinical priors. Our data engine operates via a dual-branch framework: 1) a Topic Finding Tree (TFT) that hierarchically anchors visual features to precise anatomical and pathological concepts, enforcing rigorous medical deduction logic; and 2) a Scene-driven strategy that synthesizes role-adaptive clinical dialogues to ensure pragmatic generalization. By explicitly aligning a compact 4B-parameter VLM on this structurally enriched corpus, IRIS achieves state-of-the-art performance, comprehensively outperforming both generalist and specialized medical VLMs with up to 34B parameters. Our findings underscore that structured knowledge injection profoundly prevails over sheer parameter scaling, unlocking the potential for resource-efficient, expert-level AI deployment on mobile edge devices for scalable OSD screening. Code, datasets, and model weights will be publicly released by this repo.",
+    "arxiv_id": "2607.04344v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Hao Wei",
+      "Wenjin Qi",
+      "Dasen Dai",
+      "Minqing Zhang",
+      "Wu Yuan"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.04344v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "InfraQR: Edge-Placed QR-Inspired Structured Patch Attacks on Infrared Vision-Language Models",
+    "abstract": "Infrared vision-language models are increasingly used for perception under low-light and adverse visual conditions, yet their robustness to localized structured perturbations remains underexplored. Existing infrared adversarial studies mainly focus on object detectors, leaving the security of infrared vision-language models less systematically examined. We present InfraQR, a QR-inspired structured patch attack for infrared vision-language models. Unlike localized attacks that attach perturbations to the target object, InfraQR places a compact structured patch along image boundaries and optimizes learnable grid cells through surrogate CLIP-style encoders. The resulting patch has a near-binary structured appearance, but is not required to be a valid or machine-readable QR code. We evaluate InfraQR on infrared classification, caption transfer, and question-answer-aware visual question answering (VQA) tasks. On a 300-image infrared benchmark, InfraQR sharply reduces the accuracy of multiple CLIP-style classifiers, including reducing OpenAI CLIP accuracy from 98.67% to 0.70%. The generated adversarial images also transfer to black-box captioning and VQA models, causing semantic degradation in captions and more error-prone answers under GPT-5.4-based evaluation. These results show that infrared vision-language models remain vulnerable to structured edge-placed perturbations, motivating further study of cross-task robustness beyond direct object occlusion.",
+    "arxiv_id": "2607.07288v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Xin Li",
+      "Jiaju Han",
+      "Ma Yaqi",
+      "Chengyin Hu",
+      "Yingying Zhao"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.07288v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "General Incomplete Multimodal Learning via Dynamic Quality Perception",
+    "abstract": "Multimodal learning robust to missing modalities is essential for real-world applications. Existing methods mainly focus on inter-modality missing, where entire modalities are absent, while overlooking intra-modality degradation, where modalities are present but severely corrupted. In practice, these two types of missing often coexist, making existing approaches ineffective. To address this limitation, we propose General Incomplete Multimodal Learning (GIML), a unified framework that simultaneously handles both inter-modality missing and intra-modality degradation through dynamic quality perception. Specifically, GIML models heterogeneous missing patterns as continuous modality information degradation, enabling degradation-aware adaptive fusion. To achieve reliable quality perception, we introduce a Noise-aware Quality Estimator that learns the mapping from corrupted features to noise intensity through controlled noise injection. Furthermore, we propose a Noise-Semantic Decoupled module that separates semantic information from noise interference. This improves robustness and generalization to unseen corruption patterns. Extensive experiments across datasets with diverse modality types demonstrate the effectiveness and generality of GIML. Code is available at: https://github.com/Yu-Five/GIML.",
+    "arxiv_id": "2607.06943v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Xiangyu Meng",
+      "Shicai Wei"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06943v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "AVA-VLM: Adaptive Visual Attention-Vision Language Model for In-the-Wild Construction Site Monitoring",
+    "abstract": "Vision-Language Models (VLMs) are promising for construction-site monitoring, and recent construction-tailored VLMs have primarily adapted pretrained VLMs through direct QA-style fine-tuning from a single global image. We argue that this direct paradigm remains limited for in-the-wild deployment in terms of operational range, reliability under reduced-resolution inputs, and inference efficiency. To address these challenges, we propose AVA-VLM, an Adaptive Visual Attention-Vision Language Model that follows a human-inspired coarse-to-fine reasoning strategy. AVA-VLM first reasons over a low-resolution global image and selectively requests a high-resolution local crop only when detailed inspection is needed, similar to how a human inspector zooms in on hard-to-see yet important areas. We further introduce a region-aware Chain-of-Thought dataset that teaches the model when to inspect, where to crop, and how to use local evidence. Experiments show that AVA-VLM improves reliability under long-distance and reduced-resolution conditions while substantially reducing visual-token usage.",
+    "arxiv_id": "2607.05859v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Younggun Kim",
+      "Taeheon Kim",
+      "Youngseo Kim",
+      "Seunghee Park"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.05859v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Does It Fail to See or Fail to Know? Attributing Errors in Vision-Language Models",
+    "abstract": "Vision-language models (VLMs) perform well on visual question answering with high-quality images but struggle when questions require knowledge beyond what is clearly and directly visible. In such settings, uncertainty quantification should not only indicate whether the model is likely to fail but also diagnose why it is uncertain, across dimensions such as perception, entity recognition, and knowledge retrieval. While prior work has focused on individual failure modes in isolation or treated incorrect answers as monolithic failures, we propose a unified framework for disentangling these failure modes and investigate whether pre-generation signals can predict these failure sources. Across a range of datasets and model families, we find a consistent pattern in VLM errors: some failures arise from visual or recognition bottlenecks, while others persist after the relevant entity is identified. Our main finding is that these failure sources can be predicted before decoding: recognition-related failures are best captured by visual-token representations, while failures that remain after recognition are better captured by prompt-conditioned hidden states. This pre-generation signal enables efficient failure-source prediction before the model produces an answer, allowing uncertain cases to be routed to targeted interventions such as image repair, entity recognition support, or external retrieval.",
+    "arxiv_id": "2607.04683v2",
+    "published": "2026-07-06",
+    "authors": [
+      "Khang Nhat Hoang Vo",
+      "Artem Vazhentsev",
+      "Artem Shelmanov",
+      "Timothy Baldwin",
+      "Yova Kementchedjhieva"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "link": "http://arxiv.org/abs/2607.04683v2",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "VLM-CASE: Vision-Language Model Enabled Context-Adaptive Safety Envelopes for Anticipatory Safe Autonomous Driving",
+    "abstract": "Adverse driving conditions, such as bad weather, remain a principal barrier to autonomous driving because they degrade two things at once: what the vehicle can perceive and what it can physically do. Human drivers cope by anticipation, reasoning about the scene and re-budgeting speed, following distance, and steering before grip or sight is lost, whereas current autonomous driving systems at best react after the fact. This paper proposes VLM-CASE, a framework that gives an autonomous vehicle this anticipatory capacity while keeping its motion bounded by a formal safety model at all times. A vision-language model (VLM), fine-tuned with low-rank adaptation (LoRA), reasons about the scene from the front-camera image and reports the road surface and visibility conditions. This output parametrizes a context-adaptive safety envelope (CASE), derived from physical limits and the guarantees of responsibility-sensitive safety, that couples braking and steering through a shared friction budget. A model predictive controller then drives freely within the envelope, while the VLM runs asynchronously so it never blocks the real-time control loop. We validate the framework in closed-loop CARLA simulation on tasks that demand both lateral and longitudinal control, across a range of weather, road-surface, and lighting conditions. The resulting controller, VLM-CASE-MPC, completes all trials, outperforming a conventional MPC baseline and a state-of-the-art VLM-integrated controller. Ablations confirm that the gains come from context adaptation, with the friction and visibility adaptations proving complementary. Furthermore, the framework is controller-agnostic and pairs with almost any low-level controller, offering a promising direction for safe autonomous driving. The dataset and supplementary materials for VLM-CASE are available at https://github.com/ytj254/VLM-CASE.",
+    "arxiv_id": "2607.05180v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Tianjia Yang",
+      "Ke Li",
+      "Ruwen Qin",
+      "Xianbiao Hu"
+    ],
+    "categories": [
+      "cs.RO",
+      "cs.CV",
+      "eess.SY"
+    ],
+    "link": "http://arxiv.org/abs/2607.05180v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Multimodal Unlearning Across Vision, Language, Video, and Audio: Survey of Methods, Datasets, and Benchmarks",
+    "abstract": "With the growing adoption of VLMs, DMs, LLMs, and AFMs, these multimodal foundation models can inadvertently encode sensitive, copyrighted, biased, or unsafe cross-modal associations that originate from their training data. Retraining after deletion requests or policy updates is often impractical, and targeted forgetting remains difficult because knowledge is distributed across shared representations. Multimodal unlearning addresses this challenge by enabling selective removal across modalities while retaining overall utility. This survey offers a unified, system-oriented view of multimodal unlearning across vision, language, audio, and video, grounded in recent advances, emerging applications, and open problems. Our taxonomy enables systematic comparison across model architectures and modalities, clarifying trade-offs among deletion strength, retention, efficiency, reversibility, and robustness. This survey highlights open problems and practical considerations to support future research and deployment of multimodal unlearning. We release a curated repository: https://smsnobin77.github.io/Awesome-Multimodal-Unlearning/",
+    "arxiv_id": "2607.07907v1",
+    "published": "2026-07-08",
+    "authors": [
+      "Nobin Sarwar",
+      "Shubhashis Roy Dipta",
+      "Zheyuan Liu",
+      "Vaidehi Patil"
+    ],
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "cs.CR",
+      "cs.MM"
+    ],
+    "link": "http://arxiv.org/abs/2607.07907v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Evaluating and Understanding Model Editing for Medical Vision Language Models",
+    "abstract": "Model editing promises a fast, targeted way to correct post-deployment mistakes in medical vision-language models (VLMs) without costly retraining. However, existing multimodal model editing benchmarks focus on general-purpose tasks and do not reflect realistic clinical domain requirements and variability. To address this, we introduce M3Bench, a clinically grounded benchmark for multimodal model editing that evaluates whether an edit remains reliable, precise, and generalizable under the challenges of image and text variation, modality and protocol shifts, clinical knowledge composition, and temporal progression. M3Bench contains 16,276 questions spanning diverse anatomy, modalities, and specialties, and supports both single and sequential edits.   By evaluating 4 representative editors across 6 medical and general VLMs, we find that no method excels across all criteria. Gradient-based editors achieve strong transfer but suffer from catastrophic locality violations, whereas memory-based methods preserve locality but lack compositional generality and exhibit high backbone-dependent hyperparameter sensitivity. We further attribute these failures to the latent space geometry of VLMs and how different editing methods shift its landscape. Overall, M3Bench establishes a rigorous clinical stress test for multimodal model editing and offers actionable guidance for safer post-deployment adaptation. The benchmark is publicly available at https://github.com/BioMed-AI-Lab-U-Michgan/M3Bench .",
+    "arxiv_id": "2607.05310v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Guli Zhu",
+      "Chenwei Wu",
+      "Liyue Shen"
+    ],
+    "categories": [
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.05310v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "EVAS: Efficient Multimodal Temporal Forgery Localization via Audio-Visual Synergy and Steered Boundary Calibration",
+    "abstract": "The rapid proliferation of artificial intelligence-generated content necessitates reliable multimodal forensics. Beyond video-level binary classification, precisely localizing sparsely distributed forged segments in long-form videos remains a critical challenge. This task is particularly difficult when manipulations are subtly embedded and cross-modal signals are weak and temporally diffuse. To address these challenges, we propose EVAS, an end-to-end multimodal framework for temporal forgery localization. At its core, a Multi-Stage Audio-Visual Synergy mechanism facilitates progressive cross-modal interaction to learn deep multimodal forensic representations and capture high-order semantic traces of sparse manipulations. Furthermore, we introduce a Boundary-Aware Refinement strategy to achieve steered boundary calibration. By incorporating invalid-frame masking, this strategy suppresses ambiguous regions and sharpens transition predictions. We adopt a decoupled training paradigm with auxiliary heads to disentangle representation learning from inference objectives, enhancing model generalization and stability. Additionally, a lightweight HourglassFFN is incorporated to reduce computational overhead. Extensive experiments demonstrate that EVAS achieves state-of-the-art average localization accuracy and average recall across three benchmark datasets, validating its effectiveness for fine-grained temporal forgery localization.",
+    "arxiv_id": "2607.04472v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Shen Shen",
+      "Quan Zhang",
+      "Dan Jiang",
+      "Ke Zhang"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.04472v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "SeeMe: Mitigating Hallucinations in Large Vision-Language Models through Effective Visual Token Engineering",
+    "abstract": "Large Vision-Language Models (LVLMs) have achieved remarkable progress in visual understanding tasks such as image captioning and visual question answering. However, they remain susceptible to hallucinations, generating content that is inconsistent with the actual visual input. Existing methods primarily intervene at the decoding stage, while overlooking a critical source of hallucinations: irrelevant or noisy visual tokens that mislead the decoding process. To address this issue, we propose SeeMe, a training-free framework that introduces the concept of feature engineering from traditional machine learning into LVLMs. SeeMe restructures visual tokens through a three-stage token engineering process to suppress hallucination sources while preserving informative visual evidence. Experiments on MME, POPE, and AMBER benchmarks across four LVLMs demonstrate that SeeMe consistently reduces hallucinations and improves output consistency, providing a novel perspective for mitigating hallucinations in LVLMs.",
+    "arxiv_id": "2607.04163v1",
+    "published": "2026-07-05",
+    "authors": [
+      "Kai Tang",
+      "Jinhao You",
+      "Bohua Zhang",
+      "Yichen Guo",
+      "Yiding Sun"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.04163v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Vision as Unified Multimodal Generation",
+    "abstract": "We formulate computer vision as unified multimodal generation, where heterogeneous visual tasks are expressed in the native text and image generation spaces of a unified multimodal model, without task-specific architectures. Under this formulation, SenseNova-Vision uses natural-language instructions and optional visual prompts to specify tasks, target regions or views, and decoding conventions, and generates responses as text for symbolic outputs, images for dense spatial predictions, or mixed text-and-image outputs for compositional tasks. To support large-scale training, we convert diverse computer vision annotations into instruction-response examples compatible with these generation spaces, resulting in the SenseNova-Vision Corpus, a computer-vision instruction-response corpus spanning text, image, and mixed targets. Starting from an off-the-shelf pretrained unified multimodal model, SenseNova-Vision is trained primarily on this corpus, with auxiliary multimodal data used as a capability-preserving mixture, and requires no task-specific prediction heads or architectural modifications. The resulting model covers a broad range of vision tasks, including detection, OCR, keypoint estimation, segmentation, depth estimation, surface normal prediction, point maps, and camera pose estimation, while supporting language-defined variants that combine category, color, region, and other visual cues. Experiments show that a single unified model can match leading task-specialized systems across structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry. These results suggest unified multimodal generation as a scalable route for integrating computer vision capabilities into general-purpose foundation models. The model and corpus are publicly available.",
+    "arxiv_id": "2607.06560v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Xiaoyang Han",
+      "Jianhua Li",
+      "Kewang Deng",
+      "Zukai Chen",
+      "Xuanke Shi"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.06560v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Hierarchical Evidence-Driven Reasoning for Long Document Understanding",
+    "abstract": "Retrieval-Augmented Generation (RAG) streamlines long-document understanding by leveraging retrieval mechanisms to restrict input images to a highly curated subset. However, existing multimodal RAG pipelines primarily face two critical challenges: first, standard semantic similarity retrievers frequently fetch topically overlapping yet answer-void distractor pages that mislead downstream generation; second, rigid single-pass pipelines heavily depend on initial retrieval success, where any omission of core evidence inevitably causes cascading errors. To address these challenges, we introduce HIEVI-RAG, a hierarchical, evidence-driven multimodal RAG framework for closed-domain document understanding. HIEVI-RAG systematically factorizes complex queries into a cooperative four-stage pipeline: (1) hierarchical question decomposition to break multi-hop root queries into atomic child questions; (2) coarse visual page retrieval leveraging a multimodal retriever to fetch candidate pages based on semantic similarity; (3) fine-grained page verification via EVIAGENT, a specialized multi-page verifier trained with GRPO to execute cross-page reasoning over multi-image blocks; and (4) memory-guided iterative generation that leverages accumulated sub-question context to execute multi-round, dynamic reasoning over the prioritized sequence. Extensive evaluations across four benchmarks demonstrate the robust efficacy and synergy of our framework, which significantly outperforms existing open-source baselines and exceeds the strongest reported baseline by an average of 8.05% in accuracy.",
+    "arxiv_id": "2607.04625v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Junyu Xiong",
+      "Yonghui Wang",
+      "Rongjian Gu",
+      "Chenyu Liu",
+      "Bing Yin"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.04625v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "CLAP: Direct VLM-to-VLA Adaptation via Language-Action Grounding",
+    "abstract": "Vision-language-action models (VLAs) inherit semantic capabilities from pretrained VLMs, yet large-scale post-training on robot data and architectural modifications can reshape the backbone so extensively that it becomes difficult to isolate what the VLM contributes to control. Directly converting pretrained VLMs into VLAs with minimal architectural change offers a more transparent path to understanding how VLM capabilities transfer across model scales. The core obstacle is output-distribution mismatch: predicting actions as bare numeric token sequences moves generation away from the VLM's pretrained language distribution, degrading the capabilities we seek to preserve. To address this, we propose CLAP (Causal Language-Action Prediction), which prepends each numeric action sequence with a natural-language action description, causally conditioning precise action-token prediction on a language-action plan without modifying the backbone architecture. With single-epoch fine-tuning alone, 2B CLAP achieves 90.8% on LIBERO (+14.9 pt over VLA-0) and improves robustness on LIBERO-PRO under language, object, and spatial perturbations. We will release CLAP at 0.8B, 2B, and 4B as an open-weight, multi-scale compact VLA family from a single VLM lineage, enabling controlled analysis of VLM-to-VLA capability transfer.",
+    "arxiv_id": "2607.08974v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Yuri Ishitoya",
+      "Jeremy Siburian",
+      "Masashi Hamaya",
+      "Kuniaki Saito",
+      "Cristian C. Beltran-Hernandez"
+    ],
+    "categories": [
+      "cs.RO",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.08974v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "RoboVista: Evaluating Vision Language Models for Diverse Robot Applications",
+    "abstract": "Diverse applications for robotics, such as industry and agriculture, require robots to operate across various embodiments, changing visual conditions, and complex planning. Vision-Language Models (VLMs) offer a promising foundation for general-purpose and interpretable robotic reasoning. Aligning VLMs with diverse robot applications requires a modular understanding of the individual decision components that underlie robotic behavior. Capturing such structure is challenging for conventional robot benchmarks that are primarily based on teleoperated, end-to-end datasets. We propose Robot Question Answering (RQA), a modular evaluation framework and RoboVista, a benchmark curated from real robotic systems, research papers, and expert annotations. RoboVista contains 474 Visual Question Answering (VQA) instances with human annotated reasoning and covers 39 unique task types in agricultural, industrial, domestic, surgical robotics, autonomous driving, and open robot datasets. Experiments on RoboVista show that state-of-the-art VLMs exhibit substantial gaps. Physical robot experiments suggest strong correlation between RoboVista performance and real-world task execution.",
+    "arxiv_id": "2607.04610v1",
+    "published": "2026-07-06",
+    "authors": [
+      "Shuangyu Xie",
+      "Kaiyuan Chen",
+      "Ziyang Chen",
+      "Simeon Adebola",
+      "Yixuan Huang"
+    ],
+    "categories": [
+      "cs.RO"
+    ],
+    "link": "http://arxiv.org/abs/2607.04610v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "Analysis-by-Proxy: Localization Signals in VLMs Operating as Condition Encoders",
+    "abstract": "Vision-Language Models (VLMs) are increasingly utilized as the conditioning backbone for diffusion-based image editing due to their remarkable multimodal reasoning capabilities. While standalone VLMs demonstrate strong localization capabilities, editing pipelines frequently struggle to maintain this accuracy, particularly in complex, multi-entity scenes. In this work, we investigate this performance gap, hypothesizing that it stems from treating the VLM as a condition encoder. In this role, the model is restricted to a single forward pass, preventing the autoregressive generation process for which it was optimized, thereby failing to fully expose its capabilities. To investigate whether this spatial understanding persists when the VLM is used as a condition encoder, we introduce Analysis-by-Proxy. In this framework, we train a lightweight, interpretable proxy model on the VLM's intermediate representations using an auxiliary localization task. By analyzing the VLM through this proxy, we uncover the specific VLM representations that encode localization information. Our findings expose a fundamental mismatch between how spatial knowledge is represented within a VLM condition encoder and how it is extracted by current editing pipelines. We reveal that under single-pass constraints, the localization signal does not reliably propagate to the predefined layer configurations commonly used for conditioning. Instead, this crucial signal remains hidden within intermediate representations, at locations that vary depending on the input prompt. Using our introduced Analysis-by-Proxy framework, we reveal the fundamental failures of existing condition extraction strategies in editing pipelines, opening the door to more principled design of conditioning architectures.",
+    "arxiv_id": "2607.06445v1",
+    "published": "2026-07-07",
+    "authors": [
+      "Yoav Baron",
+      "Sara Dorfman",
+      "Roni Paiss",
+      "Daniel Cohen-Or",
+      "Or Patashnik"
+    ],
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "link": "http://arxiv.org/abs/2607.06445v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  },
+  {
+    "title": "VSRo-200: A Romanian Visual Speech Recognition Dataset for Studying Supervision and Multimodal Robustness",
+    "abstract": "We introduce VSRo-200, the first large-scale dataset for visual speech recognition (lip reading) in Romanian, comprising 200 hours of real-world podcast videos. All samples are annotated with pseudo-labels generated by a fine-tuned Romanian ASR model, while a subset of 100 hours is additionally transcribed by humans, enabling controlled analysis of supervision quality under a unified framework. Building on this dataset, we establish a benchmark for visual speech recognition in low-resource settings. We systematically study the impact of supervision quality, showing that while human annotations provide better performance at fixed data scales, pseudo-labels enable continued improvements through scalability. We further evaluate robustness under domain shift using curated out-of-distribution (OOD) test sets, and analyze audio-visual speech recognition (AVSR) under noisy conditions, where multimodal fusion significantly improves robustness compared to audio-only models. Finally, we demonstrate that representations learned on VSRo-200 transfer effectively to the LRRo benchmark for isolated word recognition, substantially outperforming previously reported results. Overall, VSRo-200 provides a new testbed for studying supervision, domain generalization, and multimodal fusion in low-resource visual speech recognition.",
+    "arxiv_id": "2607.08112v1",
+    "published": "2026-07-09",
+    "authors": [
+      "Iulia-Maria Udrea",
+      "Alexandra Diaconu",
+      "Bogdan Alexe"
+    ],
+    "categories": [
+      "cs.CV"
+    ],
+    "link": "http://arxiv.org/abs/2607.08112v1",
+    "score": 1.0,
+    "citation_count": 0,
+    "influential_count": 0
+  }
+]

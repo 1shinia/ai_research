@@ -1,0 +1,48 @@
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 缓存
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Node
+node_modules/
+package-lock.json
+package.json
+
+# 构建产物
+site/
+.sass-cache/
+
+# 临时脚本与调试文件
+_*.py
+check_*.py
+debug_*.py
+test_*.py
+convert_*.py
+create_*.py
+fetch_*.py
+fix_*.py
+install_*.py
+run_*.py
+start_*.py
+tool_unavailable.md
+nav_debug.txt
+screenshot*.png
+wiki_*.png
+restart_note.txt
+tomorrow_weather.js
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# 大文件（按需上传）
+*.pptx

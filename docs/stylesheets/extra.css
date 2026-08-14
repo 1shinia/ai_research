@@ -1,0 +1,79 @@
+/* 侧边栏导航字体层级调整 */
+/* 让"论文库"和"知识库"为 LABEL，样式完全一致，不随激活状态改变颜色 */
+
+.md-sidebar--primary .md-nav__item--section > .md-nav__link,
+.md-sidebar--primary .md-nav__item--section .md-nav__container > a.md-nav__link {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: var(--md-default-fg-color) !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+}
+
+/* LABEL 在激活状态下也保持颜色不变 */
+.md-sidebar--primary .md-nav__item--section.md-nav__item--active > label.md-nav__link {
+    color: var(--md-default-fg-color) !important;
+}
+
+/* 每个分支最下方的"趋势追踪"与论文库字体一致 */
+.md-sidebar--primary .md-nav__link[href$="trends/"] {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+}
+
+/* 桌面视图下支持导航分支折叠/展开 */
+@media screen and (min-width: 76.25em) {
+  /* 显示折叠/展开图标 */
+  .md-nav__item--section > .md-nav__link > [for] {
+    display: flex !important;
+  }
+  .md-nav__item--section > .md-nav__link .md-icon {
+    display: inline-block !important;
+  }
+  /* 覆盖 MkDocs 强制展开章节的规则，让折叠状态生效 */
+  .md-nav__item--section > .md-nav__toggle:not(:checked) ~ .md-nav {
+    display: grid !important;
+    opacity: 0 !important;
+    visibility: collapse !important;
+    grid-template-rows: minmax(0.4rem, 0fr) !important;
+  }
+  .md-nav__item--section > .md-nav__toggle:checked ~ .md-nav {
+    display: grid !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    grid-template-rows: minmax(0.4rem, 1fr) !important;
+  }
+}
+
+/* === 导航层级字体大小控制（由 JS 动态添加 data-depth）===
+   2026-07-15 更新：depth 2 区分嵌套项（有子页面） vs 叶子项（直接页面）
+   - 嵌套项：0.7rem（分类标题，如 模型效果评估）
+   - 叶子项：0.85rem（直接页面，如 模型性能压测、项目总览）
+=== */
+.md-sidebar--primary .md-nav__item[data-depth="1"] > .md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="1"] > label.md-nav__link {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+}
+/* depth 2: 嵌套项（有子目录，如 模型效果评估）——加粗大号 */
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested > .md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested > label.md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested > a.md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested > .md-nav__link.md-nav__container,
+/* 穿透容器：内层 a 和 span 也要覆盖 */
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested .md-nav__container > a.md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"].md-nav__item--nested .md-nav__container > a.md-nav__link .md-ellipsis {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+}
+/* depth 2: 叶子项（直接页面，如 模型性能压测、项目总览）——稍大加粗 */
+.md-sidebar--primary .md-nav__item[data-depth="2"]:not(.md-nav__item--nested) > .md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"]:not(.md-nav__item--nested) > label.md-nav__link,
+.md-sidebar--primary .md-nav__item[data-depth="2"]:not(.md-nav__item--nested) > a.md-nav__link {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+}
+.md-sidebar--primary .md-nav__item[data-depth="3"] > .md-nav__link {
+    font-size: 0.65rem !important;
+    font-weight: 400 !important;
+}

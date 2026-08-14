@@ -1,0 +1,439 @@
+site_name: AI Research Tracker
+site_description: 追踪 AI 前沿研究，涵盖 LLM、视觉、多模态、Agent、生成式、强化学习、高效训练、机器人、AI安全等 10 大领域，每领域设论文库、知识库、模型库、代码库、数据集库
+site_url: http://localhost:8000
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到暗色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到亮色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/external_links.js
+  - javascripts/weekly_check.js
+
+nav:
+  - 首页: index.md
+  - 研究项目:
+    - 智能路由系统:
+      - 项目总览: projects/smart-router/index.md
+      - 背景调研: projects/smart-router/01-background.md
+      - 现有方案分析: projects/smart-router/02-existing-solutions.md
+      - 架构设计: projects/smart-router/03-architecture.md
+      - 实现方案: projects/smart-router/04-implementation.md
+      - 参考资料: projects/smart-router/05-resources.md
+    - 大模型评测系统:
+      - 项目总览: projects/llm-eval/index.md
+      - 模型效果评估:
+        - 概览: projects/llm-eval/eval-effectiveness/index.md
+        - LLM & VLM: projects/llm-eval/eval-effectiveness/LLM&VLM/index.md
+        - Embedding & Reranker: projects/llm-eval/eval-effectiveness/Embedding&Reranker/index.md
+        - AIGC: projects/llm-eval/eval-effectiveness/AIGC/index.md
+        - Audio: projects/llm-eval/eval-effectiveness/Audio/index.md
+      - 模型性能压测: projects/llm-eval/stress-test.md
+    - 多智能体平台:
+      - 项目总览: projects/multi-agent-platform/index.md
+    - 前沿知识库:
+      - 项目总览: projects/frontier-knowledge/index.md
+      - learn-claude-code: projects/frontier-knowledge/learn-claude-code/index.md
+      - ai-agent-book: projects/frontier-knowledge/ai-agent-book/index.md
+      - PD 分离: projects/frontier-knowledge/pd-separation.md
+      - AF 分离: projects/frontier-knowledge/af-separation.md
+      - Agentic Infra Platform:
+        - 平台总览: projects/frontier-knowledge/agentic-infra/index.md
+        - 平台技术全貌: projects/frontier-knowledge/agentic-infra/platform-overview.md
+        - Dynamo PD 分离: projects/frontier-knowledge/agentic-infra/dynamo-pd-separation.md
+        - 推理链路全景: projects/frontier-knowledge/agentic-infra/inference-stack-landscape.md
+        - Triton Inference Server: projects/frontier-knowledge/agentic-infra/triton-inference-server.md
+        - 网络层 CMX/BlueField: projects/frontier-knowledge/agentic-infra/network-layer.md
+        - 安全沙箱: projects/frontier-knowledge/agentic-infra/sandbox.md
+        - NVIDIA Secure Agent Workspace: projects/frontier-knowledge/agentic-infra/nvidia-secure-agent-workspace.md
+        - SAW 完整中文翻译: projects/frontier-knowledge/agentic-infra/nvidia-saw-translation.md
+        - AI 算法工程师手册: projects/frontier-knowledge/agentic-infra/ai-engineer-playbook.md
+        - Vera Rubin: projects/frontier-knowledge/agentic-infra/vera-platform.md
+  - 大语言模型:
+    - 概览: categories/llm/index.md
+    - 论文库:
+      - Attention Is All You Need: categories/llm/papers/2017-06-12-attention-is-all-you-need.md
+      - Scaling Laws: categories/llm/papers/2020-01-23-scaling-laws.md
+      - GPT-3: categories/llm/papers/2020-05-28-gpt3.md
+      - Chain-of-Thought: categories/llm/papers/2022-01-28-chain-of-thought.md
+      - InstructGPT (RLHF): categories/llm/papers/2022-03-04-instructgpt.md
+      - Switch Transformer (MoE): categories/llm/papers/2022-01-12-switch-transformer.md
+      - RAG: categories/llm/papers/2020-05-22-rag.md
+      - DPO: categories/llm/papers/2023-05-29-dpo.md
+    - 知识库:
+      - 基础架构:
+        - Transformer 架构详解: categories/llm/knowledge/transformer-architecture.md
+        - 自注意力机制 (Self-Attention): categories/llm/knowledge/self-attention.md
+        - 位置编码 (Positional Encoding): categories/llm/knowledge/positional-encoding.md
+        - MoE 混合专家架构: categories/llm/knowledge/moe.md
+      - 训练方法:
+        - 预训练 (Pre-training): categories/llm/knowledge/pretraining.md
+        - 监督微调 (SFT): categories/llm/knowledge/sft.md
+        - RLHF 完整流程: categories/llm/knowledge/rlhf-pipeline.md
+        - DPO 直接偏好优化: categories/llm/knowledge/dpo.md
+      - 推理与优化:
+        - 解码策略: categories/llm/knowledge/decoding-strategies.md
+        - 上下文扩展技术: categories/llm/knowledge/context-extension.md
+        - RAG 检索增强生成: categories/llm/knowledge/rag.md
+      - 关键概念:
+        - Scaling Law: categories/llm/knowledge/scaling-law.md
+        - 涌现能力 (Emergent Abilities): categories/llm/knowledge/emergent-abilities.md
+        - In-Context Learning: categories/llm/knowledge/in-context-learning.md
+        - 思维链 (Chain-of-Thought): categories/llm/knowledge/chain-of-thought.md
+    
+    - 模型库:
+      - LLaMA 3: categories/llm/models/llama3.md
+      - Qwen2.5: categories/llm/models/qwen2.5.md
+      - Mistral / Mixtral: categories/llm/models/mistral.md
+      - DeepSeek-V2/3: categories/llm/models/deepseek.md
+    - 代码库:
+      - vLLM: categories/llm/code/vllm.md
+      - LLaMA-Factory: categories/llm/code/llama-factory.md
+      - HuggingFace Transformers: categories/llm/code/transformers.md
+      - Ollama: categories/llm/code/ollama.md
+
+    - 数据集库:
+      - The Pile: categories/llm/datasets/the-pile.md
+      - C4 (Colossal Clean Crawled Corpus): categories/llm/datasets/c4.md
+      - RedPajama: categories/llm/datasets/redpajama.md
+      - FineWeb: categories/llm/datasets/fineweb.md
+      - SlimPajama: categories/llm/datasets/slimpajama.md
+      - Dolma: categories/llm/datasets/dolma.md
+    - 趋势追踪: categories/llm/trends.md
+  - 计算机视觉:
+    - 概览: categories/vision/index.md
+    - 论文库:
+      - ResNet: categories/vision/papers/2015-12-10-resnet.md
+      - ViT: categories/vision/papers/2020-10-22-vit.md
+      - DDPM (Diffusion): categories/vision/papers/2020-06-19-ddpm.md
+      - 3D Gaussian Splatting: categories/vision/papers/2023-02-20-3d-gaussian-splatting.md
+      - SAM: categories/vision/papers/2023-04-05-sam.md
+    - 知识库:
+      - 基础架构:
+        - 卷积神经网络 (CNN): categories/vision/knowledge/cnn.md
+        - Vision Transformer (ViT): categories/vision/knowledge/vit.md
+      - 核心任务:
+        - 目标检测: categories/vision/knowledge/object-detection.md
+        - 图像分割: categories/vision/knowledge/image-segmentation.md
+      - 生成与 3D:
+        - 扩散模型原理: categories/vision/knowledge/diffusion-models.md
+        - 3D 重建与渲染: categories/vision/knowledge/3d-reconstruction.md
+    
+    - 模型库:
+      - SAM 2: categories/vision/models/sam2.md
+      - DINOv2: categories/vision/models/dinov2.md
+      - YOLOv8: categories/vision/models/yolov8.md
+      - ResNet 系列: categories/vision/models/resnet.md
+    - 代码库:
+      - Detectron2: categories/vision/code/detectron2.md
+      - MMDetection: categories/vision/code/mmdetection.md
+      - OpenCV: categories/vision/code/opencv.md
+
+    - 数据集库:
+      - ImageNet: categories/vision/datasets/imagenet.md
+      - COCO: categories/vision/datasets/coco.md
+      - OpenImages: categories/vision/datasets/openimages.md
+      - LVIS: categories/vision/datasets/lvis.md
+      - SA-1B: categories/vision/datasets/sa1b.md
+    - 趋势追踪: categories/vision/trends.md
+  - 多模态:
+    - 概览: categories/multimodal/index.md
+    - 论文库:
+      - CLIP: categories/multimodal/papers/2021-01-05-clip.md
+      - Whisper: categories/multimodal/papers/2022-12-06-whisper.md
+      - LLaVA: categories/multimodal/papers/2023-04-14-llava.md
+    - 知识库:
+      - 基础方法:
+        - 对比学习 (Contrastive Learning): categories/multimodal/knowledge/contrastive-learning.md
+        - 跨模态对齐: categories/multimodal/knowledge/cross-modal-alignment.md
+      - 核心架构:
+        - 视觉-语言模型: categories/multimodal/knowledge/vision-language-models.md
+        - 语音识别基础: categories/multimodal/knowledge/speech-recognition.md
+    
+    - 模型库:
+      - Qwen-VL / Qwen2-VL: categories/multimodal/models/qwen-vl.md
+      - LLaVA-NeXT: categories/multimodal/models/llava-next.md
+      - CLIP: categories/multimodal/models/clip.md
+    - 代码库:
+      - LLaVA 代码库: categories/multimodal/code/llava-code.md
+      - Transformers (多模态): categories/multimodal/code/transformers-mm.md
+
+    - 数据集库:
+      - LAION-5B: categories/multimodal/datasets/laion5b.md
+      - Conceptual Captions (CC12M): categories/multimodal/datasets/cc12m.md
+      - WIT: categories/multimodal/datasets/wit.md
+      - MS-COCO Captions: categories/multimodal/datasets/coco-captions.md
+      - Flickr30k: categories/multimodal/datasets/flickr30k.md
+    - 趋势追踪: categories/multimodal/trends.md
+  - AI Agent:
+    - 概览: categories/agents/index.md
+    - 论文库:
+      - ReAct: categories/agents/papers/2022-10-06-react.md
+      - Toolformer: categories/agents/papers/2023-02-20-toolformer.md
+    - 知识库:
+      - 基础能力:
+        - 规划与推理: categories/agents/knowledge/planning-reasoning.md
+        - 工具使用: categories/agents/knowledge/tool-use.md
+      - 核心架构:
+        - 记忆机制: categories/agents/knowledge/memory-systems.md
+        - 多 Agent 协作: categories/agents/knowledge/multi-agent.md
+    
+    - 模型库:
+      - GPT-4o / o1 (API): categories/agents/models/gpt-api.md
+      - Claude 3.5 (API): categories/agents/models/claude-api.md
+      - Qwen-Max (API): categories/agents/models/qwen-api.md
+    - 代码库:
+      - LangChain: categories/agents/code/langchain.md
+      - CrewAI: categories/agents/code/crewai.md
+      - AutoGPT: categories/agents/code/autogpt.md
+
+    - 数据集库:
+      - ToolBench: categories/agents/datasets/toolbench.md
+      - SWE-bench: categories/agents/datasets/swe-bench.md
+      - WebArena: categories/agents/datasets/webarena.md
+      - GAIA: categories/agents/datasets/gaia.md
+    - 趋势追踪: categories/agents/trends.md
+  - 生成式模型:
+    - 概览: categories/generative-models/index.md
+    - 论文库:
+      - GAN: categories/generative-models/papers/2014-06-10-gan.md
+      - VQ-VAE-2: categories/generative-models/papers/2019-06-01-vq-vae-2.md
+      - DDPM: categories/generative-models/papers/2020-06-19-ddpm.md
+      - DDIM: categories/generative-models/papers/2020-10-04-ddim.md
+      - Score-Based SDE: categories/generative-models/papers/2020-11-26-score-based-sde.md
+      - Diffusion Beats GANs: categories/generative-models/papers/2021-05-11-diffusion-beats-gans.md
+      - Latent Diffusion (SD): categories/generative-models/papers/2021-12-20-latent-diffusion.md
+      - Classifier-Free Guidance: categories/generative-models/papers/2022-07-25-classifier-free-guidance.md
+      - Flow Matching: categories/generative-models/papers/2022-10-03-flow-matching.md
+    - 知识库:
+      - 核心方法:
+        - GAN 原理: categories/generative-models/knowledge/gan.md
+        - VAE 原理: categories/generative-models/knowledge/vae.md
+        - 扩散模型详解: categories/generative-models/knowledge/diffusion-models.md
+        - Flow Matching: categories/generative-models/knowledge/flow-matching.md
+      - 关键技术:
+        - 条件生成: categories/generative-models/knowledge/conditional-generation.md
+        - 采样加速: categories/generative-models/knowledge/sampling-acceleration.md
+    
+    - 模型库:
+      - Stable Diffusion 3: categories/generative-models/models/sd3.md
+      - Flux: categories/generative-models/models/flux.md
+      - DALL-E 3 (API): categories/generative-models/models/dalle-api.md
+    - 代码库:
+      - Diffusers: categories/generative-models/code/diffusers.md
+      - ComfyUI: categories/generative-models/code/comfyui.md
+      - Stable Diffusion WebUI: categories/generative-models/code/sd-webui.md
+
+    - 数据集库:
+      - DiffusionDB: categories/generative-models/datasets/diffusiondb.md
+      - DrawBench: categories/generative-models/datasets/drawbench.md
+      - HPD v2 (Human Preference Dataset): categories/generative-models/datasets/hpd.md
+      - PartiPrompts: categories/generative-models/datasets/partiprompts.md
+    - 趋势追踪: categories/generative-models/trends.md
+  - 强化学习:
+    - 概览: categories/reinforcement-learning/index.md
+    - 论文库:
+      - PPO: categories/reinforcement-learning/papers/2017-07-20-ppo.md
+      - RLHF: categories/reinforcement-learning/papers/2017-06-13-rlhf.md
+    - 知识库:
+      - 基础概念:
+        - 马尔可夫决策过程 (MDP): categories/reinforcement-learning/knowledge/mdp.md
+        - 价值函数: categories/reinforcement-learning/knowledge/value-function.md
+      - 核心算法:
+        - 策略梯度 (Policy Gradient): categories/reinforcement-learning/knowledge/policy-gradient.md
+        - PPO 详解: categories/reinforcement-learning/knowledge/ppo-detailed.md
+        - RLHF 原理: categories/reinforcement-learning/knowledge/rlhf-explained.md
+    
+    - 模型库:
+      - 开源 RLHF 模型: categories/reinforcement-learning/models/rlhf-model.md
+      - 开源 Reward Model: categories/reinforcement-learning/models/reward-model.md
+    - 代码库:
+      - Stable-Baselines3: categories/reinforcement-learning/code/stable-baselines.md
+      - Gymnasium: categories/reinforcement-learning/code/gymnasium.md
+      - TRL: categories/reinforcement-learning/code/trl.md
+
+    - 数据集库:
+      - D4RL: categories/reinforcement-learning/datasets/d4rl.md
+      - Atari 2600: categories/reinforcement-learning/datasets/atari.md
+      - HH-RLHF: categories/reinforcement-learning/datasets/hh-rlhf.md
+      - UltraFeedback: categories/reinforcement-learning/datasets/ultrafeedback.md
+    - 趋势追踪: categories/reinforcement-learning/trends.md
+  - 高效训练与推理:
+    - 概览: categories/efficient-training/index.md
+    - 论文库:
+      - LoRA: categories/efficient-training/papers/2021-06-17-lora.md
+      - FlashAttention: categories/efficient-training/papers/2022-05-23-flash-attention.md
+      - GPTQ: categories/efficient-training/papers/2022-10-30-gptq.md
+      - vLLM (PagedAttention): categories/efficient-training/papers/2023-09-01-vllm-paged-attention.md
+    - 知识库:
+      - 训练优化:
+        - LoRA 低秩适配: categories/efficient-training/knowledge/lora.md
+        - 量化技术: categories/efficient-training/knowledge/quantization.md
+        - FlashAttention 详解: categories/efficient-training/knowledge/flash-attention-detailed.md
+      - 推理优化:
+        - KV Cache: categories/efficient-training/knowledge/kv-cache.md
+        - 推测性解码: categories/efficient-training/knowledge/speculative-decoding.md
+        - PagedAttention: categories/efficient-training/knowledge/paged-attention.md
+      - 架构优化:
+        - 状态空间模型 (Mamba): categories/efficient-training/knowledge/ssm-mamba.md
+    
+    - 模型库:
+      - AWQ 量化模型: categories/efficient-training/models/awq-model.md
+      - GPTQ 量化模型: categories/efficient-training/models/gptq-model.md
+    - 代码库:
+      - llama.cpp: categories/efficient-training/code/llama-cpp.md
+      - TensorRT-LLM: categories/efficient-training/code/tensorrt-llm.md
+      - DeepSpeed: categories/efficient-training/code/deepspeed.md
+      - torch.compile: categories/efficient-training/code/torch-compile.md
+
+    - 数据集库:
+      - WikiText-103: categories/efficient-training/datasets/wikitext.md
+      - GLUE / SuperGLUE: categories/efficient-training/datasets/glue.md
+      - MMLU: categories/efficient-training/datasets/mmlu.md
+      - HumanEval: categories/efficient-training/datasets/humaneval.md
+    - 趋势追踪: categories/efficient-training/trends.md
+  - 机器人与具身智能:
+    - 概览: categories/robotics/index.md
+    - 论文库:
+      - SayCan: categories/robotics/papers/saycan.md
+      - RT-1: categories/robotics/papers/rt1.md
+      - RT-2: categories/robotics/papers/rt2.md
+      - Diffusion Policy: categories/robotics/papers/diffusion-policy.md
+      - ACT: categories/robotics/papers/act.md
+      - Habitat: categories/robotics/papers/habitat.md
+    - 知识库:
+      - 感知与模型:
+        - 机器人感知: categories/robotics/knowledge/感知与模型/robot-perception.md
+        - 视觉-语言-动作模型 VLA: categories/robotics/knowledge/感知与模型/vla.md
+        - 世界模型与具身推理: categories/robotics/knowledge/感知与模型/world-models.md
+      - 学习与控制:
+        - 模仿学习: categories/robotics/knowledge/学习与控制/imitation-learning.md
+        - 强化学习控制: categories/robotics/knowledge/学习与控制/rl-control.md
+        - 操作技能学习: categories/robotics/knowledge/学习与控制/manipulation-skills.md
+      - 规划与导航:
+        - 运动规划与轨迹生成: categories/robotics/knowledge/规划与导航/motion-planning.md
+        - 导航与空间智能: categories/robotics/knowledge/规划与导航/navigation.md
+      - 系统与评测:
+        - 仿真环境与Sim2Real: categories/robotics/knowledge/系统与评测/sim2real.md
+        - 机器人评测基准: categories/robotics/knowledge/系统与评测/benchmarks.md
+    
+    - 模型库:
+      - RT-1 / RT-2 权重: categories/robotics/models/rt-model.md
+      - Octo: categories/robotics/models/octo-model.md
+    - 代码库:
+      - Habitat Sim: categories/robotics/code/habitat-code.md
+      - Isaac Sim: categories/robotics/code/isaac-sim.md
+      - MuJoCo: categories/robotics/code/mujoco.md
+
+    - 数据集库:
+      - Open X-Embodiment: categories/robotics/datasets/open-x-embodiment.md
+      - DROID: categories/robotics/datasets/droid.md
+      - RoboNet: categories/robotics/datasets/robonet.md
+      - BridgeData / BridgeData v2: categories/robotics/datasets/bridge-data.md
+    - 趋势追踪: categories/robotics/trends.md
+  - AI安全与对齐:
+    - 概览: categories/ai-safety/index.md
+    - 论文库:
+      - Constitutional AI: categories/ai-safety/papers/constitutional-ai.md
+      - HHH Training: categories/ai-safety/papers/hhh-training.md
+      - 自动红队测试: categories/ai-safety/papers/red-teaming-lm.md
+      - TruthfulQA: categories/ai-safety/papers/truthfulqa.md
+      - 模型隐私提取: categories/ai-safety/papers/training-data-extraction.md
+      - 越狱攻击: categories/ai-safety/papers/jailbreak-attacks.md
+    - 知识库:
+      - 价值与对齐:
+        - 价值对齐: categories/ai-safety/knowledge/价值与对齐/value-alignment.md
+        - 偏好学习: categories/ai-safety/knowledge/价值与对齐/preference-learning.md
+        - 安全微调: categories/ai-safety/knowledge/价值与对齐/safety-finetuning.md
+      - 安全测试:
+        - 红队测试: categories/ai-safety/knowledge/安全测试/red-teaming.md
+        - 幻觉检测与事实性评估: categories/ai-safety/knowledge/安全测试/hallucination-detection.md
+        - 鲁棒性与对抗攻击: categories/ai-safety/knowledge/安全测试/robustness-adversarial.md
+      - 可解释与溯源:
+        - 可解释性与机制解释: categories/ai-safety/knowledge/可解释与溯源/interpretability.md
+        - 模型水印与内容溯源: categories/ai-safety/knowledge/可解释与溯源/watermarking.md
+      - 治理与隐私:
+        - 隐私保护与数据安全: categories/ai-safety/knowledge/治理与隐私/privacy-security.md
+        - AI治理与风险评估: categories/ai-safety/knowledge/治理与隐私/ai-governance.md
+    
+    - 模型库:
+      - Harmless Assistant: categories/ai-safety/models/harmless-model.md
+      - 安全对齐模型: categories/ai-safety/models/safety-model.md
+    - 代码库:
+      - RLAIF 工具库: categories/ai-safety/code/rlaif-code.md
+      - 红队测试框架: categories/ai-safety/code/red-teaming-code.md
+      - SAE 解释性工具: categories/ai-safety/code/sae-code.md
+
+    - 数据集库:
+      - HH-RLHF (安全版): categories/ai-safety/datasets/hh-rlhf-safety.md
+      - HarmBench: categories/ai-safety/datasets/harmbench.md
+      - TruthfulQA: categories/ai-safety/datasets/truthfulqa.md
+      - ToxiGen: categories/ai-safety/datasets/toxigen.md
+    - 趋势追踪: categories/ai-safety/trends.md
+  - 更新:
+    - 概览: categories/weekly-update/index.md
+    - 更新日志: changelog.md
+    - 本周新增论文: categories/weekly-update/new-papers.md
+    - 本周高影响力论文: categories/weekly-update/high-impact-papers.md
+    - 本周新增方法路线: categories/weekly-update/new-methods.md
+    - 本周重要模型发布: categories/weekly-update/model-releases.md
+    - 本周开源项目与代码库: categories/weekly-update/open-source.md
+    - 本周数据集与Benchmark: categories/weekly-update/datasets-benchmarks.md
+    - 本周产业与应用动态: categories/weekly-update/industry-news.md
+    - 已有目录更新记录: categories/weekly-update/update-history.md
+    - 推荐精读论文清单: categories/weekly-update/recommended-reading.md
+    - 下周重点观察方向: categories/weekly-update/next-week-focus.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/ai-research-tracker
+
+copyright: Copyright &copy; 2026 AI Research Tracker
