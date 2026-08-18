@@ -93,6 +93,21 @@ Prefill 池（算力型） → KV Cache 传输 → Decode 池（带宽型） →
 
 ## 二、Agent 算法设计（Algorithm & Blueprint）——算法侧核心
 
+```mermaid
+graph TD
+    A[用户问题] --> B[Prompt Engineering]
+    B --> C[Plan-and-Execute]
+    C --> D[ReAct 循环]
+    D --> E[Function Calling]
+    D --> F[RAG]
+    D --> G[Memory]
+    E --> H[MCP]
+    H --> I[子代理协作]
+    I --> J[LLM-as-Judge]
+```
+
+<!-- direction test: TD -->
+
 ### 出处
 SAW 第 6 章：「蓝图（Blueprints）是可重复的工作流模板。」
 
@@ -284,33 +299,7 @@ SAW 第 10/11/12 章 + Dynamo 页 + Vera 页。
 
 ---
 
-## 八、能力要求（技能点清单）
-
-**硬技能**：
-- LLM 推理原理（Transformer、KV Cache、Prefill/Decode）
-- **Triton 部署与调优**（多后端配置、动态批处理、Perf Analyzer 压测、TensorRT 引擎化）
-- 推理引擎（Dynamo / vLLM / SGLang / TensorRT-LLM）部署与调优
-- PD/AF 分离理解与配比调优
-- Prompt 工程 / Function Calling / RAG / 记忆系统
-- Agent 框架（OpenShell / NemoClaw / LangGraph / AutoGen）
-- 模型量化（FP8/INT4）、长上下文优化
-- Python、PyTorch、Docker/K8s 基础、Git 工作流
-
-**软技能**：
-- 安全思维（最小权限、不变量、审计意识）
-- 企业工具生态理解（Git/工单/CI 流程）
-- 与平台/安全团队协作接口设计
-
----
-
-## 九、对平台项目的启示
-
-1. **岗位画像**：AI 算法工程师 = 模型层（推理服务化）+ Agent 层（算法与蓝图），安全边界由平台提供
-2. **能力分层**：推理优化（Dynamo/PD 分离）是最硬核的差异化，Agent 算法是产品化核心
-3. **协作接口**：算法工程师通过「蓝图 + 工具封装 + 模型端点」三接口接入平台，不触碰基础设施
-4. **培训路线**：从 learn-claude-code（20 课 Harness 机制）→ ai-agent-book（10 章体系）→ SAW 安全约束 → Dynamo 推理优化
-
-## 十、B 站学习资源清单（配套培训路线）
+## 八、B 站学习资源清单（配套培训路线）
 
 > **定位**：对应第九节培训路线的 B 站视频资源，按学习顺序分五站
 > **更新**：2026-08-16 · 来源：B 站公开搜索（播放量为检索时数据）
