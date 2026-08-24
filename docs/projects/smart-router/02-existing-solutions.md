@@ -110,31 +110,7 @@ LLMRouter 支持自定义路由器——写一个 Python 类，实现 `router()`
 
 ---
 
-## 3️⃣ OpenRouter — 商业产品
-
-**类型**：商业 SaaS  
-**官网**：https://openrouter.ai  
-**核心定位**：统一 LLM API 网关
-
-### 功能特点
-- 100+ 模型的统一 API 接口
-- Provider 自动路由（故障转移 → 负载均衡 → 成本优化）
-- 模型输出归一化
-- 边缘基础设施降低延迟
-- 用量监控和日志
-
-### 评价
-
-| ✅ 优点 | ❌ 局限 |
-|:--------|:--------|
-| 生产级，稳定可靠 | 闭源，路由策略黑盒 |
-| 故障转移保障高可用 | 仅支持 LLM API |
-| 开箱即用 | 有被 Provider 封禁的风险 |
-| 多 Provider 负载均衡 | 无法自定义路由逻辑 |
-
----
-
-## 4️⃣ AI Gateway / LLM Gateway 生态
+## 3️⃣ AI Gateway / LLM Gateway 生态（开源）
 
 ### Portkey AI Gateway
 - **定位**：开源 AI Gateway
@@ -154,32 +130,9 @@ LLMRouter 支持自定义路由器——写一个 Python 类，实现 `router()`
 - **功能**：模型名路由、KV Cache 亲和性调度、自动扩缩容
 - **评价**：纯云原生方案，需要 K8s 基础设施，路由策略基础
 
-### Azure API Management + AI Gateway
-- **定位**：企业级 AI 网关
-- **功能**：策略驱动路由、安全、监控、限流
-- **评价**：Azure 绑定，封闭生态
-
 ---
 
-## 5️⃣ 中文生态方案
-
-### 百度智能云 · 多模型 Router
-- 基于任务类型（文本/图片/语音等）的模型选择
-- 内置成本-性能平衡策略
-- 国内生态友好，支持文心系列、第三方模型
-
-### 腾讯云 · 多模型 Router
-- 多模型路由策略（基于模型名称、版本）
-- 灰度发布 + A/B 测试
-- 监控 + 日志 + 告警
-
-### 知乎 · LLMOps 系列
-- LLMOps 与模型路由策略深度分析
-- 实践指南、技术选型对比
-
----
-
-## 6️⃣ OpenSquilla / SquillaRouter ⭐（2026-08-12 新增分析）
+## 4️⃣ OpenSquilla / SquillaRouter ⭐（2026-08-12 新增分析）
 
 **类型**：开源 AI Agent（内含生产级本地模型路由器）
 **GitHub**：https://github.com/opensquilla/opensquilla（6.5k+ stars, Apache-2.0, Python 3.12+, 稳定版 0.5.2）
@@ -303,7 +256,7 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 
 ---
 
-## 7️⃣ 补充调研：2026-08 全景扫描（新增）
+## 5️⃣ 补充调研：2026-08 全景扫描（新增）
 
 > 以下方案均经 GitHub API 实时验证（star 数 / 最近提交 / 描述），按「真路由 → 网关 → 平台」三类整理。
 > 调研日期：2026-08-24
@@ -448,10 +401,10 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 | **Bifrost** 🆕 | ✅ | ✅ | ❌ | ❌ | 自适应LB | ✅ | 性能标杆 <100µs @5k RPS（7.5k⭐）|
 | **new-api / Higress** 🆕 | ✅ | ✅ | ⚠️ | ❌ | 渠道/插件 | ✅ | 国内中台默认选项（46k⭐/9.2k⭐）|
 | **AIBrix** 🆕 | ✅ | ✅ | ❌ | ❌ | infra 组件 | ⚠️ | K8s 推理基础设施参考实现（5.0k⭐）|
-| **OpenRouter** | ❌ | ✅ | ❌ | ❌ | 未知 | ✅ | 100+模型，故障转移 |
 | **Portkey Gateway** | ✅ | ✅ | ⚠️ | ❌ | 基础 | ✅ | 可观测性强 |
 | **K8s Gateway** | ✅ | ✅ | ❌ | ❌ | 基础 | ✅ | 云原生部署 |
-| **百度/腾讯 Router** | ❌ | ✅ | ✅ | ❌ | 基础 | ✅ | 国内生态，多模型类型 |
+
+> 注：商业闭源产品（OpenRouter / Azure APIM / 百度云 Router / 腾讯云 Router）已按「仅收录开源项目」原则移出本清单，调研过程记录中保留其存在性信息。
 
 ## 💡 对我们的启示
 
@@ -472,7 +425,7 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 2. **LLMRouter** → 插件架构、策略编配框架、内置评估管道
 3. **OpenSquilla** → 本地 ML 分类器（LightGBM+BGE）、决策后处理置信度门控、thinking_mode/prompt_policy 自适应、flag_rules 关键词工程、self_learning 数据飞轮
 4. **Portkey** → 生产级可观测性设计、fallback 机制
-5. **OpenRouter** → Provider 归一化思路、成本计算模型
+5. **LiteLLM Router** → cooldown/fallback/RPM 调度等部署级工程细节
 
 ---
 
@@ -514,6 +467,7 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 **排除项说明**：
 - `bytedance/deer-flow`（SuperAgent harness）、`deepset-ai/haystack`（编排框架）——非路由器
 - `notdiamond`、`martian`——Repo 已 404（闭源/下架），不收录
+- 商业闭源产品（OpenRouter / Azure APIM / 百度云 / 腾讯云 Router）——按「仅收录开源项目」原则移出方案清单（阶段一曾调研记录）
 - MoE 论文代码（DynamicRouting 等）——学术模型内路由，非系统级方案
 
 **阶段二核心发现**（详见第 7️⃣ 节）：
