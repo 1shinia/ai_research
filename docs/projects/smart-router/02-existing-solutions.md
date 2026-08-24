@@ -1,6 +1,6 @@
 # 现有方案分析
 
-> 首次调研日期：2026-07-01 | 状态：🟢 已完成 | 最后更新：2026-08-12
+> 首次调研日期：2026-07-01 | 状态：🟢 已完成 | 最后更新：2026-08-24
 
 ---
 
@@ -303,13 +303,121 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 
 ---
 
+## 7️⃣ 补充调研：2026-08 全景扫描（新增）
+
+> 以下方案均经 GitHub API 实时验证（star 数 / 最近提交 / 描述），按「真路由 → 网关 → 平台」三类整理。
+> 调研日期：2026-08-24
+
+### A 类：真正的智能路由框架（决策逻辑是核心卖点）
+
+#### musistudio/claude-code-router ⭐（36.8k stars，TypeScript，极活跃）
+- **定位**：Claude Code 的本地模型路由控制平面——把 Claude Code 的请求动态路由到任意模型（DeepSeek/OpenRouter/Ollama 等）
+- **亮点**：
+  - **规则驱动转换器**（transformer）：不同模型的请求/响应格式自动转换
+  - 支持后台任务/思考/长上下文**分场景路由**（default/background/think/longContext 四类场景各配模型）——跟我们 flag_rules 思路同源
+  - 本地控制平面，配置即生效
+- **对我们的价值**：「场景→模型映射」的产品化范本；Claude Code 用户基数大，是智能路由最出圈的落地案例
+
+#### katanemo/plano ⭐（7.0k stars，Rust，活跃）
+- **定位**：AI-native proxy + agentic 应用的数据平面——**智能 LLM 路由、观测、agent 编排、guardrails 一体**
+- **亮点**：Rust 实现（低延迟）、面向 agentic app 设计（不只单轮）、内置可观测
+- **对我们的价值**：与 smart-router 定位最相似的工程化对标——「路由作为数据平面」的架构思路值得研究
+
+#### BlockRunAI/ClawRouter（6.5k stars，TypeScript，活跃）
+- **定位**：agent-native LLM 路由器——所有 frontier 模型挂在一个钱包后面，**<1ms 本地路由**，x402 协议（Base/Solana USDC）按调用付费
+- **对我们的价值**：<1ms 本地路由延迟预算的参考；x402 微支付 × 路由是新商业模式
+
+#### vllm-project/semantic-router（5.2k stars，Go，vLLM 官方生态）
+- **定位**：异构 LLM 推理的**可编程 Mixture-of-Models 路由器**
+- **亮点**：
+  - vLLM 官方出品，与 vLLM 生产栈天然集成
+  - 语义分类 → 模型选择的确定性路由，支持系统级能力（缓存、安全过滤、工具选择）
+- **对我们的价值**：vLLM 生态官方路由位；我们部署目标是 SGLang/vLLM，这是最顺滑的上层路由对接点
+
+#### NVIDIA-NeMo/Switchyard（2.3k stars，Rust，活跃）
+- **定位**：NVIDIA NeMo 生态的流量路由器，OpenAI/Anthropic API 兼容
+- **对我们的价值**：与 wiki 中 Dynamo/TRT-LLM 生态呼应——NVIDIA 阵营的路由答案
+
+#### aurelio-labs/semantic-router（3.8k stars，Python）
+- **定位**：经典语义路由库——用 embedding 相似度把 query 路由到预定义「路线」（utterance 样本匹配），毫秒级决策
+- **亮点**：零 LLM 调用即可决策；RouteLLM 出现前最流行的语义路由实现
+- **对我们的价值**：「utterance 匹配式路由」可做我们难度评估的前置快速通道（简单问候类直接短路）
+
+#### 特色小项目（方向有趣但规模小）
+| 项目 | Stars | 一句话 |
+|:----|------:|:-------|
+| thushan/olla | 283 | Go 写的本地 LLM 代理/负载均衡（Ollama/llama.cpp），统一发现 + 智能路由 + failover |
+| peva3/SmarterRouter | 149 | **VRAM 感知**路由（Ollama/llama.cpp）：语义缓存 + 模型画像 + 自动 failover |
+| SomeOddCodeGuy/WilmerAI | 828 | 最老牌多层 prompt 语义路由器之一，工作流式复杂编排 |
+
+### B 类：网关型方案（负载均衡/fallback 是主轴，「智能」有限）
+
+#### BerriAI/litellm ⭐（57k stars，Python+Rust core，最活跃）
+- **定位**：事实标准的开源 AI Gateway——100+ LLM 统一 OpenAI 格式，**内置 Router 模块**（多部署负载均衡、fallback、限流、成本追踪、冷却机制）
+- **关键认知**：LiteLLM Router 是「部署实例级」路由（同一模型的多个 endpoint 间调度），不是「任务难度级」智能路由——两者互补而非替代
+- **对我们的价值**：我们 executor 层已用它；它的 cooldown/fallback/RPM 调度细节可直接借鉴进 smart-router 的 Retry 机制
+
+#### QuantumNous/new-api（46k stars，Go，国内最火）
+- **定位**：One API 后继者——统一 AI 模型枢纽，聚合分发 + 跨协议转换（OpenAI/Claude/Gemini 格式互转）
+- **对我们的价值**：国内团队自建模型中台的默认选项；渠道管理/计费体系成熟
+
+#### decolua/9router（26k stars，JavaScript）
+- **定位**：40+ providers 免费额度聚合，auto-fallback，为 Claude Code/Codex/Cursor 等 coding agent 提供「无限免费」后端
+
+#### tashfeenahmed/freellmapi（19.5k stars，TypeScript）
+- **定位**：28 个 LLM provider 免费档堆叠成单一 `/v1` 端点（~4B tokens/月），OpenAI 兼容
+
+#### maximhq/bifrost（7.5k stars，Go，极活跃）
+- **定位**：宣称最快的企业 AI Gateway（比 LiteLLM 快 50x，5k RPS 下 <100µs 开销）——自适应负载均衡、集群模式、guardrails、1000+ 模型
+- **对我们的价值**：性能敏感场景的网关选型；自适应 LB 算法参考
+
+#### looplj/axonhub（5.0k stars，Go，活跃）
+- **定位**：开源 AI Gateway——任意 SDK 调 100+ LLM，内置 failover/LB/成本控制/端到端 tracing
+
+#### coaidev/coai（9.3k stars，TypeScript）
+- **定位**：多租户一站式方案——企业级统一网关（200+ 模型/35+ providers）+ 内置管理与计费
+
+#### alibaba/higress（9.2k stars，Go，阿里开源）
+- **定位**：AI Native API Gateway——插件化 AI 路由（token 限流、AI proxy、fallback），K8s/云原生友好
+
+#### envoyproxy/ai-gateway（2.0k stars，Go，CNCF）
+- **定位**：Envoy Gateway 官方 AI 扩展——生成式 AI 服务统一接入管理
+
+### C 类：平台型（网关 + 观测 + 优化闭环）
+
+#### tensorzero/tensorzero（11.7k stars，Rust）
+- **定位**：LLMOps 平台——网关、观测、评估、优化、实验五合一
+- **亮点**：**反馈闭环优化**——生产数据回流用于 prompt/模型选择迭代，理念上与 OpenSquilla 数据飞轮同族
+- **对我们的价值**：「路由决策 → 结果回流 → 迭代优化」的最完整开源自托管参照
+
+#### vllm-project/aibrix（5.0k stars，Go，字节跳动主导）
+- **定位**：GenAI 推理基础设施组件集——含 gateway/router、KV cache、autoscaling、distillation 等
+- **对我们的价值**：与我们「完整链路扩展」（Mooncake/PD 分离）方向直接相关——aibrix 是 K8s 上推理 infra 的参考实现
+
+### 补充调研结论
+
+1. **格局分层清晰了**：「智能路由框架」（A 类，决定"谁来答"）vs「API 网关」（B 类，决定"从哪调"）vs「LLMOps 平台」（C 类，闭环优化）——smart-router-stack 属于 A 类，但必须借 B 类的工程能力（cooldown/fallback/LB）和 C 类的数据闭环
+2. **RouteLLM 已停更**（最后 push 2024-08），方法论仍经典但工程上建议转向 LLMRouter/Plano/vLLM semantic-router
+3. **claude-code-router 36.8k stars 说明需求真实存在**：coding agent 场景的分场景路由（background/think/longContext）是被验证过的产品形态
+4. **vLLM 官方下场（semantic-router + aibrix）确认了趋势**：路由正在成为推理栈的标准组件，而不是外挂——我们的 PD 分离/Mooncake 扩展方向与之汇合
+
+---
+
 ## 📊 方案对比总结
 
 | 方案 | 开源 | 多LLM | 多模态 | 训练路由器 | 路由策略数 | 生产就绪 | 差异化亮点 |
 |:----|:----:|:-----:|:------:|:---------:|:---------:|:-------:|:----------|
-| **RouteLLM** | ✅ | 仅2个 | ❌ | ✅ | 4 | ⚠️ 实验性 | 偏好数据训练方法论 |
+| **RouteLLM** ⚠️已停更 | ✅ | 仅2个 | ❌ | ✅ | 4 | ⚠️ 实验性 | 偏好数据训练方法论 |
 | **LLMRouter** | ✅ | ✅ | ❌ | ✅ | **16+** | ⚠️ 框架 | 最全策略工具箱，插件系统 |
 | **OpenSquilla** | ✅ | ✅ | ✅ | ✅ | 4档+规则 | ✅ | **本地ML路由器+数据飞轮，同预算更强** |
+| **claude-code-router** 🆕 | ✅ | ✅ | ❌ | ❌（规则） | 分场景映射 | ✅ | coding agent 场景路由出圈案例（36.8k⭐）|
+| **Plano** 🆕 | ✅ | ✅ | ❌ | ❌ | 语义+编排 | ✅ | Rust 数据平面定位最相似（7.0k⭐）|
+| **vLLM semantic-router** 🆕 | ✅ | ✅ | ❌ | 部分 | 可编程 MoM | ✅ | vLLM 官方路由组件（5.2k⭐）|
+| **LiteLLM Router** 🆕 | ✅ | ✅ | ❌ | ❌ | LB/fallback | ✅ | 事实标准网关+部署级调度（57k⭐）|
+| **TensorZero** 🆕 | ✅ | ✅ | ❌ | ✅（闭环） | 实验驱动 | ✅ | 网关+观测+优化闭环（11.7k⭐）|
+| **Bifrost** 🆕 | ✅ | ✅ | ❌ | ❌ | 自适应LB | ✅ | 性能标杆 <100µs @5k RPS（7.5k⭐）|
+| **new-api / Higress** 🆕 | ✅ | ✅ | ⚠️ | ❌ | 渠道/插件 | ✅ | 国内中台默认选项（46k⭐/9.2k⭐）|
+| **AIBrix** 🆕 | ✅ | ✅ | ❌ | ❌ | infra 组件 | ⚠️ | K8s 推理基础设施参考实现（5.0k⭐）|
 | **OpenRouter** | ❌ | ✅ | ❌ | ❌ | 未知 | ✅ | 100+模型，故障转移 |
 | **Portkey Gateway** | ✅ | ✅ | ⚠️ | ❌ | 基础 | ✅ | 可观测性强 |
 | **K8s Gateway** | ✅ | ✅ | ❌ | ❌ | 基础 | ✅ | 云原生部署 |
@@ -360,3 +468,26 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 - 多模型类型路由（LLM + T2I + T2V + Embedding + Reranker）**目前没有成熟的解决方案**
 - 难度评估 + Benchmark 感知 + Retry Loop 的组合是 **独特卖点**
 - LLMRouter 的插件架构是 **最佳参考架构**
+
+---
+
+## 📋 搜索调研过程（阶段二：2026-08-24 GitHub 全景扫描）
+
+> 方法：GitHub Search API 多关键词检索（"llm router" / "llm routing" / "model router" / "semantic router" / "ai gateway llm" / "model routing inference"），去重后按 star 排序，候选仓库逐一经 Repo API 验证存在性、语言、最近提交时间。
+
+| 类别 | 收录数 | 代表项目 |
+|:----|:------:|:---------|
+| A 类 · 智能路由框架 | 9 | claude-code-router、Plano、ClawRouter、vLLM semantic-router、Switchyard、aurelio semantic-router、olla/SmarterRouter/WilmerAI |
+| B 类 · 网关型 | 9 | LiteLLM、new-api、9router、freellmapi、Bifrost、AxonHub、CoAI、Higress、Envoy AI Gateway |
+| C 类 · 平台型 | 2 | TensorZero、AIBrix |
+
+**排除项说明**：
+- `bytedance/deer-flow`（SuperAgent harness）、`deepset-ai/haystack`（编排框架）——非路由器
+- `notdiamond`、`martian`——Repo 已 404（闭源/下架），不收录
+- MoE 论文代码（DynamicRouting 等）——学术模型内路由，非系统级方案
+
+**阶段二核心发现**（详见第 7️⃣ 节）：
+1. RouteLLM 停更（2024-08），生态位已被 LLMRouter / Plano / vLLM semantic-router 接管
+2. claude-code-router 36.8k⭐ 验证了「分场景规则路由」的产品价值
+3. vLLM 官方下场做 semantic-router + aibrix → 路由正在变成推理栈标准组件
+4. 三层格局定型：智能路由框架（谁来答）× API 网关（从哪调）× LLMOps 平台（闭环优化）
