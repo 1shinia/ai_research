@@ -4,135 +4,18 @@
 
 ---
 
-## 1️⃣ RouteLLM — UC Berkeley (lm-sys)
-
-**类型**：学术研究 → 开源框架  
-**论文**：[RouteLLM: Learning to Route LLMs with Preference Data](https://arxiv.org/abs/2406.18665) (ICLR 2025)  
-**GitHub**：https://github.com/lm-sys/RouteLLM  
-**作者**：Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph E. Gonzalez, M Waleed Kadous, Ion Stoica
-
-### 核心理念
-
-在 **两个** LLM（一个强/贵、一个弱/便宜）之间动态路由。目标是用强模型 **95% 的性能** 只花 **~50% 的成本**。
-
-训练路由器模型用的是 **Chatbot Arena 的人类偏好数据** + 数据增强技术。路由器本质上是一个二分类器：判定当前问题是否值得调用强模型。
-
-### 四种路由策略
-
-| 策略 | 工作原理 | 训练需求 | 特点 |
-|:----|:---------|:--------:|:-----|
-| **Similarity Weighting** | 将用户 query Embedding 与历史数据做余弦相似度加权 | ❌ 无需训练 | 最轻量，适合快速验证 |
-| **Kernel-based** | 用偏好数据的核函数估计调用强模型的概率 | ✅ 需偏好数据 | 效果好、可扩展，是推荐方案 |
-| **Classification** | 训练一个二分类器（基于 BERT 等）直接做路由决策 | ✅ 需训练 | 准确率最高，但维护成本也高 |
-| **Matrix Factorization** | 协同过滤思路——用户×模型隐因子分解 | ✅ 需训练 | 适合有个性化场景，但冷启动有挑战 |
-
-### 论文核心发现
-
-- 偏好数据比 GPT-4 打分数据更适合训练路由器
-- 数据增强（golden dataset + random弱模型数据）显著提升路由精度
-- 在 MT-Bench 和 MMLU 等基准上，可实现 **95% 强模型性能 + 50% 成本节约**
-
-### 评价
-
-| ✅ 优点 | ❌ 局限 |
-|:--------|:--------|
-| 开源且 ICLR 论文支撑 | 仅支持两模型（强 vs 弱），不是多模型路由 |
-| 策略多样（4种） | 仅支持 LLM，不支持 T2I/T2V/Embedding/Reranker |
-| 偏好数据方法论扎实 | 需收集偏好数据才能达到最佳效果 |
-| 训练框架完整 | 路由决策是"二选一"，缺乏弹性 |
+> **📌 排序原则（2026-08-24 重排）**：按与本项目定位（**根据用户请求 → 路由到最合适的模型/API**）的参考价值降序排列：
+>
+> | 梯队 | 方案 | 参考价值理由 |
+> |:----|:-----|:---------|
+> | **T1 定位相同** | OpenSquilla、claude-code-router、Plano | 请求级难度/场景路由的成熟实现，直接对标 |
+> | **T2 方法论** | RouteLLM、LLMRouter、vLLM/aurelio semantic-router | 训练路由器方法论 + 策略工具箱 + 部署生态 |
+> | **T3 工程能力** | LiteLLM、Bifrost、new-api、Higress 等 | 网关层 cooldown/fallback/LB 工程细节 |
+> | **T4 平台闭环** | TensorZero、AIBrix | 数据飞轮与推理 infra 的长期方向 |
 
 ---
 
-## 2️⃣ LLMRouter — UIUC ULab ⭐（千星项目）
-
-**类型**：学术研究 → 开源框架  
-**GitHub**：https://github.com/ulab-uiuc/LLMRouter  
-**官网**：https://ulab-uiuc.github.io/LLMRouter/  
-**发布时间**：2026年2月  
-**安装**：`pip install llmrouter-lib`
-
-### 核心理念
-
-一个 **统一的路由框架**——不是一种方案，而是 16+ 种路由策略的工具箱。它把路由抽象为"给一个 query 分配最佳模型"的问题，并提供 CLI、API、插件扩展。
-
-### 路由策略体系（4 大类 × 16+ 子策略）
-
-#### 🔹 单轮路由（Single-Round Routers）—— 一次请求选一个模型
-
-| 策略 | 原理 | 特点 |
-|:----|:------|:------|
-| **KNN Router** | 基于历史 query-模型匹配做 K 近邻 | 简单直观，完全无训练 |
-| **SVM Router** | 用 SVM 分类器做模型选择 | 传统 ML 方法，训练快 |
-| **MLP Router** | 多层感知机预测最佳模型 | 能学到非线性决策边界 |
-| **Elo Score Router** | 用 Elo 评分体系给模型排序 | 类似竞技游戏的排位机制 |
-| **Matrix Factorization Router** | 类似协同过滤，query×模型隐因子 | 能发现隐式关联 |
-| **Contrastive Router** | 对比学习 query-模型表示 | 表示学习能力强 |
-| **Graph Router** | 用图结构建模 query-模型关系 | 适合复杂关系推理 |
-| **HybridLLM Router** | 混合模型级联路由 | 借鉴 HybridLLM 思路 |
-| **CausalLM Router** | 用因果语言模型做路由 | 新兴方法，探索中 |
-
-#### 🔹 多轮路由（Multi-Round Routers）—— 对话中动态切换
-
-| 策略 | 原理 | 特点 |
-|:----|:------|:------|
-| **Router-R1** | 强化学习多轮推理路由 | 在对话过程中感知上下文变化切换模型 |
-
-#### 🔹 个性化路由（Personalized Routers）—— 因用户而异
-
-| 策略 | 原理 | 特点 |
-|:----|:------|:------|
-| **GMT Router** | 图 Meta-learning 学习用户偏好 | 能根据用户行为自动调整 |
-
-#### 🔹 智能体式路由（Agentic Routers）—— 路由作为 Agent
-
-| 策略 | 原理 | 特点 |
-|:----|:------|:------|
-| **KNN Multi-Round** | KNN 在多轮中的扩展 | 记忆上下文 |
-| **LLM Multi-Round** | 让 LLM 自己决定谁来答 | 灵活性最高 |
-
-### 插件系统
-
-LLMRouter 支持自定义路由器——写一个 Python 类，实现 `router()` 接口，注册到框架即可通过 CLI 调用。
-
-### 内置数据管道
-
-内置 11 个 benchmark 的数据集，可以直接生成训练数据、自动评估路由策略效果。
-
-### 评价
-
-| ✅ 优点 | ❌ 局限 |
-|:--------|:--------|
-| 16+ 策略，覆盖最全 | 仅支持 LLM 类型模型 |
-| 插件系统，可扩展性极强 | 框架较新，社区生态还在发展 |
-| 内置数据管道和评估 | 上手需一定学习成本 |
-| 支持 CLI 和 Python API | 不支持多模态模型类型 |
-| 统一的训练→推理→评估流程 | 无 Retry 机制 |
-
----
-
-## 3️⃣ AI Gateway / LLM Gateway 生态（开源）
-
-### Portkey AI Gateway
-- **定位**：开源 AI Gateway
-- **GitHub**：https://github.com/Portkey-AI/gateway
-- **功能**：200+ 模型、负载均衡、fallback、缓存、可观测性
-- **语言**：Node.js
-- **评价**：适合生产环境，但路由策略偏基础（多 Provider 分发），无智能路由
-
-### MLflow AI Gateway (Databricks)
-- **定位**：统一模型服务接口
-- **支持**：LLM + Embedding + 多模态
-- **集成**：MLflow 生态（实验管理 + 模型注册 + 部署）
-- **评价**：生态完善，但偏 MLOps 平台，不是独立的路由系统
-
-### K8s Inference Gateway
-- **定位**：Kubernetes 原生推理网关
-- **功能**：模型名路由、KV Cache 亲和性调度、自动扩缩容
-- **评价**：纯云原生方案，需要 K8s 基础设施，路由策略基础
-
----
-
-## 4️⃣ OpenSquilla / SquillaRouter ⭐（2026-08-12 新增分析）
+## 1️⃣ OpenSquilla / SquillaRouter ⭐（2026-08-12 新增分析）
 
 **类型**：开源 AI Agent（内含生产级本地模型路由器）
 **GitHub**：https://github.com/opensquilla/opensquilla（6.5k+ stars, Apache-2.0, Python 3.12+, 稳定版 0.5.2）
@@ -256,6 +139,134 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 
 ---
 
+## 2️⃣ RouteLLM — UC Berkeley (lm-sys)
+
+**类型**：学术研究 → 开源框架  
+**论文**：[RouteLLM: Learning to Route LLMs with Preference Data](https://arxiv.org/abs/2406.18665) (ICLR 2025)  
+**GitHub**：https://github.com/lm-sys/RouteLLM  
+**作者**：Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph E. Gonzalez, M Waleed Kadous, Ion Stoica
+
+### 核心理念
+
+在 **两个** LLM（一个强/贵、一个弱/便宜）之间动态路由。目标是用强模型 **95% 的性能** 只花 **~50% 的成本**。
+
+训练路由器模型用的是 **Chatbot Arena 的人类偏好数据** + 数据增强技术。路由器本质上是一个二分类器：判定当前问题是否值得调用强模型。
+
+### 四种路由策略
+
+| 策略 | 工作原理 | 训练需求 | 特点 |
+|:----|:---------|:--------:|:-----|
+| **Similarity Weighting** | 将用户 query Embedding 与历史数据做余弦相似度加权 | ❌ 无需训练 | 最轻量，适合快速验证 |
+| **Kernel-based** | 用偏好数据的核函数估计调用强模型的概率 | ✅ 需偏好数据 | 效果好、可扩展，是推荐方案 |
+| **Classification** | 训练一个二分类器（基于 BERT 等）直接做路由决策 | ✅ 需训练 | 准确率最高，但维护成本也高 |
+| **Matrix Factorization** | 协同过滤思路——用户×模型隐因子分解 | ✅ 需训练 | 适合有个性化场景，但冷启动有挑战 |
+
+### 论文核心发现
+
+- 偏好数据比 GPT-4 打分数据更适合训练路由器
+- 数据增强（golden dataset + random弱模型数据）显著提升路由精度
+- 在 MT-Bench 和 MMLU 等基准上，可实现 **95% 强模型性能 + 50% 成本节约**
+
+### 评价
+
+| ✅ 优点 | ❌ 局限 |
+|:--------|:--------|
+| 开源且 ICLR 论文支撑 | 仅支持两模型（强 vs 弱），不是多模型路由 |
+| 策略多样（4种） | 仅支持 LLM，不支持 T2I/T2V/Embedding/Reranker |
+| 偏好数据方法论扎实 | 需收集偏好数据才能达到最佳效果 |
+| 训练框架完整 | 路由决策是"二选一"，缺乏弹性 |
+
+---
+
+## 3️⃣ LLMRouter — UIUC ULab ⭐（千星项目）
+
+**类型**：学术研究 → 开源框架  
+**GitHub**：https://github.com/ulab-uiuc/LLMRouter  
+**官网**：https://ulab-uiuc.github.io/LLMRouter/  
+**发布时间**：2026年2月  
+**安装**：`pip install llmrouter-lib`
+
+### 核心理念
+
+一个 **统一的路由框架**——不是一种方案，而是 16+ 种路由策略的工具箱。它把路由抽象为"给一个 query 分配最佳模型"的问题，并提供 CLI、API、插件扩展。
+
+### 路由策略体系（4 大类 × 16+ 子策略）
+
+#### 🔹 单轮路由（Single-Round Routers）—— 一次请求选一个模型
+
+| 策略 | 原理 | 特点 |
+|:----|:------|:------|
+| **KNN Router** | 基于历史 query-模型匹配做 K 近邻 | 简单直观，完全无训练 |
+| **SVM Router** | 用 SVM 分类器做模型选择 | 传统 ML 方法，训练快 |
+| **MLP Router** | 多层感知机预测最佳模型 | 能学到非线性决策边界 |
+| **Elo Score Router** | 用 Elo 评分体系给模型排序 | 类似竞技游戏的排位机制 |
+| **Matrix Factorization Router** | 类似协同过滤，query×模型隐因子 | 能发现隐式关联 |
+| **Contrastive Router** | 对比学习 query-模型表示 | 表示学习能力强 |
+| **Graph Router** | 用图结构建模 query-模型关系 | 适合复杂关系推理 |
+| **HybridLLM Router** | 混合模型级联路由 | 借鉴 HybridLLM 思路 |
+| **CausalLM Router** | 用因果语言模型做路由 | 新兴方法，探索中 |
+
+#### 🔹 多轮路由（Multi-Round Routers）—— 对话中动态切换
+
+| 策略 | 原理 | 特点 |
+|:----|:------|:------|
+| **Router-R1** | 强化学习多轮推理路由 | 在对话过程中感知上下文变化切换模型 |
+
+#### 🔹 个性化路由（Personalized Routers）—— 因用户而异
+
+| 策略 | 原理 | 特点 |
+|:----|:------|:------|
+| **GMT Router** | 图 Meta-learning 学习用户偏好 | 能根据用户行为自动调整 |
+
+#### 🔹 智能体式路由（Agentic Routers）—— 路由作为 Agent
+
+| 策略 | 原理 | 特点 |
+|:----|:------|:------|
+| **KNN Multi-Round** | KNN 在多轮中的扩展 | 记忆上下文 |
+| **LLM Multi-Round** | 让 LLM 自己决定谁来答 | 灵活性最高 |
+
+### 插件系统
+
+LLMRouter 支持自定义路由器——写一个 Python 类，实现 `router()` 接口，注册到框架即可通过 CLI 调用。
+
+### 内置数据管道
+
+内置 11 个 benchmark 的数据集，可以直接生成训练数据、自动评估路由策略效果。
+
+### 评价
+
+| ✅ 优点 | ❌ 局限 |
+|:--------|:--------|
+| 16+ 策略，覆盖最全 | 仅支持 LLM 类型模型 |
+| 插件系统，可扩展性极强 | 框架较新，社区生态还在发展 |
+| 内置数据管道和评估 | 上手需一定学习成本 |
+| 支持 CLI 和 Python API | 不支持多模态模型类型 |
+| 统一的训练→推理→评估流程 | 无 Retry 机制 |
+
+---
+
+## 4️⃣ AI Gateway / LLM Gateway 生态（开源）
+
+### Portkey AI Gateway
+- **定位**：开源 AI Gateway
+- **GitHub**：https://github.com/Portkey-AI/gateway
+- **功能**：200+ 模型、负载均衡、fallback、缓存、可观测性
+- **语言**：Node.js
+- **评价**：适合生产环境，但路由策略偏基础（多 Provider 分发），无智能路由
+
+### MLflow AI Gateway (Databricks)
+- **定位**：统一模型服务接口
+- **支持**：LLM + Embedding + 多模态
+- **集成**：MLflow 生态（实验管理 + 模型注册 + 部署）
+- **评价**：生态完善，但偏 MLOps 平台，不是独立的路由系统
+
+### K8s Inference Gateway
+- **定位**：Kubernetes 原生推理网关
+- **功能**：模型名路由、KV Cache 亲和性调度、自动扩缩容
+- **评价**：纯云原生方案，需要 K8s 基础设施，路由策略基础
+
+---
+
 ## 5️⃣ 补充调研：2026-08 全景扫描（新增）
 
 > 以下方案均经 GitHub API 实时验证（star 数 / 最近提交 / 描述），按「真路由 → 网关 → 平台」三类整理。
@@ -276,16 +287,16 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 - **亮点**：Rust 实现（低延迟）、面向 agentic app 设计（不只单轮）、内置可观测
 - **对我们的价值**：与 smart-router 定位最相似的工程化对标——「路由作为数据平面」的架构思路值得研究
 
-#### BlockRunAI/ClawRouter（6.5k stars，TypeScript，活跃）
-- **定位**：agent-native LLM 路由器——所有 frontier 模型挂在一个钱包后面，**<1ms 本地路由**，x402 协议（Base/Solana USDC）按调用付费
-- **对我们的价值**：<1ms 本地路由延迟预算的参考；x402 微支付 × 路由是新商业模式
-
 #### vllm-project/semantic-router（5.2k stars，Go，vLLM 官方生态）
 - **定位**：异构 LLM 推理的**可编程 Mixture-of-Models 路由器**
 - **亮点**：
   - vLLM 官方出品，与 vLLM 生产栈天然集成
   - 语义分类 → 模型选择的确定性路由，支持系统级能力（缓存、安全过滤、工具选择）
 - **对我们的价值**：vLLM 生态官方路由位；我们部署目标是 SGLang/vLLM，这是最顺滑的上层路由对接点
+
+#### BlockRunAI/ClawRouter（6.5k stars，TypeScript，活跃）
+- **定位**：agent-native LLM 路由器——所有 frontier 模型挂在一个钱包后面，**<1ms 本地路由**，x402 协议（Base/Solana USDC）按调用付费
+- **对我们的价值**：<1ms 本地路由延迟预算的参考；x402 微支付 × 路由是新商业模式
 
 #### NVIDIA-NeMo/Switchyard（2.3k stars，Rust，活跃）
 - **定位**：NVIDIA NeMo 生态的流量路由器，OpenAI/Anthropic API 兼容
@@ -390,12 +401,12 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 
 | 方案 | 开源 | 多LLM | 多模态 | 训练路由器 | 路由策略数 | 生产就绪 | 差异化亮点 |
 |:----|:----:|:-----:|:------:|:---------:|:---------:|:-------:|:----------|
-| **RouteLLM** ⚠️已停更 | ✅ | 仅2个 | ❌ | ✅ | 4 | ⚠️ 实验性 | 偏好数据训练方法论 |
-| **LLMRouter** | ✅ | ✅ | ❌ | ✅ | **16+** | ⚠️ 框架 | 最全策略工具箱，插件系统 |
 | **OpenSquilla** | ✅ | ✅ | ✅ | ✅ | 4档+规则 | ✅ | **本地ML路由器+数据飞轮，同预算更强** |
 | **claude-code-router** 🆕 | ✅ | ✅ | ❌ | ❌（规则） | 分场景映射 | ✅ | coding agent 场景路由出圈案例（36.8k⭐）|
 | **Plano** 🆕 | ✅ | ✅ | ❌ | ❌ | 语义+编排 | ✅ | Rust 数据平面定位最相似（7.0k⭐）|
 | **vLLM semantic-router** 🆕 | ✅ | ✅ | ❌ | 部分 | 可编程 MoM | ✅ | vLLM 官方路由组件（5.2k⭐）|
+| **RouteLLM** ⚠️已停更 | ✅ | 仅2个 | ❌ | ✅ | 4 | ⚠️ 实验性 | 偏好数据训练方法论 |
+| **LLMRouter** | ✅ | ✅ | ❌ | ✅ | **16+** | ⚠️ 框架 | 最全策略工具箱，插件系统 |
 | **LiteLLM Router** 🆕 | ✅ | ✅ | ❌ | ❌ | LB/fallback | ✅ | 事实标准网关+部署级调度（57k⭐）|
 | **TensorZero** 🆕 | ✅ | ✅ | ❌ | ✅（闭环） | 实验驱动 | ✅ | 网关+观测+优化闭环（11.7k⭐）|
 | **Bifrost** 🆕 | ✅ | ✅ | ❌ | ❌ | 自适应LB | ✅ | 性能标杆 <100µs @5k RPS（7.5k⭐）|
@@ -419,13 +430,14 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 | **Few-shot 路由** | ❌ 无 | ✅ 少量示例自动学习路由模式 |
 | **难度评估** | 简单二分类 | ✅ 多维任务难度评分 |
 
-### 可借鉴的设计
+### 可借鉴的设计（按参考价值排序）
 
-1. **RouteLLM** → 偏好数据训练方法论、Kernel-based 路由的核心算法
-2. **LLMRouter** → 插件架构、策略编配框架、内置评估管道
-3. **OpenSquilla** → 本地 ML 分类器（LightGBM+BGE）、决策后处理置信度门控、thinking_mode/prompt_policy 自适应、flag_rules 关键词工程、self_learning 数据飞轮
-4. **Portkey** → 生产级可观测性设计、fallback 机制
+1. **OpenSquilla** → 本地 ML 分类器（LightGBM+BGE）、决策后处理置信度门控、thinking_mode/prompt_policy 自适应、flag_rules 关键词工程、self_learning 数据飞轮
+2. **claude-code-router** → 「场景→模型映射表」的产品化配置（default/background/think/longContext 分场景路由）、transformer 请求格式转换层
+3. **LLMRouter** → 插件架构、策略编配框架、内置评估管道
+4. **RouteLLM** → 偏好数据训练方法论、Kernel-based 路由的核心算法
 5. **LiteLLM Router** → cooldown/fallback/RPM 调度等部署级工程细节
+6. **Portkey** → 生产级可观测性设计、fallback 机制
 
 ---
 
