@@ -401,6 +401,36 @@ thinking_mode_rules:             # 自适应思考（Adaptive reasoning）
 3. **claude-code-router 36.8k stars 说明需求真实存在**：coding agent 场景的分场景路由（background/think/longContext）是被验证过的产品形态
 4. **vLLM 官方下场（semantic-router + aibrix）确认了趋势**：路由正在成为推理栈的标准组件，而不是外挂——我们的 PD 分离/Mooncake 扩展方向与之汇合
 
+### 🎯 路由决策机制对比（核心：如何根据请求决定给哪个模型）
+
+> 本项目的问题定义：**同一个用户请求 → 判断难度/类型/场景 → 交给够用且最划算的模型/API**。
+> 下表对比各方案在这个关键维度上的实现路径：
+
+| 方案 | 决策输入（看请求的什么） | 决策方法 | 决策输出 | 决策延迟 |
+|:-----|:------------------------|:---------|:---------|:---------|
+| **aurelio semantic-router** | query 向量 vs 预定义 utterance 库 | 向量相似度 + 阈值匹配 | 预定义「路线」 | ~1ms |
+| **vLLM semantic-router** | 请求语义类别 | 分类器 + 可编程规则链（MoM） | 模型组 + 系统能力开关 | ms 级 |
+| **claude-code-router** | 场景标签（后台任务/深度思考/长上下文） | 规则映射表（场景→模型） | 具体模型 | <10ms |
+| **ClawRouter** | agent 上下文 | 本地路由引擎 | 模型 + 计费通道 | <1ms |
+| **RouteLLM** | query embedding + 偏好数据特征 | kernel 回归 / BERT 分类器 / 矩阵分解 | 强模型 or 弱模型（二选一） | ms 级 |
+| **LLMRouter** | query 特征（可插拔） | 16+ 种策略（KNN/SVM/GNN/RL…） | 最佳模型 | 取决于策略 |
+| **OpenSquilla** | **390 维特征**（语义嵌入+浅层+历史轨迹） | LightGBM+MLP 集成 + 置信度门控 + sticky 防抖 | S/M/L/XL 档 + thinking_mode + prompt_policy | 设备端 CPU |
+| **TensorZero** | 生产反馈数据回流 | A/B 实验 + 优化迭代 | 模型变体选择 | 网关级 |
+| **smart-router-stack（本项目）** | 4 维启发式（长度/指令/推理/领域） | 加权评分 → 档位映射（规划中：+flag_rules+置信度门控+ML 懒加载） | lightweight/medium/strong 三档 | <1ms |
+
+**决策机制的演进谱系**（从简单到复杂）：
+
+```
+关键词规则 ──► 语义相似度 ──► 分类器/ML ──► 集成+门控+历史感知 ──► 数据飞轮自学习
+(claude-       (aurelio /     (RouteLLM)    (OpenSquilla)          (OpenSquilla /
+ code-router)   vLLM s-r)                                           TensorZero)
+```
+
+**对本项目的定位启示**：
+- 我们当前的 4 维加权评分处于谱系最左端；按既定路线补上 flag_rules（→规则工程化）和置信度门控（→决策后处理）后进入第 3-4 阶段
+- ML 懒加载路径（检测到模型资产时启用 LightGBM/BGE）与 OpenSquilla 第 4 阶段对齐；tracer.py 已为数据飞轮（第 5 阶段）留好数据口子
+- 各家共识：**纯规则可上线，但天花板在 ML + 数据闭环**——与 OpenSquilla 论文「标签来自执行环境」的核心洞察一致
+
 ---
 
 ## 📊 方案对比总结
